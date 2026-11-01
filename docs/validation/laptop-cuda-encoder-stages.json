@@ -1,0 +1,250 @@
+{
+  "model": "models\\heartcodec-sq-codec-f32.gguf",
+  "model_bytes": 672196160,
+  "backend": "cuda",
+  "ggml_cuda_tf32": "0",
+  "mode": "fp32-parity",
+  "cases": [
+    {
+      "name": "impulse-48000",
+      "decode_stats": {
+        "elapsed_seconds": 0.115539,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 110595328
+      },
+      "decode": {
+        "max_abs": 6.891787052154541e-08,
+        "relative_l2": 5.794354256667316e-06,
+        "rmse": 6.466522580146492e-09
+      },
+      "encode_stats": {
+        "elapsed_seconds": 0.141389,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 112768000
+      },
+      "encode": {
+        "max_abs": 7.450580596923828e-06,
+        "relative_l2": 4.487306832555374e-06,
+        "rmse": 1.161760875410491e-06
+      },
+      "quantized_mismatches": 0,
+      "quantized_elements": 3200,
+      "quantized_mismatch_rate": 0.0,
+      "roundtrip_reuses_reference_levels": true,
+      "roundtrip_stats": {
+        "elapsed_seconds": 0.142148,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 110595328
+      },
+      "roundtrip": {
+        "max_abs": 6.891787052154541e-08,
+        "relative_l2": 5.794354256667316e-06,
+        "rmse": 6.466522580146492e-09
+      },
+      "encoder_stages": {
+        "encoder.0": {
+          "max_abs": 5.960464477539063e-08,
+          "relative_l2": 4.180198193511918e-09,
+          "rmse": 1.0836351583523325e-10
+        },
+        "encoder.1": {
+          "max_abs": 1.1920928955078125e-06,
+          "relative_l2": 2.202358034874088e-07,
+          "rmse": 1.3996894368967584e-08
+        },
+        "encoder.2": {
+          "max_abs": 1.0728836059570312e-06,
+          "relative_l2": 4.447688323172171e-07,
+          "rmse": 1.2824608531309986e-08
+        },
+        "encoder.3": {
+          "max_abs": 1.3113021850585938e-06,
+          "relative_l2": 6.640580242791235e-07,
+          "rmse": 5.613928255400176e-08
+        },
+        "encoder.4": {
+          "max_abs": 1.9073486328125e-06,
+          "relative_l2": 1.0904412097414124e-06,
+          "rmse": 1.0522655121508748e-07
+        },
+        "encoder.5": {
+          "max_abs": 3.5762786865234375e-06,
+          "relative_l2": 1.0740210921648534e-06,
+          "rmse": 1.735128495523425e-07
+        },
+        "encoder.6": {
+          "max_abs": 6.794929504394531e-06,
+          "relative_l2": 1.4952636169526614e-06,
+          "rmse": 3.784900851750741e-07
+        },
+        "encoder.7": {
+          "max_abs": 7.450580596923828e-06,
+          "relative_l2": 4.487306832555374e-06,
+          "rmse": 1.161760875410491e-06
+        }
+      },
+      "fp32_gates_passed": true
+    },
+    {
+      "name": "sine-48000",
+      "decode_stats": {
+        "elapsed_seconds": 0.114846,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 110595328
+      },
+      "decode": {
+        "max_abs": 4.3213367462158203e-07,
+        "relative_l2": 4.97822938422703e-07,
+        "rmse": 5.2220860817187487e-08
+      },
+      "encode_stats": {
+        "elapsed_seconds": 0.141465,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 112768000
+      },
+      "encode": {
+        "max_abs": 7.987022399902344e-06,
+        "relative_l2": 4.340560358016647e-06,
+        "rmse": 1.4559982131035287e-06
+      },
+      "quantized_mismatches": 0,
+      "quantized_elements": 3200,
+      "quantized_mismatch_rate": 0.0,
+      "roundtrip_reuses_reference_levels": true,
+      "roundtrip_stats": {
+        "elapsed_seconds": 0.139825,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 110595328
+      },
+      "roundtrip": {
+        "max_abs": 4.3213367462158203e-07,
+        "relative_l2": 4.97822938422703e-07,
+        "rmse": 5.2220860817187487e-08
+      },
+      "encoder_stages": {
+        "encoder.0": {
+          "max_abs": 5.681067705154419e-08,
+          "relative_l2": 1.6576692478606412e-07,
+          "rmse": 7.250883104810964e-09
+        },
+        "encoder.1": {
+          "max_abs": 1.0728836059570312e-06,
+          "relative_l2": 2.3246106185965645e-07,
+          "rmse": 2.7108236712493224e-08
+        },
+        "encoder.2": {
+          "max_abs": 2.891756594181061e-06,
+          "relative_l2": 2.1125960145001425e-06,
+          "rmse": 1.9900446237858437e-07
+        },
+        "encoder.3": {
+          "max_abs": 1.2949109077453613e-05,
+          "relative_l2": 2.7989464530789857e-06,
+          "rmse": 4.817422763664742e-07
+        },
+        "encoder.4": {
+          "max_abs": 1.306086778640747e-05,
+          "relative_l2": 2.6878394018175727e-06,
+          "rmse": 4.924196916174985e-07
+        },
+        "encoder.5": {
+          "max_abs": 5.185604095458984e-06,
+          "relative_l2": 1.6697773852729834e-06,
+          "rmse": 4.3689255304666134e-07
+        },
+        "encoder.6": {
+          "max_abs": 7.62939453125e-06,
+          "relative_l2": 1.8460746532691607e-06,
+          "rmse": 7.993774780415576e-07
+        },
+        "encoder.7": {
+          "max_abs": 7.987022399902344e-06,
+          "relative_l2": 4.340560358016647e-06,
+          "rmse": 1.4559982131035287e-06
+        }
+      },
+      "fp32_gates_passed": true
+    },
+    {
+      "name": "noise-48000",
+      "decode_stats": {
+        "elapsed_seconds": 0.117431,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 110595328
+      },
+      "decode": {
+        "max_abs": 2.4959444999694824e-07,
+        "relative_l2": 1.3485553492547113e-06,
+        "rmse": 4.306019493480069e-08
+      },
+      "encode_stats": {
+        "elapsed_seconds": 0.138481,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 112768000
+      },
+      "encode": {
+        "max_abs": 7.331371307373047e-06,
+        "relative_l2": 3.994568149650857e-06,
+        "rmse": 1.0416710625499736e-06
+      },
+      "quantized_mismatches": 0,
+      "quantized_elements": 3200,
+      "quantized_mismatch_rate": 0.0,
+      "roundtrip_reuses_reference_levels": true,
+      "roundtrip_stats": {
+        "elapsed_seconds": 0.141831,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 110595328
+      },
+      "roundtrip": {
+        "max_abs": 2.4959444999694824e-07,
+        "relative_l2": 1.3485553492547113e-06,
+        "rmse": 4.306019493480069e-08
+      },
+      "encoder_stages": {
+        "encoder.0": {
+          "max_abs": 5.960464477539063e-08,
+          "relative_l2": 6.634131827701613e-08,
+          "rmse": 3.2157561513644324e-09
+        },
+        "encoder.1": {
+          "max_abs": 2.1457672119140625e-06,
+          "relative_l2": 2.763237983436528e-07,
+          "rmse": 6.66680566395286e-08
+        },
+        "encoder.2": {
+          "max_abs": 1.5497207641601562e-06,
+          "relative_l2": 4.705662969240833e-07,
+          "rmse": 7.25179964372237e-08
+        },
+        "encoder.3": {
+          "max_abs": 2.7418136596679688e-06,
+          "relative_l2": 5.814321979398616e-07,
+          "rmse": 6.497088394663237e-08
+        },
+        "encoder.4": {
+          "max_abs": 1.6689300537109375e-06,
+          "relative_l2": 7.772038606140587e-07,
+          "rmse": 8.589675601224651e-08
+        },
+        "encoder.5": {
+          "max_abs": 2.4437904357910156e-06,
+          "relative_l2": 8.744705529095353e-07,
+          "rmse": 1.6436868021119645e-07
+        },
+        "encoder.6": {
+          "max_abs": 8.940696716308594e-06,
+          "relative_l2": 1.413544955601416e-06,
+          "rmse": 4.562944250892623e-07
+        },
+        "encoder.7": {
+          "max_abs": 7.331371307373047e-06,
+          "relative_l2": 3.994568149650857e-06,
+          "rmse": 1.0416710625499736e-06
+        }
+      },
+      "fp32_gates_passed": true
+    }
+  ],
+  "fp32_gates_passed": true
+}

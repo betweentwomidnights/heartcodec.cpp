@@ -1,0 +1,1 @@
+{"mix":"q4_k_m","scope":"decoder","policy":"sq-conv-v1","file_bytes":400548000,"types":{"f32":{"tensors":305,"bytes":346062256},"q4_K":{"tensors":15,"bytes":27095040},"q6_K":{"tensors":19,"bytes":27363840}}}

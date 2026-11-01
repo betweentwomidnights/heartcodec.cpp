@@ -1,0 +1,1 @@
+{"mix":"f16","scope":"codec","policy":"sq-conv-v1","file_bytes":336208672,"types":{"f16":{"tensors":115,"bytes":335987584},"f32":{"tensors":224,"bytes":194224}}}

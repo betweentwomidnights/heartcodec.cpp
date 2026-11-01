@@ -1,0 +1,10 @@
+ARG BASE_IMAGE=heartcodec-reference-base:20261101
+FROM ${BASE_IMAGE}
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    cmake ninja-build cuda-nvcc-13-0 cuda-cudart-dev-13-0 libcublas-dev-13-0 \
+    && rm -rf /var/lib/apt/lists/*
+ENV CUDACXX=/usr/local/cuda-13.0/bin/nvcc
+ENV CUDAToolkit_ROOT=/usr/local/cuda-13.0
+WORKDIR /workspace
+ENTRYPOINT []

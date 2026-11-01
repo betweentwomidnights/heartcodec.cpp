@@ -1,0 +1,407 @@
+{
+  "source": "nvidia-smi total device memory sampled during laptop CUDA parity",
+  "sampling_interval_seconds": 0.25,
+  "maximum_observed_used_mib": 3908,
+  "samples": [
+    {
+      "time_unix": 1793563097.4385343,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563097.7522378,
+      "used_mib": 0,
+      "free_mib": 7891
+    },
+    {
+      "time_unix": 1793563098.0638416,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563098.3776577,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563098.6920006,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563099.004384,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563099.31791,
+      "used_mib": 0,
+      "free_mib": 7891
+    },
+    {
+      "time_unix": 1793563099.630625,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563099.9431324,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563100.254995,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563100.5651107,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563100.8618934,
+      "used_mib": 0,
+      "free_mib": 7891
+    },
+    {
+      "time_unix": 1793563101.1594486,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563101.4547303,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563101.7646742,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563102.0764642,
+      "used_mib": 774,
+      "free_mib": 7118
+    },
+    {
+      "time_unix": 1793563102.417141,
+      "used_mib": 114,
+      "free_mib": 7778
+    },
+    {
+      "time_unix": 1793563102.7207448,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563103.036204,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563103.348497,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563103.664146,
+      "used_mib": 116,
+      "free_mib": 7776
+    },
+    {
+      "time_unix": 1793563103.9716792,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563104.2845793,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563104.598926,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563104.9094117,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563105.2221427,
+      "used_mib": 0,
+      "free_mib": 7891
+    },
+    {
+      "time_unix": 1793563105.5322678,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563105.8465145,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563106.1581724,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563106.471574,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563106.7782638,
+      "used_mib": 0,
+      "free_mib": 7891
+    },
+    {
+      "time_unix": 1793563107.092337,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563107.4061623,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563107.71894,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563108.027899,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563108.3407617,
+      "used_mib": 0,
+      "free_mib": 7891
+    },
+    {
+      "time_unix": 1793563108.6690478,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563108.9817774,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563109.2939634,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563109.605237,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563109.9066334,
+      "used_mib": 0,
+      "free_mib": 7891
+    },
+    {
+      "time_unix": 1793563110.218122,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563110.5305393,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563110.8429272,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563111.1538577,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563111.4658487,
+      "used_mib": 0,
+      "free_mib": 7891
+    },
+    {
+      "time_unix": 1793563111.7816446,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563112.0947783,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563112.410073,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563112.7247036,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563113.0356777,
+      "used_mib": 0,
+      "free_mib": 7891
+    },
+    {
+      "time_unix": 1793563113.34919,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563113.6494823,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563113.9604971,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563114.2716937,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563114.5836756,
+      "used_mib": 3908,
+      "free_mib": 3984
+    },
+    {
+      "time_unix": 1793563114.8967438,
+      "used_mib": 3908,
+      "free_mib": 3984
+    },
+    {
+      "time_unix": 1793563115.2115016,
+      "used_mib": 0,
+      "free_mib": 7891
+    },
+    {
+      "time_unix": 1793563115.5218844,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563115.8492398,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563116.1605647,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563116.4746287,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563116.782685,
+      "used_mib": 3560,
+      "free_mib": 4332
+    },
+    {
+      "time_unix": 1793563117.0961604,
+      "used_mib": 3560,
+      "free_mib": 4332
+    },
+    {
+      "time_unix": 1793563117.4118803,
+      "used_mib": 0,
+      "free_mib": 7891
+    },
+    {
+      "time_unix": 1793563117.724035,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563118.0365522,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563118.3486137,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563118.6608388,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563118.9578667,
+      "used_mib": 3560,
+      "free_mib": 4332
+    },
+    {
+      "time_unix": 1793563119.2515194,
+      "used_mib": 3560,
+      "free_mib": 4332
+    },
+    {
+      "time_unix": 1793563119.5490465,
+      "used_mib": 3908,
+      "free_mib": 3984
+    },
+    {
+      "time_unix": 1793563119.8470697,
+      "used_mib": 3908,
+      "free_mib": 3984
+    },
+    {
+      "time_unix": 1793563120.1437938,
+      "used_mib": 116,
+      "free_mib": 7776
+    },
+    {
+      "time_unix": 1793563120.4408092,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563120.7388992,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563121.039747,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563121.3391356,
+      "used_mib": 756,
+      "free_mib": 7136
+    },
+    {
+      "time_unix": 1793563121.6344843,
+      "used_mib": 3908,
+      "free_mib": 3984
+    },
+    {
+      "time_unix": 1793563121.932936,
+      "used_mib": 3908,
+      "free_mib": 3984
+    }
+  ]
+}

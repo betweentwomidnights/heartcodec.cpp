@@ -1,0 +1,8 @@
+/.venv/
+/build*/
+/models/
+/refdata/
+__pycache__/
+*.pyc
+/.cache/
+/.python-deps/

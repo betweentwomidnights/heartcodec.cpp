@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "files": {
+    "heartcodec-sq-codec-f16.gguf": {
+      "bytes": 336208672,
+      "sha256": "d24567a23ddc12394316e884bef6c7ab747214ec1accdfa55fffb162ac94cebb"
+    },
+    "heartcodec-sq-codec-f32.gguf": {
+      "bytes": 672196160,
+      "sha256": "2f72b85f924c629aae33004703cc02e16600abee15c01e928b2878e5d0f29ae6"
+    },
+    "heartcodec-sq-codec-q4_k_m-decoder.gguf": {
+      "bytes": 400548000,
+      "sha256": "5ab9f4297b317594c781cb8658373e51ae9763349fd8e2afc54e0d45e94d097a"
+    },
+    "heartcodec-sq-codec-q4_k_m-encoder.gguf": {
+      "bytes": 400548000,
+      "sha256": "ce26fb1bf1e7ea17376cee4d20d899e457609b9bf5729e7801898450871e53c1"
+    },
+    "heartcodec-sq-codec-q4_k_m.gguf": {
+      "bytes": 128899744,
+      "sha256": "62e04f07da0fca3ab1037bdc3fe8205fd31a4473d411683e97324da0e7406571"
+    },
+    "heartcodec-sq-codec-q5_k_m.gguf": {
+      "bytes": 140941984,
+      "sha256": "ff604e50b40fb2f65e6b96d25bbe7bca35b7252f6bc8e93ab6bb90b7be95e431"
+    },
+    "heartcodec-sq-codec-q6_k.gguf": {
+      "bytes": 153736864,
+      "sha256": "42e661ed5940570d66abce814df2ad4ac052d9d596eb874b65a1da57b7151839"
+    },
+    "heartcodec-sq-codec-q8_0.gguf": {
+      "bytes": 188124832,
+      "sha256": "8abb549e437db041d8262255e52c4be8d4a422511405a6712a0cb0c73ac6ada7"
+    }
+  }
+}

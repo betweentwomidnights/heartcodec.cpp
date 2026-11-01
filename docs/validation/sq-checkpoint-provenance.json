@@ -1,0 +1,13 @@
+{
+  "source_repo": "HeartMuLa/HeartCodec-oss-20260123",
+  "source_revision": "f889dab0532cfa4bf459f2a3367eb6d346b8eeda",
+  "source_shards": {
+    "model-00002-of-00002.safetensors": {
+      "sha256": "6f319d0f5b31858dfe98bd8fc89d3083cbfff74ac75a0531f1a7b86949197917",
+      "bytes": 1707911436
+    }
+  },
+  "tensor_count": 453,
+  "sq_sha256": "c961996b4c050b01b64e26606beb304593b76a57a265b7af92a9c70911eb3c09",
+  "sq_bytes": 672421500
+}

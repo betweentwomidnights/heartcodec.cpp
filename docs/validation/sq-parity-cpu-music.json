@@ -1,0 +1,110 @@
+{
+  "backend": "cpu",
+  "reference": "refdata/sq-music",
+  "ggml_cuda_tf32": "0",
+  "max_relative_l2": 0.001,
+  "max_abs": 0.001,
+  "cases": [
+    {
+      "name": "music-channel-0-144000",
+      "stages": {
+        "decoder.0": {
+          "max_abs": 1.430511474609375e-06,
+          "relative_l2": 4.1560139844389363e-07,
+          "passed": true
+        },
+        "decoder.1": {
+          "max_abs": 1.811981201171875e-05,
+          "relative_l2": 6.572800225231251e-07,
+          "passed": true
+        },
+        "decoder.2": {
+          "max_abs": 9.5367431640625e-06,
+          "relative_l2": 7.633956303257371e-07,
+          "passed": true
+        },
+        "decoder.3": {
+          "max_abs": 6.496906280517578e-06,
+          "relative_l2": 9.853415411225908e-07,
+          "passed": true
+        },
+        "decoder.4": {
+          "max_abs": 3.039836883544922e-06,
+          "relative_l2": 8.21427370822378e-07,
+          "passed": true
+        },
+        "decoder.5": {
+          "max_abs": 4.291534423828125e-06,
+          "relative_l2": 5.482714172811163e-07,
+          "passed": true
+        },
+        "decoder.6": {
+          "max_abs": 1.239776611328125e-05,
+          "relative_l2": 4.6502140697819593e-07,
+          "passed": true
+        },
+        "decoder.7": {
+          "max_abs": 8.344650268554688e-07,
+          "relative_l2": 5.657283480523009e-07,
+          "passed": true
+        },
+        "sq.decoded": {
+          "max_abs": 8.344650268554688e-07,
+          "relative_l2": 5.657283480523009e-07,
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "music-channel-1-144000",
+      "stages": {
+        "decoder.0": {
+          "max_abs": 1.3113021850585938e-06,
+          "relative_l2": 4.1562021857753296e-07,
+          "passed": true
+        },
+        "decoder.1": {
+          "max_abs": 1.71661376953125e-05,
+          "relative_l2": 6.696022985561793e-07,
+          "passed": true
+        },
+        "decoder.2": {
+          "max_abs": 7.62939453125e-06,
+          "relative_l2": 7.773368704030155e-07,
+          "passed": true
+        },
+        "decoder.3": {
+          "max_abs": 4.76837158203125e-06,
+          "relative_l2": 9.53855997477233e-07,
+          "passed": true
+        },
+        "decoder.4": {
+          "max_abs": 1.5795230865478516e-06,
+          "relative_l2": 7.89139619156546e-07,
+          "passed": true
+        },
+        "decoder.5": {
+          "max_abs": 5.245208740234375e-06,
+          "relative_l2": 5.052144474640094e-07,
+          "passed": true
+        },
+        "decoder.6": {
+          "max_abs": 1.1444091796875e-05,
+          "relative_l2": 4.636867852214022e-07,
+          "passed": true
+        },
+        "decoder.7": {
+          "max_abs": 8.344650268554688e-07,
+          "relative_l2": 5.575258669460492e-07,
+          "passed": true
+        },
+        "sq.decoded": {
+          "max_abs": 8.344650268554688e-07,
+          "relative_l2": 5.575258669460492e-07,
+          "passed": true
+        }
+      }
+    }
+  ],
+  "passed": true
+}

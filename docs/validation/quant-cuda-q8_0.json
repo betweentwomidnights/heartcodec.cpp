@@ -1,0 +1,160 @@
+{
+  "model": "models\\heartcodec-sq-codec-q8_0.gguf",
+  "model_bytes": 188124832,
+  "backend": "cuda",
+  "ggml_cuda_tf32": "0",
+  "mode": "quality-evaluation",
+  "cases": [
+    {
+      "name": "sine-48000",
+      "decode_stats": {
+        "elapsed_seconds": 0.119446,
+        "weight_buffer_bytes": 188134272,
+        "graph_buffer_bytes": 110595328
+      },
+      "decode": {
+        "max_abs": 0.0024127885699272156,
+        "relative_l2": 0.004773466498451029,
+        "rmse": 0.0005007292962853767,
+        "spectral_convergence": 0.00397593296419877,
+        "log_magnitude_l1": 1.6450904172755645
+      },
+      "encode_stats": {
+        "elapsed_seconds": 0.127151,
+        "weight_buffer_bytes": 188134272,
+        "graph_buffer_bytes": 98753280
+      },
+      "encode": {
+        "max_abs": 0.19919676333665848,
+        "relative_l2": 0.12056096255137305,
+        "rmse": 0.04044098723811996
+      },
+      "quantized_mismatches": 894,
+      "quantized_elements": 3200,
+      "quantized_mismatch_rate": 0.279375,
+      "roundtrip_reuses_reference_levels": false,
+      "roundtrip_stats": {
+        "elapsed_seconds": 0.146962,
+        "weight_buffer_bytes": 188134272,
+        "graph_buffer_bytes": 110595328
+      },
+      "roundtrip": {
+        "max_abs": 0.017202955670654774,
+        "relative_l2": 0.03316443711602111,
+        "rmse": 0.0034788984617771146,
+        "spectral_convergence": 0.025085634129879297,
+        "log_magnitude_l1": 1.6227623208658626
+      },
+      "fp32_gates_passed": false
+    },
+    {
+      "name": "noise-48000",
+      "decode_stats": {
+        "elapsed_seconds": 0.118823,
+        "weight_buffer_bytes": 188134272,
+        "graph_buffer_bytes": 110595328
+      },
+      "decode": {
+        "max_abs": 0.027335114777088165,
+        "relative_l2": 0.04858201500463184,
+        "rmse": 0.0015512533746434587,
+        "spectral_convergence": 0.03446674559093015,
+        "log_magnitude_l1": 0.0654328753421133
+      },
+      "encode_stats": {
+        "elapsed_seconds": 0.126505,
+        "weight_buffer_bytes": 188134272,
+        "graph_buffer_bytes": 98753280
+      },
+      "encode": {
+        "max_abs": 0.009300097823143005,
+        "relative_l2": 0.008690110794615792,
+        "rmse": 0.0022661365649489884
+      },
+      "quantized_mismatches": 47,
+      "quantized_elements": 3200,
+      "quantized_mismatch_rate": 0.0146875,
+      "roundtrip_reuses_reference_levels": false,
+      "roundtrip_stats": {
+        "elapsed_seconds": 0.143577,
+        "weight_buffer_bytes": 188134272,
+        "graph_buffer_bytes": 110595328
+      },
+      "roundtrip": {
+        "max_abs": 0.009406231343746185,
+        "relative_l2": 0.053970873973405185,
+        "rmse": 0.001723322928777644,
+        "spectral_convergence": 0.04075203606417795,
+        "log_magnitude_l1": 0.07190042807805076
+      },
+      "fp32_gates_passed": false
+    },
+    {
+      "name": "synthetic-5760",
+      "decode_stats": {
+        "elapsed_seconds": 0.134574,
+        "weight_buffer_bytes": 188134272,
+        "graph_buffer_bytes": 13274368
+      },
+      "decode": {
+        "max_abs": 0.01750447606900707,
+        "relative_l2": 0.019103087350359208,
+        "rmse": 0.0036885759427878304,
+        "spectral_convergence": 0.014878236111538979,
+        "log_magnitude_l1": 0.16885570784579942
+      },
+      "fp32_gates_passed": false
+    },
+    {
+      "name": "music-channel-0-144000",
+      "decode_stats": {
+        "elapsed_seconds": 0.147321,
+        "weight_buffer_bytes": 188134272,
+        "graph_buffer_bytes": 331779328
+      },
+      "decode": {
+        "max_abs": 0.012687012553215027,
+        "relative_l2": 0.009388263270845916,
+        "rmse": 0.0012146411991146703,
+        "spectral_convergence": 0.006488189089317865,
+        "log_magnitude_l1": 0.5080088808962869
+      },
+      "encode_stats": {
+        "elapsed_seconds": 0.147927,
+        "weight_buffer_bytes": 188134272,
+        "graph_buffer_bytes": 295361280
+      },
+      "encode": {
+        "max_abs": 0.08048778399825096,
+        "relative_l2": 0.02581617971407154,
+        "rmse": 0.00887886085953526
+      },
+      "quantized_mismatches": 513,
+      "quantized_elements": 9600,
+      "quantized_mismatch_rate": 0.0534375,
+      "roundtrip_reuses_reference_levels": false,
+      "roundtrip_stats": {
+        "elapsed_seconds": 0.195189,
+        "weight_buffer_bytes": 188134272,
+        "graph_buffer_bytes": 331779328
+      },
+      "roundtrip": {
+        "max_abs": 0.045452386140823364,
+        "relative_l2": 0.03995054560272747,
+        "rmse": 0.005168749236812774,
+        "spectral_convergence": 0.027660858053319286,
+        "log_magnitude_l1": 0.5418896033433872
+      },
+      "fp32_gates_passed": false
+    }
+  ],
+  "fp32_gates_passed": false,
+  "reference": "refdata/laptop-goldens",
+  "stft": {
+    "fft_size": 1024,
+    "hop": 256,
+    "window": "symmetric Hann",
+    "center": false,
+    "log_floor": 1e-07
+  }
+}

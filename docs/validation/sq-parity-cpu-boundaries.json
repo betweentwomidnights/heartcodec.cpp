@@ -1,0 +1,759 @@
+{
+  "backend": "cpu",
+  "reference": "refdata/sq-boundaries",
+  "max_relative_l2": 0.001,
+  "max_abs": 0.001,
+  "cases": [
+    {
+      "name": "impulse-1919",
+      "stages": {
+        "decoder.0": {
+          "max_abs": 2.9802322387695312e-08,
+          "relative_l2": 5.984197182904747e-08,
+          "passed": true
+        },
+        "decoder.1": {
+          "max_abs": 2.384185791015625e-06,
+          "relative_l2": 5.23530585123329e-07,
+          "passed": true
+        },
+        "decoder.2": {
+          "max_abs": 3.337860107421875e-06,
+          "relative_l2": 5.370933439868959e-07,
+          "passed": true
+        },
+        "decoder.3": {
+          "max_abs": 9.5367431640625e-07,
+          "relative_l2": 7.675475886493254e-07,
+          "passed": true
+        },
+        "decoder.4": {
+          "max_abs": 8.046627044677734e-07,
+          "relative_l2": 8.338305157276084e-07,
+          "passed": true
+        },
+        "decoder.5": {
+          "max_abs": 2.1457672119140625e-06,
+          "relative_l2": 1.0155212327276714e-06,
+          "passed": true
+        },
+        "decoder.6": {
+          "max_abs": 8.821487426757812e-06,
+          "relative_l2": 8.308516416725308e-07,
+          "passed": true
+        },
+        "decoder.7": {
+          "max_abs": 5.21540641784668e-07,
+          "relative_l2": 1.7632615832277329e-06,
+          "passed": true
+        },
+        "sq.decoded": {
+          "max_abs": 5.21540641784668e-07,
+          "relative_l2": 1.7632615832277329e-06,
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "sine-1919",
+      "stages": {
+        "decoder.0": {
+          "max_abs": 1.4901161193847656e-08,
+          "relative_l2": 5.159039667689677e-08,
+          "passed": true
+        },
+        "decoder.1": {
+          "max_abs": 2.384185791015625e-06,
+          "relative_l2": 5.297663488208225e-07,
+          "passed": true
+        },
+        "decoder.2": {
+          "max_abs": 2.384185791015625e-06,
+          "relative_l2": 5.238432718539977e-07,
+          "passed": true
+        },
+        "decoder.3": {
+          "max_abs": 9.5367431640625e-07,
+          "relative_l2": 7.659376302589091e-07,
+          "passed": true
+        },
+        "decoder.4": {
+          "max_abs": 7.748603820800781e-07,
+          "relative_l2": 8.444354944376185e-07,
+          "passed": true
+        },
+        "decoder.5": {
+          "max_abs": 1.7583370208740234e-06,
+          "relative_l2": 1.0299718987130486e-06,
+          "passed": true
+        },
+        "decoder.6": {
+          "max_abs": 6.9141387939453125e-06,
+          "relative_l2": 8.421207562201362e-07,
+          "passed": true
+        },
+        "decoder.7": {
+          "max_abs": 4.284083843231201e-07,
+          "relative_l2": 1.7661834763520336e-06,
+          "passed": true
+        },
+        "sq.decoded": {
+          "max_abs": 4.284083843231201e-07,
+          "relative_l2": 1.7661834763520336e-06,
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "noise-1919",
+      "stages": {
+        "decoder.0": {
+          "max_abs": 1.4901161193847656e-08,
+          "relative_l2": 5.159039667689677e-08,
+          "passed": true
+        },
+        "decoder.1": {
+          "max_abs": 2.384185791015625e-06,
+          "relative_l2": 5.297663488208225e-07,
+          "passed": true
+        },
+        "decoder.2": {
+          "max_abs": 2.384185791015625e-06,
+          "relative_l2": 5.238432718539977e-07,
+          "passed": true
+        },
+        "decoder.3": {
+          "max_abs": 9.5367431640625e-07,
+          "relative_l2": 7.659376302589091e-07,
+          "passed": true
+        },
+        "decoder.4": {
+          "max_abs": 7.748603820800781e-07,
+          "relative_l2": 8.444354944376185e-07,
+          "passed": true
+        },
+        "decoder.5": {
+          "max_abs": 1.7583370208740234e-06,
+          "relative_l2": 1.0299718987130486e-06,
+          "passed": true
+        },
+        "decoder.6": {
+          "max_abs": 6.9141387939453125e-06,
+          "relative_l2": 8.421207562201362e-07,
+          "passed": true
+        },
+        "decoder.7": {
+          "max_abs": 4.284083843231201e-07,
+          "relative_l2": 1.7661834763520336e-06,
+          "passed": true
+        },
+        "sq.decoded": {
+          "max_abs": 4.284083843231201e-07,
+          "relative_l2": 1.7661834763520336e-06,
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "impulse-1921",
+      "stages": {
+        "decoder.0": {
+          "max_abs": 2.9802322387695312e-08,
+          "relative_l2": 5.984197182904747e-08,
+          "passed": true
+        },
+        "decoder.1": {
+          "max_abs": 2.384185791015625e-06,
+          "relative_l2": 5.23530585123329e-07,
+          "passed": true
+        },
+        "decoder.2": {
+          "max_abs": 3.337860107421875e-06,
+          "relative_l2": 5.370933439868959e-07,
+          "passed": true
+        },
+        "decoder.3": {
+          "max_abs": 9.5367431640625e-07,
+          "relative_l2": 7.675475886493254e-07,
+          "passed": true
+        },
+        "decoder.4": {
+          "max_abs": 8.046627044677734e-07,
+          "relative_l2": 8.338305157276084e-07,
+          "passed": true
+        },
+        "decoder.5": {
+          "max_abs": 2.1457672119140625e-06,
+          "relative_l2": 1.0155212327276714e-06,
+          "passed": true
+        },
+        "decoder.6": {
+          "max_abs": 8.821487426757812e-06,
+          "relative_l2": 8.308516416725308e-07,
+          "passed": true
+        },
+        "decoder.7": {
+          "max_abs": 5.21540641784668e-07,
+          "relative_l2": 1.7632615832277329e-06,
+          "passed": true
+        },
+        "sq.decoded": {
+          "max_abs": 5.21540641784668e-07,
+          "relative_l2": 1.7632615832277329e-06,
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "sine-1921",
+      "stages": {
+        "decoder.0": {
+          "max_abs": 1.4901161193847656e-08,
+          "relative_l2": 5.159039667689677e-08,
+          "passed": true
+        },
+        "decoder.1": {
+          "max_abs": 2.384185791015625e-06,
+          "relative_l2": 5.297663488208225e-07,
+          "passed": true
+        },
+        "decoder.2": {
+          "max_abs": 2.384185791015625e-06,
+          "relative_l2": 5.238432718539977e-07,
+          "passed": true
+        },
+        "decoder.3": {
+          "max_abs": 9.5367431640625e-07,
+          "relative_l2": 7.659376302589091e-07,
+          "passed": true
+        },
+        "decoder.4": {
+          "max_abs": 7.748603820800781e-07,
+          "relative_l2": 8.444354944376185e-07,
+          "passed": true
+        },
+        "decoder.5": {
+          "max_abs": 1.7583370208740234e-06,
+          "relative_l2": 1.0299718987130486e-06,
+          "passed": true
+        },
+        "decoder.6": {
+          "max_abs": 6.9141387939453125e-06,
+          "relative_l2": 8.421207562201362e-07,
+          "passed": true
+        },
+        "decoder.7": {
+          "max_abs": 4.284083843231201e-07,
+          "relative_l2": 1.7661834763520336e-06,
+          "passed": true
+        },
+        "sq.decoded": {
+          "max_abs": 4.284083843231201e-07,
+          "relative_l2": 1.7661834763520336e-06,
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "noise-1921",
+      "stages": {
+        "decoder.0": {
+          "max_abs": 1.4901161193847656e-08,
+          "relative_l2": 5.159039667689677e-08,
+          "passed": true
+        },
+        "decoder.1": {
+          "max_abs": 2.384185791015625e-06,
+          "relative_l2": 5.297663488208225e-07,
+          "passed": true
+        },
+        "decoder.2": {
+          "max_abs": 2.384185791015625e-06,
+          "relative_l2": 5.238432718539977e-07,
+          "passed": true
+        },
+        "decoder.3": {
+          "max_abs": 9.5367431640625e-07,
+          "relative_l2": 7.659376302589091e-07,
+          "passed": true
+        },
+        "decoder.4": {
+          "max_abs": 7.748603820800781e-07,
+          "relative_l2": 8.444354944376185e-07,
+          "passed": true
+        },
+        "decoder.5": {
+          "max_abs": 1.7583370208740234e-06,
+          "relative_l2": 1.0299718987130486e-06,
+          "passed": true
+        },
+        "decoder.6": {
+          "max_abs": 6.9141387939453125e-06,
+          "relative_l2": 8.421207562201362e-07,
+          "passed": true
+        },
+        "decoder.7": {
+          "max_abs": 4.284083843231201e-07,
+          "relative_l2": 1.7661834763520336e-06,
+          "passed": true
+        },
+        "sq.decoded": {
+          "max_abs": 4.284083843231201e-07,
+          "relative_l2": 1.7661834763520336e-06,
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "impulse-1428479",
+      "stages": {
+        "decoder.0": {
+          "max_abs": 7.748603820800781e-07,
+          "relative_l2": 3.776229571298843e-07,
+          "passed": true
+        },
+        "decoder.1": {
+          "max_abs": 4.291534423828125e-06,
+          "relative_l2": 9.204414035203142e-07,
+          "passed": true
+        },
+        "decoder.2": {
+          "max_abs": 1.7881393432617188e-06,
+          "relative_l2": 8.197224213773969e-07,
+          "passed": true
+        },
+        "decoder.3": {
+          "max_abs": 1.043081283569336e-06,
+          "relative_l2": 9.42494202197209e-07,
+          "passed": true
+        },
+        "decoder.4": {
+          "max_abs": 7.450580596923828e-07,
+          "relative_l2": 1.4972754705261695e-06,
+          "passed": true
+        },
+        "decoder.5": {
+          "max_abs": 2.384185791015625e-07,
+          "relative_l2": 1.3802620637385846e-06,
+          "passed": true
+        },
+        "decoder.6": {
+          "max_abs": 8.344650268554688e-07,
+          "relative_l2": 7.144574010433193e-07,
+          "passed": true
+        },
+        "decoder.7": {
+          "max_abs": 6.332993507385254e-08,
+          "relative_l2": 2.8089692332082673e-05,
+          "passed": true
+        },
+        "sq.decoded": {
+          "max_abs": 6.332993507385254e-08,
+          "relative_l2": 2.8089692332082673e-05,
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "sine-1428479",
+      "stages": {
+        "decoder.0": {
+          "max_abs": 1.3113021850585938e-06,
+          "relative_l2": 4.3557542727294935e-07,
+          "passed": true
+        },
+        "decoder.1": {
+          "max_abs": 2.1219253540039062e-05,
+          "relative_l2": 7.533691058543565e-07,
+          "passed": true
+        },
+        "decoder.2": {
+          "max_abs": 7.271766662597656e-06,
+          "relative_l2": 7.53210462272774e-07,
+          "passed": true
+        },
+        "decoder.3": {
+          "max_abs": 4.76837158203125e-06,
+          "relative_l2": 7.245683829996008e-07,
+          "passed": true
+        },
+        "decoder.4": {
+          "max_abs": 1.7881393432617188e-06,
+          "relative_l2": 7.469164214520759e-07,
+          "passed": true
+        },
+        "decoder.5": {
+          "max_abs": 1.5497207641601562e-06,
+          "relative_l2": 4.08671866729356e-07,
+          "passed": true
+        },
+        "decoder.6": {
+          "max_abs": 5.245208740234375e-06,
+          "relative_l2": 3.830609887194282e-07,
+          "passed": true
+        },
+        "decoder.7": {
+          "max_abs": 3.725290298461914e-07,
+          "relative_l2": 4.502349626613653e-07,
+          "passed": true
+        },
+        "sq.decoded": {
+          "max_abs": 3.725290298461914e-07,
+          "relative_l2": 4.502349626613653e-07,
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "noise-1428479",
+      "stages": {
+        "decoder.0": {
+          "max_abs": 1.0132789611816406e-06,
+          "relative_l2": 4.169517186961642e-07,
+          "passed": true
+        },
+        "decoder.1": {
+          "max_abs": 5.5670738220214844e-05,
+          "relative_l2": 6.884468299188951e-07,
+          "passed": true
+        },
+        "decoder.2": {
+          "max_abs": 0.000362396240234375,
+          "relative_l2": 2.078025584246395e-06,
+          "passed": true
+        },
+        "decoder.3": {
+          "max_abs": 0.0004698634147644043,
+          "relative_l2": 4.988249079798326e-06,
+          "passed": true
+        },
+        "decoder.4": {
+          "max_abs": 0.00016134977340698242,
+          "relative_l2": 4.3790443930617245e-06,
+          "passed": true
+        },
+        "decoder.5": {
+          "max_abs": 0.0001697540283203125,
+          "relative_l2": 3.019790565026256e-06,
+          "passed": true
+        },
+        "decoder.6": {
+          "max_abs": 0.00024068355560302734,
+          "relative_l2": 1.8115031037758052e-06,
+          "passed": true
+        },
+        "decoder.7": {
+          "max_abs": 3.2883137464523315e-05,
+          "relative_l2": 6.717688653173744e-06,
+          "passed": true
+        },
+        "sq.decoded": {
+          "max_abs": 3.2883137464523315e-05,
+          "relative_l2": 6.717688653173744e-06,
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "impulse-1428480",
+      "stages": {
+        "decoder.0": {
+          "max_abs": 7.748603820800781e-07,
+          "relative_l2": 3.776229571298843e-07,
+          "passed": true
+        },
+        "decoder.1": {
+          "max_abs": 4.291534423828125e-06,
+          "relative_l2": 9.204414035203142e-07,
+          "passed": true
+        },
+        "decoder.2": {
+          "max_abs": 1.7881393432617188e-06,
+          "relative_l2": 8.197224213773969e-07,
+          "passed": true
+        },
+        "decoder.3": {
+          "max_abs": 1.043081283569336e-06,
+          "relative_l2": 9.42494202197209e-07,
+          "passed": true
+        },
+        "decoder.4": {
+          "max_abs": 7.450580596923828e-07,
+          "relative_l2": 1.4972754705261695e-06,
+          "passed": true
+        },
+        "decoder.5": {
+          "max_abs": 2.384185791015625e-07,
+          "relative_l2": 1.3802620637385846e-06,
+          "passed": true
+        },
+        "decoder.6": {
+          "max_abs": 8.344650268554688e-07,
+          "relative_l2": 7.144574010433193e-07,
+          "passed": true
+        },
+        "decoder.7": {
+          "max_abs": 6.332993507385254e-08,
+          "relative_l2": 2.8089692332082673e-05,
+          "passed": true
+        },
+        "sq.decoded": {
+          "max_abs": 6.332993507385254e-08,
+          "relative_l2": 2.8089692332082673e-05,
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "sine-1428480",
+      "stages": {
+        "decoder.0": {
+          "max_abs": 1.3113021850585938e-06,
+          "relative_l2": 4.3557542727294935e-07,
+          "passed": true
+        },
+        "decoder.1": {
+          "max_abs": 2.1219253540039062e-05,
+          "relative_l2": 7.533691058543565e-07,
+          "passed": true
+        },
+        "decoder.2": {
+          "max_abs": 7.271766662597656e-06,
+          "relative_l2": 7.53210462272774e-07,
+          "passed": true
+        },
+        "decoder.3": {
+          "max_abs": 4.76837158203125e-06,
+          "relative_l2": 7.245683829996008e-07,
+          "passed": true
+        },
+        "decoder.4": {
+          "max_abs": 1.7881393432617188e-06,
+          "relative_l2": 7.469164214520759e-07,
+          "passed": true
+        },
+        "decoder.5": {
+          "max_abs": 1.5497207641601562e-06,
+          "relative_l2": 4.08671866729356e-07,
+          "passed": true
+        },
+        "decoder.6": {
+          "max_abs": 5.245208740234375e-06,
+          "relative_l2": 3.830609887194282e-07,
+          "passed": true
+        },
+        "decoder.7": {
+          "max_abs": 3.725290298461914e-07,
+          "relative_l2": 4.502349626613653e-07,
+          "passed": true
+        },
+        "sq.decoded": {
+          "max_abs": 3.725290298461914e-07,
+          "relative_l2": 4.502349626613653e-07,
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "noise-1428480",
+      "stages": {
+        "decoder.0": {
+          "max_abs": 1.0132789611816406e-06,
+          "relative_l2": 4.169517186961642e-07,
+          "passed": true
+        },
+        "decoder.1": {
+          "max_abs": 5.5670738220214844e-05,
+          "relative_l2": 6.884468299188951e-07,
+          "passed": true
+        },
+        "decoder.2": {
+          "max_abs": 0.000362396240234375,
+          "relative_l2": 2.078025584246395e-06,
+          "passed": true
+        },
+        "decoder.3": {
+          "max_abs": 0.0004698634147644043,
+          "relative_l2": 4.988249079798326e-06,
+          "passed": true
+        },
+        "decoder.4": {
+          "max_abs": 0.00016134977340698242,
+          "relative_l2": 4.3790443930617245e-06,
+          "passed": true
+        },
+        "decoder.5": {
+          "max_abs": 0.0001697540283203125,
+          "relative_l2": 3.019790565026256e-06,
+          "passed": true
+        },
+        "decoder.6": {
+          "max_abs": 0.00024068355560302734,
+          "relative_l2": 1.8115031037758052e-06,
+          "passed": true
+        },
+        "decoder.7": {
+          "max_abs": 3.2883137464523315e-05,
+          "relative_l2": 6.717688653173744e-06,
+          "passed": true
+        },
+        "sq.decoded": {
+          "max_abs": 3.2883137464523315e-05,
+          "relative_l2": 6.717688653173744e-06,
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "impulse-1428481",
+      "stages": {
+        "decoder.0": {
+          "max_abs": 7.748603820800781e-07,
+          "relative_l2": 3.776229571298843e-07,
+          "passed": true
+        },
+        "decoder.1": {
+          "max_abs": 4.291534423828125e-06,
+          "relative_l2": 9.204414035203142e-07,
+          "passed": true
+        },
+        "decoder.2": {
+          "max_abs": 1.7881393432617188e-06,
+          "relative_l2": 8.197224213773969e-07,
+          "passed": true
+        },
+        "decoder.3": {
+          "max_abs": 1.043081283569336e-06,
+          "relative_l2": 9.42494202197209e-07,
+          "passed": true
+        },
+        "decoder.4": {
+          "max_abs": 7.450580596923828e-07,
+          "relative_l2": 1.4972754705261695e-06,
+          "passed": true
+        },
+        "decoder.5": {
+          "max_abs": 2.384185791015625e-07,
+          "relative_l2": 1.3802620637385846e-06,
+          "passed": true
+        },
+        "decoder.6": {
+          "max_abs": 8.344650268554688e-07,
+          "relative_l2": 7.144574010433193e-07,
+          "passed": true
+        },
+        "decoder.7": {
+          "max_abs": 6.332993507385254e-08,
+          "relative_l2": 2.8089692332082673e-05,
+          "passed": true
+        },
+        "sq.decoded": {
+          "max_abs": 6.332993507385254e-08,
+          "relative_l2": 2.8089692332082673e-05,
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "sine-1428481",
+      "stages": {
+        "decoder.0": {
+          "max_abs": 1.3113021850585938e-06,
+          "relative_l2": 4.3557542727294935e-07,
+          "passed": true
+        },
+        "decoder.1": {
+          "max_abs": 2.1219253540039062e-05,
+          "relative_l2": 7.533691058543565e-07,
+          "passed": true
+        },
+        "decoder.2": {
+          "max_abs": 7.271766662597656e-06,
+          "relative_l2": 7.53210462272774e-07,
+          "passed": true
+        },
+        "decoder.3": {
+          "max_abs": 4.76837158203125e-06,
+          "relative_l2": 7.245683829996008e-07,
+          "passed": true
+        },
+        "decoder.4": {
+          "max_abs": 1.7881393432617188e-06,
+          "relative_l2": 7.469164214520759e-07,
+          "passed": true
+        },
+        "decoder.5": {
+          "max_abs": 1.5497207641601562e-06,
+          "relative_l2": 4.08671866729356e-07,
+          "passed": true
+        },
+        "decoder.6": {
+          "max_abs": 5.245208740234375e-06,
+          "relative_l2": 3.830609887194282e-07,
+          "passed": true
+        },
+        "decoder.7": {
+          "max_abs": 3.725290298461914e-07,
+          "relative_l2": 4.502349626613653e-07,
+          "passed": true
+        },
+        "sq.decoded": {
+          "max_abs": 3.725290298461914e-07,
+          "relative_l2": 4.502349626613653e-07,
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "noise-1428481",
+      "stages": {
+        "decoder.0": {
+          "max_abs": 1.0132789611816406e-06,
+          "relative_l2": 4.169517186961642e-07,
+          "passed": true
+        },
+        "decoder.1": {
+          "max_abs": 5.5670738220214844e-05,
+          "relative_l2": 6.884468299188951e-07,
+          "passed": true
+        },
+        "decoder.2": {
+          "max_abs": 0.000362396240234375,
+          "relative_l2": 2.078025584246395e-06,
+          "passed": true
+        },
+        "decoder.3": {
+          "max_abs": 0.0004698634147644043,
+          "relative_l2": 4.988249079798326e-06,
+          "passed": true
+        },
+        "decoder.4": {
+          "max_abs": 0.00016134977340698242,
+          "relative_l2": 4.3790443930617245e-06,
+          "passed": true
+        },
+        "decoder.5": {
+          "max_abs": 0.0001697540283203125,
+          "relative_l2": 3.019790565026256e-06,
+          "passed": true
+        },
+        "decoder.6": {
+          "max_abs": 0.00024068355560302734,
+          "relative_l2": 1.8115031037758052e-06,
+          "passed": true
+        },
+        "decoder.7": {
+          "max_abs": 3.2883137464523315e-05,
+          "relative_l2": 6.717688653173744e-06,
+          "passed": true
+        },
+        "sq.decoded": {
+          "max_abs": 3.2883137464523315e-05,
+          "relative_l2": 6.717688653173744e-06,
+          "passed": true
+        }
+      }
+    }
+  ],
+  "passed": true
+}

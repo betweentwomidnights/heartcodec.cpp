@@ -1,0 +1,599 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-11-01T01:43:51.154994+00:00",
+  "limitations": [
+    "Header inventory only; no model execution or peak-memory measurement.",
+    "F16/F32 scenarios change floating tensor storage only.",
+    "Q4_K/Q6_K scenarios cover eligible rank-2 weights with all other tensors F32.",
+    "Scenarios are not a validated Q4_K_M policy, GGUF conversion, or quality result.",
+    "Exclude activations, workspace, KV cache, allocator and file overhead."
+  ],
+  "models": [
+    {
+      "repo": "HeartMuLa/HeartCodec-oss-20260123",
+      "revision": "f889dab0532cfa4bf459f2a3367eb6d346b8eeda",
+      "config": {
+        "architectures": [
+          "HeartCodec"
+        ],
+        "attention_head_dim": 64,
+        "causal": true,
+        "codebook_dim": 32,
+        "codebook_size": 8192,
+        "commitment_weight": 1.0,
+        "decay": 0.9,
+        "default_kernel_size": 7,
+        "delay_kernel_size": 5,
+        "dim": 512,
+        "downsample_factors": [
+          3,
+          4,
+          4,
+          4,
+          5
+        ],
+        "downsample_kernel_sizes": [
+          6,
+          8,
+          8,
+          8,
+          10
+        ],
+        "in_channels": 1024,
+        "init_channel": 64,
+        "latent_hidden_dim": 128,
+        "model_type": "heartcodec",
+        "norm_type": "ada_norm_single",
+        "num_attention_heads": 24,
+        "num_bands": 1,
+        "num_layers": 24,
+        "num_layers_2": 6,
+        "num_quantizers": 8,
+        "num_samples": 2,
+        "out_channels": 256,
+        "res_kernel_size": 7,
+        "sample_rate": 48000,
+        "threshold_ema_dead_code": 2,
+        "torch_dtype": "float32",
+        "transformers_version": "4.45.1",
+        "upsample_factors": [
+          5,
+          4,
+          4,
+          4,
+          3
+        ],
+        "upsample_kernel_sizes": [
+          10,
+          8,
+          8,
+          8,
+          6
+        ],
+        "use_cosine_sim": false
+      },
+      "shards": {
+        "model-00001-of-00002.safetensors": {
+          "file_bytes": 4930472472,
+          "header_bytes": 45424,
+          "header_sha256": "6362202577a8d8016f744407f671bab36814b2eab4af05531eaf65b3a5d3f1f2",
+          "bytes_read": 45440
+        },
+        "model-00002-of-00002.safetensors": {
+          "file_bytes": 1707911436,
+          "header_bytes": 63568,
+          "header_sha256": "fa940fd5aa86382825615a8ba393941d1dc78acd690a166ebb9956128231be73",
+          "bytes_read": 63584
+        }
+      },
+      "totals": {
+        "tensors": 818,
+        "elements": 1659568725,
+        "stored_bytes": 6638274900,
+        "f32_bytes": 6638274900,
+        "f16_bytes": 3319137450,
+        "rank2_q4_k_rest_f32_bytes": 1633172820,
+        "rank2_q6_k_rest_f32_bytes": 2008555476,
+        "rank2_k_eligible_elements": 1456029696
+      },
+      "components": {
+        "flow_matching": {
+          "tensors": 3,
+          "elements": 263168,
+          "stored_bytes": 1052672,
+          "f32_bytes": 1052672,
+          "f16_bytes": 526336,
+          "rank2_q4_k_rest_f32_bytes": 151552,
+          "rank2_q6_k_rest_f32_bytes": 219136,
+          "rank2_k_eligible_elements": 262144
+        },
+        "flow_matching.estimator": {
+          "tensors": 326,
+          "elements": 1486920192,
+          "stored_bytes": 5947680768,
+          "f32_bytes": 5947680768,
+          "f16_bytes": 2973840384,
+          "rank2_q4_k_rest_f32_bytes": 943536128,
+          "rank2_q6_k_rest_f32_bytes": 1318846976,
+          "rank2_k_eligible_elements": 1455751168
+        },
+        "flow_matching.vq_embed": {
+          "tensors": 36,
+          "elements": 4293160,
+          "stored_bytes": 17172640,
+          "f32_bytes": 17172640,
+          "f16_bytes": 8586320,
+          "rank2_q4_k_rest_f32_bytes": 17116320,
+          "rank2_q6_k_rest_f32_bytes": 17120544,
+          "rank2_k_eligible_elements": 16384
+        },
+        "scalar_model.decoder": {
+          "tensors": 224,
+          "elements": 83784821,
+          "stored_bytes": 335139284,
+          "f32_bytes": 335139284,
+          "f16_bytes": 167569642,
+          "rank2_q4_k_rest_f32_bytes": 335139284,
+          "rank2_q6_k_rest_f32_bytes": 335139284,
+          "rank2_k_eligible_elements": 0
+        },
+        "scalar_model.encoder": {
+          "tensors": 229,
+          "elements": 84307384,
+          "stored_bytes": 337229536,
+          "f32_bytes": 337229536,
+          "f16_bytes": 168614768,
+          "rank2_q4_k_rest_f32_bytes": 337229536,
+          "rank2_q6_k_rest_f32_bytes": 337229536,
+          "rank2_k_eligible_elements": 0
+        }
+      }
+    },
+    {
+      "repo": "HeartMuLa/HeartCodec-oss-encoder",
+      "revision": "e6020510612d6653b73d6cd54393ef80929e3c81",
+      "config": {
+        "chunk_samples": 714240,
+        "feature_extractors": {
+          "muencoder_config": {
+            "conformer_config": {
+              "activation_dropout": 0.1,
+              "attention_dropout": 0.1,
+              "conformer_conv_dropout": 0.1,
+              "conv_depthwise_kernel_size": 31,
+              "hidden_act": "swish",
+              "hidden_dropout": 0.1,
+              "hidden_size": 1024,
+              "intermediate_size": 4096,
+              "layer_norm_eps": 1e-05,
+              "layerdrop": 0.0,
+              "max_source_positions": 5000,
+              "num_attention_heads": 16,
+              "num_conv_pos_embedding_groups": 16,
+              "num_conv_pos_embeddings": 128,
+              "num_hidden_layers": 12,
+              "position_embeddings_type": "rotary",
+              "rotary_embedding_base": 10000
+            },
+            "conv_dim": 512,
+            "hop_length": 240,
+            "mean": 6.768444971712967,
+            "n_fft": 2048,
+            "n_mels": 128,
+            "sample_rate": 24000,
+            "std": 18.417922652295623
+          },
+          "wavlm_config": {
+            "activation_dropout": 0.0,
+            "add_adapter": false,
+            "attention_dropout": 0.1,
+            "conv_bias": false,
+            "conv_dim": [
+              512,
+              512,
+              512,
+              512,
+              512,
+              512,
+              512
+            ],
+            "conv_kernel": [
+              10,
+              3,
+              3,
+              3,
+              3,
+              2,
+              2
+            ],
+            "conv_stride": [
+              5,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ],
+            "do_stable_layer_norm": false,
+            "feat_extract_activation": "gelu",
+            "feat_extract_norm": "group",
+            "feat_proj_dropout": 0.1,
+            "hidden_act": "gelu",
+            "hidden_dropout": 0.1,
+            "hidden_size": 768,
+            "intermediate_size": 3072,
+            "layer_norm_eps": 1e-05,
+            "layerdrop": 0.05,
+            "max_bucket_distance": 800,
+            "num_attention_heads": 12,
+            "num_buckets": 320,
+            "num_conv_pos_embedding_groups": 16,
+            "num_conv_pos_embeddings": 128,
+            "num_hidden_layers": 12
+          },
+          "whisper_config": {
+            "activation_dropout": 0.0,
+            "activation_function": "gelu",
+            "attention_dropout": 0.0,
+            "d_model": 768,
+            "dropout": 0.0,
+            "encoder_attention_heads": 12,
+            "encoder_ffn_dim": 3072,
+            "encoder_layerdrop": 0.0,
+            "encoder_layers": 12,
+            "max_source_positions": 1500,
+            "num_mel_bins": 80,
+            "scale_embedding": false
+          }
+        },
+        "query": {
+          "dim": 512,
+          "head_dim": 128,
+          "interval": 2,
+          "num_layers": 6
+        },
+        "version": "vqv12"
+      },
+      "shards": {
+        "encoder.safetensors": {
+          "file_bytes": 2148691856,
+          "header_bytes": 151992,
+          "header_sha256": "edf5e442cd2bcfe112e1a5ec72e9615d1b16c72ec4e7f0aaae127d5286c7c38a",
+          "bytes_read": 152008
+        }
+      },
+      "totals": {
+        "tensors": 1006,
+        "elements": 537134946,
+        "stored_bytes": 2148539856,
+        "f32_bytes": 2148539856,
+        "f16_bytes": 1074270000,
+        "rank2_q4_k_rest_f32_bytes": 534728976,
+        "rank2_q6_k_rest_f32_bytes": 655764792,
+        "rank2_k_eligible_elements": 469472256
+      },
+      "components": {
+        "encoder.feature_extractors.muencoder": {
+          "tensors": 460,
+          "elements": 324897074,
+          "stored_bytes": 1299588368,
+          "f32_bytes": 1299588368,
+          "f16_bytes": 649794256,
+          "rank2_q4_k_rest_f32_bytes": 376841488,
+          "rank2_q6_k_rest_f32_bytes": 446047504,
+          "rank2_k_eligible_elements": 268435456
+        },
+        "encoder.feature_extractors.wavlm_encoder": {
+          "tensors": 248,
+          "elements": 94381936,
+          "stored_bytes": 377527744,
+          "f32_bytes": 377527744,
+          "f16_bytes": 188763872,
+          "rank2_q4_k_rest_f32_bytes": 84213184,
+          "rank2_q6_k_rest_f32_bytes": 106211776,
+          "rank2_k_eligible_elements": 85327872
+        },
+        "encoder.feature_extractors.whisper_encoder": {
+          "tensors": 187,
+          "elements": 88154112,
+          "stored_bytes": 352616448,
+          "f32_bytes": 352616448,
+          "f16_bytes": 176308224,
+          "rank2_q4_k_rest_f32_bytes": 56693568,
+          "rank2_q6_k_rest_f32_bytes": 78887784,
+          "rank2_k_eligible_elements": 86086656
+        },
+        "encoder.query": {
+          "tensors": 111,
+          "elements": 29701824,
+          "stored_bytes": 118807296,
+          "f32_bytes": 118807296,
+          "f16_bytes": 59403648,
+          "rank2_q4_k_rest_f32_bytes": 16980736,
+          "rank2_q6_k_rest_f32_bytes": 24617728,
+          "rank2_k_eligible_elements": 29622272
+        }
+      }
+    },
+    {
+      "repo": "HeartMuLa/MuLaCover",
+      "revision": "bbbaef2b31835c2ef5172ff528dbe325230d46fb",
+      "config": {
+        "architectures": [
+          "MuLaCover"
+        ],
+        "audio_num_codebooks": 8,
+        "audio_vocab_size": 8197,
+        "backbone_flavor": "llama-3B",
+        "decoder_flavor": "llama-300M",
+        "dtype": "bfloat16",
+        "model_type": "mulacover",
+        "muq_dim": 512,
+        "peft_layer_num": 8,
+        "qwen_dim": 1024,
+        "text_vocab_size": 128256,
+        "train_tag": true,
+        "transformers_version": "4.57.6"
+      },
+      "shards": {
+        "model-00001-of-00005.safetensors": {
+          "file_bytes": 1994713352,
+          "header_bytes": 8448,
+          "header_sha256": "42154be323fba9fb12afb3c1ca12f81e6f63baf0f49d6c5bd5da0ae0c4d996c5",
+          "bytes_read": 8464
+        },
+        "model-00002-of-00005.safetensors": {
+          "file_bytes": 1981941248,
+          "header_bytes": 9720,
+          "header_sha256": "838ae08cf19aeec57a262e2775c90a0a5947d7d26b43cb5e3861b8eccb1fbe48",
+          "bytes_read": 9736
+        },
+        "model-00003-of-00005.safetensors": {
+          "file_bytes": 1963054632,
+          "header_bytes": 9760,
+          "header_sha256": "209b3305b397a8179831e960e763bd62a87170c411baa7564e9f4d108171b9dc",
+          "bytes_read": 9776
+        },
+        "model-00004-of-00005.safetensors": {
+          "file_bytes": 1999477480,
+          "header_bytes": 4832,
+          "header_sha256": "34c61eccc9d48a40e3995013b35140ece8d43828b815cb65b764fd62ffffd7ba",
+          "bytes_read": 4848
+        },
+        "model-00005-of-00005.safetensors": {
+          "file_bytes": 809619536,
+          "header_bytes": 43896,
+          "header_sha256": "7ef377470ce65169605dbc376473dfbbb485a95ec7de0280d3967003bb166cf7",
+          "bytes_read": 43912
+        }
+      },
+      "totals": {
+        "tensors": 659,
+        "elements": 4374364776,
+        "stored_bytes": 8748729552,
+        "f32_bytes": 17497459104,
+        "f16_bytes": 8748729552,
+        "rank2_q4_k_rest_f32_bytes": 3068746784,
+        "rank2_q6_k_rest_f32_bytes": 4150900208,
+        "rank2_k_eligible_elements": 4197443584
+      },
+      "components": {
+        "audio_embeddings": {
+          "tensors": 1,
+          "elements": 201449472,
+          "stored_bytes": 402898944,
+          "f32_bytes": 805797888,
+          "f16_bytes": 402898944,
+          "rank2_q4_k_rest_f32_bytes": 113315328,
+          "rank2_q6_k_rest_f32_bytes": 165251520,
+          "rank2_k_eligible_elements": 201449472
+        },
+        "audio_head": {
+          "tensors": 1,
+          "elements": 176268288,
+          "stored_bytes": 352536576,
+          "f32_bytes": 705073152,
+          "f16_bytes": 352536576,
+          "rank2_q4_k_rest_f32_bytes": 705073152,
+          "rank2_q6_k_rest_f32_bytes": 705073152,
+          "rank2_k_eligible_elements": 0
+        },
+        "backbone": {
+          "tensors": 253,
+          "elements": 2818747392,
+          "stored_bytes": 5637494784,
+          "f32_bytes": 11274989568,
+          "f16_bytes": 5637494784,
+          "rank2_q4_k_rest_f32_bytes": 1586147328,
+          "rank2_q6_k_rest_f32_bytes": 2312810496,
+          "rank2_k_eligible_elements": 2818572288
+        },
+        "codebook0_head": {
+          "tensors": 1,
+          "elements": 25181184,
+          "stored_bytes": 50362368,
+          "f32_bytes": 100724736,
+          "f16_bytes": 50362368,
+          "rank2_q4_k_rest_f32_bytes": 14164416,
+          "rank2_q6_k_rest_f32_bytes": 20656440,
+          "rank2_k_eligible_elements": 25181184
+        },
+        "layers": {
+          "tensors": 27,
+          "elements": 311445504,
+          "stored_bytes": 622891008,
+          "f32_bytes": 1245782016,
+          "f16_bytes": 622891008,
+          "rank2_q4_k_rest_f32_bytes": 175251456,
+          "rank2_q6_k_rest_f32_bytes": 255541248,
+          "rank2_k_eligible_elements": 311427072
+        },
+        "muq_linear": {
+          "tensors": 2,
+          "elements": 1575936,
+          "stored_bytes": 3151872,
+          "f32_bytes": 6303744,
+          "f16_bytes": 3151872,
+          "rank2_q4_k_rest_f32_bytes": 897024,
+          "rank2_q6_k_rest_f32_bytes": 1302528,
+          "rank2_k_eligible_elements": 1572864
+        },
+        "norm": {
+          "tensors": 1,
+          "elements": 3072,
+          "stored_bytes": 6144,
+          "f32_bytes": 12288,
+          "f16_bytes": 6144,
+          "rank2_q4_k_rest_f32_bytes": 12288,
+          "rank2_q6_k_rest_f32_bytes": 12288,
+          "rank2_k_eligible_elements": 0
+        },
+        "peft_layers": {
+          "tensors": 352,
+          "elements": 382721640,
+          "stored_bytes": 765443280,
+          "f32_bytes": 1530886560,
+          "f16_bytes": 765443280,
+          "rank2_q4_k_rest_f32_bytes": 216659360,
+          "rank2_q6_k_rest_f32_bytes": 315226400,
+          "rank2_k_eligible_elements": 382320640
+        },
+        "projection": {
+          "tensors": 1,
+          "elements": 9437184,
+          "stored_bytes": 18874368,
+          "f32_bytes": 37748736,
+          "f16_bytes": 18874368,
+          "rank2_q4_k_rest_f32_bytes": 5308416,
+          "rank2_q6_k_rest_f32_bytes": 7741440,
+          "rank2_k_eligible_elements": 9437184
+        },
+        "qwen_linear": {
+          "tensors": 2,
+          "elements": 3148800,
+          "stored_bytes": 6297600,
+          "f32_bytes": 12595200,
+          "f16_bytes": 6297600,
+          "rank2_q4_k_rest_f32_bytes": 1781760,
+          "rank2_q6_k_rest_f32_bytes": 2592768,
+          "rank2_k_eligible_elements": 3145728
+        },
+        "tag_mlp_layers": {
+          "tensors": 16,
+          "elements": 50380800,
+          "stored_bytes": 100761600,
+          "f32_bytes": 201523200,
+          "f16_bytes": 100761600,
+          "rank2_q4_k_rest_f32_bytes": 28508160,
+          "rank2_q6_k_rest_f32_bytes": 41484288,
+          "rank2_k_eligible_elements": 50331648
+        },
+        "text_embeddings": {
+          "tensors": 1,
+          "elements": 394002432,
+          "stored_bytes": 788004864,
+          "f32_bytes": 1576009728,
+          "f16_bytes": 788004864,
+          "rank2_q4_k_rest_f32_bytes": 221626368,
+          "rank2_q6_k_rest_f32_bytes": 323205120,
+          "rank2_k_eligible_elements": 394002432
+        },
+        "unconditional_text_embedding": {
+          "tensors": 1,
+          "elements": 3072,
+          "stored_bytes": 6144,
+          "f32_bytes": 12288,
+          "f16_bytes": 6144,
+          "rank2_q4_k_rest_f32_bytes": 1728,
+          "rank2_q6_k_rest_f32_bytes": 2520,
+          "rank2_k_eligible_elements": 3072
+        }
+      }
+    },
+    {
+      "repo": "Qwen/Qwen3-Embedding-0.6B",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "config": {
+        "architectures": [
+          "Qwen3ForCausalLM"
+        ],
+        "attention_bias": false,
+        "attention_dropout": 0.0,
+        "bos_token_id": 151643,
+        "eos_token_id": 151643,
+        "head_dim": 128,
+        "hidden_act": "silu",
+        "hidden_size": 1024,
+        "initializer_range": 0.02,
+        "intermediate_size": 3072,
+        "max_position_embeddings": 32768,
+        "max_window_layers": 28,
+        "model_type": "qwen3",
+        "num_attention_heads": 16,
+        "num_hidden_layers": 28,
+        "num_key_value_heads": 8,
+        "rms_norm_eps": 1e-06,
+        "rope_scaling": null,
+        "rope_theta": 1000000,
+        "sliding_window": null,
+        "tie_word_embeddings": true,
+        "torch_dtype": "bfloat16",
+        "transformers_version": "4.51.3",
+        "use_cache": true,
+        "use_sliding_window": false,
+        "vocab_size": 151669
+      },
+      "shards": {
+        "model.safetensors": {
+          "file_bytes": 1191586416,
+          "header_bytes": 33384,
+          "header_sha256": "61f0cd4e262a6899a646a2e72e8f034615358608c8bf24867bf65249cf40942b",
+          "bytes_read": 33400
+        }
+      },
+      "totals": {
+        "tensors": 310,
+        "elements": 595776512,
+        "stored_bytes": 1191553024,
+        "f32_bytes": 2383106048,
+        "f16_bytes": 1191553024,
+        "rank2_q4_k_rest_f32_bytes": 335349568,
+        "rank2_q6_k_rest_f32_bytes": 488931304,
+        "rank2_k_eligible_elements": 595710976
+      },
+      "components": {
+        "embed_tokens": {
+          "tensors": 1,
+          "elements": 155309056,
+          "stored_bytes": 310618112,
+          "f32_bytes": 621236224,
+          "f16_bytes": 310618112,
+          "rank2_q4_k_rest_f32_bytes": 87361344,
+          "rank2_q6_k_rest_f32_bytes": 127401960,
+          "rank2_k_eligible_elements": 155309056
+        },
+        "layers": {
+          "tensors": 308,
+          "elements": 440466432,
+          "stored_bytes": 880932864,
+          "f32_bytes": 1761865728,
+          "f16_bytes": 880932864,
+          "rank2_q4_k_rest_f32_bytes": 247984128,
+          "rank2_q6_k_rest_f32_bytes": 361525248,
+          "rank2_k_eligible_elements": 440401920
+        },
+        "norm": {
+          "tensors": 1,
+          "elements": 1024,
+          "stored_bytes": 2048,
+          "f32_bytes": 4096,
+          "f16_bytes": 2048,
+          "rank2_q4_k_rest_f32_bytes": 4096,
+          "rank2_q6_k_rest_f32_bytes": 4096,
+          "rank2_k_eligible_elements": 0
+        }
+      }
+    }
+  ]
+}

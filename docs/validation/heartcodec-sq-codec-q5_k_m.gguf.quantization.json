@@ -1,0 +1,1 @@
+{"mix":"q5_k_m","scope":"codec","policy":"sq-conv-v1","file_bytes":140941984,"types":{"f32":{"tensors":271,"bytes":19955120},"q5_K":{"tensors":30,"bytes":66232320},"q6_K":{"tensors":38,"bytes":54727680}}}

@@ -1,0 +1,508 @@
+{
+  "schema_version": 1,
+  "torch": "2.7.1+cu128",
+  "cuda": "12.8",
+  "python": "3.10.12",
+  "device": "cuda:0",
+  "gpu": "NVIDIA GB10",
+  "heartlib_revision": "5858ca8f1ffe58d62be7c007ea55f1033c5ca456",
+  "spansynth_revision": "f593bf21e48cc4aa836002a3834cfae42e8d4254",
+  "weights_sha256": "c961996b4c050b01b64e26606beb304593b76a57a265b7af92a9c70911eb3c09",
+  "dtype": "float32",
+  "tf32": false,
+  "deterministic_algorithms": true,
+  "sample_rate": 48000,
+  "cases": [
+    {
+      "name": "impulse-5760",
+      "source": "waveform",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "7269778786ece51c1dd86f561c93cdc585d168feba53d9bb7d3f3df6b8ad548d"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            3
+          ],
+          "dtype": "float32",
+          "sha256": "e0fe5f2e5077cc3f1ba6355bbab3ca249a49f1cf2fbda491245fd38531ac0681"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            3
+          ],
+          "dtype": "float32",
+          "sha256": "5f5ea06731dd94954da31ca24859dd9d90c231e6052906c4dce91347f5ea3069"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "aa07ea7a6737a00520da2f8f09fabc687b4526828c6980ac844e12822e622168"
+        },
+        "decoder.0": {
+          "shape": [
+            1,
+            2048,
+            3
+          ],
+          "dtype": "float32",
+          "sha256": "dccdf71cc9bf4675aa180d120c8b4290f949648d6dd9b9a8147e416f5235ccbe"
+        },
+        "decoder.1": {
+          "shape": [
+            1,
+            1024,
+            15
+          ],
+          "dtype": "float32",
+          "sha256": "04af47b4dc4e3db14c280a12434e258f9e28f8ede0425a80892b564e2387f2b6"
+        },
+        "decoder.2": {
+          "shape": [
+            1,
+            512,
+            60
+          ],
+          "dtype": "float32",
+          "sha256": "e49c7a7fb2a717f694c020785e56879b8e01fd1104f3ba16c648c18bf822c6e9"
+        },
+        "decoder.3": {
+          "shape": [
+            1,
+            256,
+            240
+          ],
+          "dtype": "float32",
+          "sha256": "d0d1c12d2155cb042c2a4ccdb5447c122fe4b1d8cd70fe52e2c27862ed1d1293"
+        },
+        "decoder.4": {
+          "shape": [
+            1,
+            128,
+            960
+          ],
+          "dtype": "float32",
+          "sha256": "1efb790339b6bed7ed78acc1a6e5bc9b5fa419ccd20ecc16095ca585b83ec832"
+        },
+        "decoder.5": {
+          "shape": [
+            1,
+            64,
+            2880
+          ],
+          "dtype": "float32",
+          "sha256": "02d022d6141a699bd54d3e50b29beb7f3467751b3bf48022d7399dfff07a73df"
+        },
+        "decoder.6": {
+          "shape": [
+            1,
+            64,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "d390e03647f4e1fd89dd67ab9970d60706f7063ee52271b27ec297ac155de0b1"
+        },
+        "decoder.7": {
+          "shape": [
+            1,
+            1,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "aa07ea7a6737a00520da2f8f09fabc687b4526828c6980ac844e12822e622168"
+        }
+      },
+      "elapsed_seconds": 0.30943246799870394,
+      "peak_allocated_bytes": 1557744640,
+      "peak_reserved_bytes": 1602224128,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      }
+    },
+    {
+      "name": "sine-5760",
+      "source": "waveform",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "415d8e7fe8a085b9088a98eaf5a7a63edbf34a8256a77f00adf76221e86b39e8"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            3
+          ],
+          "dtype": "float32",
+          "sha256": "16c164550714a92767d28649a4563eee14baef743ba44a707dc6775101156c34"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            3
+          ],
+          "dtype": "float32",
+          "sha256": "3edbd263c0a67cd68f155e78dcfb075f73892eec1b62f5e3b549eaf79ab49fbc"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "541f04d6e11bdb924ecb0fda8c0db43b0528aab466673052aac459fb258a3a7e"
+        },
+        "decoder.0": {
+          "shape": [
+            1,
+            2048,
+            3
+          ],
+          "dtype": "float32",
+          "sha256": "5081aa149e72724a1c12b231acb5c58e03ff113892c44c7a9098cc444de48069"
+        },
+        "decoder.1": {
+          "shape": [
+            1,
+            1024,
+            15
+          ],
+          "dtype": "float32",
+          "sha256": "8da4aa5f137828f1b22c5994d3af89b3c3e78c4658670193b3d37caa587549f1"
+        },
+        "decoder.2": {
+          "shape": [
+            1,
+            512,
+            60
+          ],
+          "dtype": "float32",
+          "sha256": "23064afaf3a43b2c8a6c72e59e0edb7d38cc73f9c1f1af1e684b164af097affa"
+        },
+        "decoder.3": {
+          "shape": [
+            1,
+            256,
+            240
+          ],
+          "dtype": "float32",
+          "sha256": "346c3d513c4901bd6f08f0953459326f747091a0eabad1a195d3cffd0a636671"
+        },
+        "decoder.4": {
+          "shape": [
+            1,
+            128,
+            960
+          ],
+          "dtype": "float32",
+          "sha256": "b6f7e4be0bdd43a8613439fd7ce22336eb7c0cc8cf6517fa9773e76fa7bfcfdf"
+        },
+        "decoder.5": {
+          "shape": [
+            1,
+            64,
+            2880
+          ],
+          "dtype": "float32",
+          "sha256": "2091316b41215dd046618511b53cf61d9e9842c6c100a213db21c6fd3f413f2e"
+        },
+        "decoder.6": {
+          "shape": [
+            1,
+            64,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "7ad794240355c6b2f79f03a01bb71af61f395c82f6d49607a992f03769a402a8"
+        },
+        "decoder.7": {
+          "shape": [
+            1,
+            1,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "541f04d6e11bdb924ecb0fda8c0db43b0528aab466673052aac459fb258a3a7e"
+        }
+      },
+      "elapsed_seconds": 0.07387165701948106,
+      "peak_allocated_bytes": 1557792256,
+      "peak_reserved_bytes": 1602224128,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      }
+    },
+    {
+      "name": "noise-5760",
+      "source": "waveform",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "3ab9683d64c80497848f4c56893252c48fca8f671d1821c258807bfa5ed2da88"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            3
+          ],
+          "dtype": "float32",
+          "sha256": "db38acca49e348ac48d5b51cd154f9832decbd0bae0d0d2eefb46bbbd22fb9a1"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            3
+          ],
+          "dtype": "float32",
+          "sha256": "b532c2753e3b6289b8f62a76ab54be5665e0840ce6618a2c4d7697e33f4d9df2"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "7c03742127650a943cc3701d8730f430d0752607b23850b5f1eb9405f679ebca"
+        },
+        "decoder.0": {
+          "shape": [
+            1,
+            2048,
+            3
+          ],
+          "dtype": "float32",
+          "sha256": "808ed8f948a803175d62c7c0258ca0e93127dc6f590da7784b9b55dff43add20"
+        },
+        "decoder.1": {
+          "shape": [
+            1,
+            1024,
+            15
+          ],
+          "dtype": "float32",
+          "sha256": "acc076a5e7b693872c8cd96824a58352b9836da55c8db507b08d4827fc947b9c"
+        },
+        "decoder.2": {
+          "shape": [
+            1,
+            512,
+            60
+          ],
+          "dtype": "float32",
+          "sha256": "a590bc40a8dbefe3a769c7c6c4ba0e90279efe0fded2631d8f494a232585f58d"
+        },
+        "decoder.3": {
+          "shape": [
+            1,
+            256,
+            240
+          ],
+          "dtype": "float32",
+          "sha256": "5f4725e3de1d8d7ae6fde8530f26db27d3d3d9df6f5584e5e3e99e6f8c44d5f4"
+        },
+        "decoder.4": {
+          "shape": [
+            1,
+            128,
+            960
+          ],
+          "dtype": "float32",
+          "sha256": "a6755be6ff0062ab55b52d60f9e59d76fd756829f5409f86114c72f35e84ff60"
+        },
+        "decoder.5": {
+          "shape": [
+            1,
+            64,
+            2880
+          ],
+          "dtype": "float32",
+          "sha256": "cfb0d0d2207fff4d0c185cdcc7648d3d273161e54091e6ce3201af9abdc8930f"
+        },
+        "decoder.6": {
+          "shape": [
+            1,
+            64,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "ae75c4d0fca2b25346c836f33a92fbc5ecd5ff7d8766e549b799c077ebf379a3"
+        },
+        "decoder.7": {
+          "shape": [
+            1,
+            1,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "7c03742127650a943cc3701d8730f430d0752607b23850b5f1eb9405f679ebca"
+        }
+      },
+      "elapsed_seconds": 0.07452136999927461,
+      "peak_allocated_bytes": 1557792256,
+      "peak_reserved_bytes": 1602224128,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      }
+    },
+    {
+      "name": "synthetic-5760",
+      "source": "direct-latent",
+      "tensors": {
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            3
+          ],
+          "dtype": "float32",
+          "sha256": "e83587813e1bf395da54de958a4ef247cd22797212404328c112e4d22daf7e69"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            3
+          ],
+          "dtype": "float32",
+          "sha256": "789297269cebab9fd16fc938db2e258cf4f078f5dedc6359c10ddace2e64c2f0"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "c62161d747d950bc4c6647d88fb5e061edfd2415d42054bbf6b7cd6409fe9c07"
+        },
+        "decoder.0": {
+          "shape": [
+            1,
+            2048,
+            3
+          ],
+          "dtype": "float32",
+          "sha256": "a1dfebe98923afb53e624eb6907805852cc215ea02439b78d0e8b3228aae050b"
+        },
+        "decoder.1": {
+          "shape": [
+            1,
+            1024,
+            15
+          ],
+          "dtype": "float32",
+          "sha256": "d5ff6ad9c4c6d3c61c71d75a15a432fb0ff73e740230dede9d11da7dc6373299"
+        },
+        "decoder.2": {
+          "shape": [
+            1,
+            512,
+            60
+          ],
+          "dtype": "float32",
+          "sha256": "25fe4aa9a5642737b9a2663c0f8ccde47a75de91065d94ad39a9e8f7b5620889"
+        },
+        "decoder.3": {
+          "shape": [
+            1,
+            256,
+            240
+          ],
+          "dtype": "float32",
+          "sha256": "2de6a79a9e6f1eb84230e22bcfb835d208edbc833df87b72a7038a328a4ae3fe"
+        },
+        "decoder.4": {
+          "shape": [
+            1,
+            128,
+            960
+          ],
+          "dtype": "float32",
+          "sha256": "f43857a246d65b1e072f7face3d2a5145fd3249829ad2d580ff29223d642c211"
+        },
+        "decoder.5": {
+          "shape": [
+            1,
+            64,
+            2880
+          ],
+          "dtype": "float32",
+          "sha256": "029101f7f83fb341aa5a8dc101c9c876224cfe79e67cf2f70588faf18ba9d996"
+        },
+        "decoder.6": {
+          "shape": [
+            1,
+            64,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "c88239d65a395d55c321b92f94eb3d8b839e118b16c9985e018cb9cb450d9c46"
+        },
+        "decoder.7": {
+          "shape": [
+            1,
+            1,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "c62161d747d950bc4c6647d88fb5e061edfd2415d42054bbf6b7cd6409fe9c07"
+        }
+      },
+      "elapsed_seconds": 0.03745844500372186,
+      "peak_allocated_bytes": 1557792256,
+      "peak_reserved_bytes": 1602224128,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      }
+    }
+  ]
+}

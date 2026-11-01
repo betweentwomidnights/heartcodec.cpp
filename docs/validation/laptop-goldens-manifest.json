@@ -1,0 +1,1451 @@
+{
+  "schema_version": 1,
+  "torch": "2.7.1+cu128",
+  "cuda": "12.8",
+  "python": "3.10.12",
+  "device": "cuda:0",
+  "gpu": "NVIDIA GB10",
+  "heartlib_revision": "5858ca8f1ffe58d62be7c007ea55f1033c5ca456",
+  "spansynth_revision": "f593bf21e48cc4aa836002a3834cfae42e8d4254",
+  "weights_sha256": "c961996b4c050b01b64e26606beb304593b76a57a265b7af92a9c70911eb3c09",
+  "dtype": "float32",
+  "tf32": false,
+  "deterministic_algorithms": true,
+  "sample_rate": 48000,
+  "cases": [
+    {
+      "name": "impulse-1920",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            1920
+          ],
+          "dtype": "float32",
+          "sha256": "ccf712c128a6a8d269c3b67f5500d1ba108dbe8045e62f419d1990ca4eda2e42"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            1
+          ],
+          "dtype": "float32",
+          "sha256": "276c6cfb23fcb89e82093fbb982fc1716cd9af336c951012e9913e2149c39d84"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            1
+          ],
+          "dtype": "float32",
+          "sha256": "6a471d50915db91df96fa64b7a91194c5015b6abe1f9d56ff03ccca4f940e916"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            1920
+          ],
+          "dtype": "float32",
+          "sha256": "cdde12190a95f85848bb4c507a5fa56f36ad3fbe70443694381211fcdfa22f69"
+        }
+      },
+      "elapsed_seconds": 0.2766276180045679,
+      "peak_allocated_bytes": 1557603328,
+      "peak_reserved_bytes": 1598029824,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-cuda"
+    },
+    {
+      "name": "sine-1920",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            1920
+          ],
+          "dtype": "float32",
+          "sha256": "d7b11ca49f3e91a1188601e7e8ff763d30f173e40d35cb6fc6052c6f04697b0b"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            1
+          ],
+          "dtype": "float32",
+          "sha256": "4af9d8f248e20a132c8cf20a4243676c783b4fccf13136267b828ec1c6bce6e1"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            1
+          ],
+          "dtype": "float32",
+          "sha256": "45ab2d6753bc85d96b84e028da4701dd8faa9bcd213b0f2dc6708872a07033fd"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            1920
+          ],
+          "dtype": "float32",
+          "sha256": "76674f42993b175973a525a862764bb983d22b47931684fdef9f8e7b87d04ed0"
+        }
+      },
+      "elapsed_seconds": 0.07041445700451732,
+      "peak_allocated_bytes": 1557619200,
+      "peak_reserved_bytes": 1598029824,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-cuda"
+    },
+    {
+      "name": "noise-1920",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            1920
+          ],
+          "dtype": "float32",
+          "sha256": "30dd116022b84b2740029cee517dad24e16d7d4ebdd7fc6b79dc0b83d8383640"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            1
+          ],
+          "dtype": "float32",
+          "sha256": "9b8943e5a0492b457a71b12ab026108b3b2b786febdb1a68cc428083076ba549"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            1
+          ],
+          "dtype": "float32",
+          "sha256": "45ab2d6753bc85d96b84e028da4701dd8faa9bcd213b0f2dc6708872a07033fd"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            1920
+          ],
+          "dtype": "float32",
+          "sha256": "76674f42993b175973a525a862764bb983d22b47931684fdef9f8e7b87d04ed0"
+        }
+      },
+      "elapsed_seconds": 0.06815011499566026,
+      "peak_allocated_bytes": 1557619200,
+      "peak_reserved_bytes": 1600126976,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-cuda"
+    },
+    {
+      "name": "impulse-48000",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            48000
+          ],
+          "dtype": "float32",
+          "sha256": "37d7a6d273b17e9efd3d862d2ab12e187c61fad6681be5bb312bdc1716794d63"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            25
+          ],
+          "dtype": "float32",
+          "sha256": "a4ce2ed9c65cb23c364168b70e4fcbd68824c401140a61350c8ebdeb8a76df04"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            25
+          ],
+          "dtype": "float32",
+          "sha256": "8c3bcf5c9b220dc8cccbd23ec8e6585c3e96c19bdb79821e51addcc5bf40d181"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            48000
+          ],
+          "dtype": "float32",
+          "sha256": "aa28d5c8349cc935f7b0675a30c0d9e9a3ae9004310e83bd52e766e4008a363c"
+        }
+      },
+      "elapsed_seconds": 0.12258958100574091,
+      "peak_allocated_bytes": 1471156224,
+      "peak_reserved_bytes": 1602224128,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-cuda"
+    },
+    {
+      "name": "sine-48000",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            48000
+          ],
+          "dtype": "float32",
+          "sha256": "8d8e77abc32656c3d9c2062bd591572f8aeb4747e840a3076c91fb304720d786"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            25
+          ],
+          "dtype": "float32",
+          "sha256": "250e398ba6f2bbc1627bb647eb39d450abe94ab5e5b0e0210cec701fec7ea6a6"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            25
+          ],
+          "dtype": "float32",
+          "sha256": "56b07f7833839dc4b3186ebcd35b37f8eef9a9fcd2729224490b1d7c69e305c5"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            48000
+          ],
+          "dtype": "float32",
+          "sha256": "6539eb2d2b0c2d71fa344b5d570837e4b735054d81088ab97e40ca57c910a613"
+        }
+      },
+      "elapsed_seconds": 0.11387688800459728,
+      "peak_allocated_bytes": 1471561728,
+      "peak_reserved_bytes": 1604321280,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-cuda"
+    },
+    {
+      "name": "noise-48000",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            48000
+          ],
+          "dtype": "float32",
+          "sha256": "33dbf9ddec85740c51463b210d8b350812522eff4d216ecbc62dc505c839fd88"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            25
+          ],
+          "dtype": "float32",
+          "sha256": "34d1db663f0da2bc3b2cf70be5fe5050cc12f3dcfc29c24dc67d71080f7d0991"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            25
+          ],
+          "dtype": "float32",
+          "sha256": "24b3c631ed824287a510d37758de2f907b71ff8ab4031843dc08d5923cae44f8"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            48000
+          ],
+          "dtype": "float32",
+          "sha256": "dc12c0576c0e7cc3366db9d380a021e4ab4c2fd668fe2bb0581f843f2a3c2f2f"
+        }
+      },
+      "elapsed_seconds": 0.1140587929985486,
+      "peak_allocated_bytes": 1471561728,
+      "peak_reserved_bytes": 1604321280,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-cuda"
+    },
+    {
+      "name": "impulse-1919",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            1919
+          ],
+          "dtype": "float32",
+          "sha256": "3023b7dc128e5660ffa2d6ffafa8567f41b0924ab4010e0395590141d193dc1e"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            1
+          ],
+          "dtype": "float32",
+          "sha256": "276c6cfb23fcb89e82093fbb982fc1716cd9af336c951012e9913e2149c39d84"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            1
+          ],
+          "dtype": "float32",
+          "sha256": "6a471d50915db91df96fa64b7a91194c5015b6abe1f9d56ff03ccca4f940e916"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            1920
+          ],
+          "dtype": "float32",
+          "sha256": "cdde12190a95f85848bb4c507a5fa56f36ad3fbe70443694381211fcdfa22f69"
+        }
+      },
+      "elapsed_seconds": 0.14522421898436733,
+      "peak_allocated_bytes": 1557603328,
+      "peak_reserved_bytes": 1598029824,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-boundaries"
+    },
+    {
+      "name": "sine-1919",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            1919
+          ],
+          "dtype": "float32",
+          "sha256": "7a87ee195882b6e547fe5fd062c2ee14e5e21f57359ba1e9780f42d8e16bb575"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            1
+          ],
+          "dtype": "float32",
+          "sha256": "4af9d8f248e20a132c8cf20a4243676c783b4fccf13136267b828ec1c6bce6e1"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            1
+          ],
+          "dtype": "float32",
+          "sha256": "45ab2d6753bc85d96b84e028da4701dd8faa9bcd213b0f2dc6708872a07033fd"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            1920
+          ],
+          "dtype": "float32",
+          "sha256": "76674f42993b175973a525a862764bb983d22b47931684fdef9f8e7b87d04ed0"
+        }
+      },
+      "elapsed_seconds": 0.069309273007093,
+      "peak_allocated_bytes": 1557619200,
+      "peak_reserved_bytes": 1598029824,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-boundaries"
+    },
+    {
+      "name": "noise-1919",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            1919
+          ],
+          "dtype": "float32",
+          "sha256": "d0025a6d88f435438e0c46a7f20d629973e18e0c7a27f9793ac11bdf96937e0e"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            1
+          ],
+          "dtype": "float32",
+          "sha256": "9b8943e5a0492b457a71b12ab026108b3b2b786febdb1a68cc428083076ba549"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            1
+          ],
+          "dtype": "float32",
+          "sha256": "45ab2d6753bc85d96b84e028da4701dd8faa9bcd213b0f2dc6708872a07033fd"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            1920
+          ],
+          "dtype": "float32",
+          "sha256": "76674f42993b175973a525a862764bb983d22b47931684fdef9f8e7b87d04ed0"
+        }
+      },
+      "elapsed_seconds": 0.06757810502313077,
+      "peak_allocated_bytes": 1557619200,
+      "peak_reserved_bytes": 1600126976,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-boundaries"
+    },
+    {
+      "name": "impulse-1921",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            1921
+          ],
+          "dtype": "float32",
+          "sha256": "61a7d5aeee7095bd9cf0de9d74bca8079656945a80e31feddd3145f8e42570f6"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            1
+          ],
+          "dtype": "float32",
+          "sha256": "276c6cfb23fcb89e82093fbb982fc1716cd9af336c951012e9913e2149c39d84"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            1
+          ],
+          "dtype": "float32",
+          "sha256": "6a471d50915db91df96fa64b7a91194c5015b6abe1f9d56ff03ccca4f940e916"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            1920
+          ],
+          "dtype": "float32",
+          "sha256": "cdde12190a95f85848bb4c507a5fa56f36ad3fbe70443694381211fcdfa22f69"
+        }
+      },
+      "elapsed_seconds": 0.06730185099877417,
+      "peak_allocated_bytes": 1557619200,
+      "peak_reserved_bytes": 1600126976,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-boundaries"
+    },
+    {
+      "name": "sine-1921",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            1921
+          ],
+          "dtype": "float32",
+          "sha256": "701eacad7f63ffe8a1a97c799a4cb2b640143d2b46a45b0cbb2c097624e6e1d5"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            1
+          ],
+          "dtype": "float32",
+          "sha256": "4af9d8f248e20a132c8cf20a4243676c783b4fccf13136267b828ec1c6bce6e1"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            1
+          ],
+          "dtype": "float32",
+          "sha256": "45ab2d6753bc85d96b84e028da4701dd8faa9bcd213b0f2dc6708872a07033fd"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            1920
+          ],
+          "dtype": "float32",
+          "sha256": "76674f42993b175973a525a862764bb983d22b47931684fdef9f8e7b87d04ed0"
+        }
+      },
+      "elapsed_seconds": 0.06701010797405615,
+      "peak_allocated_bytes": 1557619200,
+      "peak_reserved_bytes": 1600126976,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-boundaries"
+    },
+    {
+      "name": "noise-1921",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            1921
+          ],
+          "dtype": "float32",
+          "sha256": "217a23bcd87bb67fe247ad9755fd8379ad99197b2f74a4792ad5f79a246f5390"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            1
+          ],
+          "dtype": "float32",
+          "sha256": "9b8943e5a0492b457a71b12ab026108b3b2b786febdb1a68cc428083076ba549"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            1
+          ],
+          "dtype": "float32",
+          "sha256": "45ab2d6753bc85d96b84e028da4701dd8faa9bcd213b0f2dc6708872a07033fd"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            1920
+          ],
+          "dtype": "float32",
+          "sha256": "76674f42993b175973a525a862764bb983d22b47931684fdef9f8e7b87d04ed0"
+        }
+      },
+      "elapsed_seconds": 0.06797527498565614,
+      "peak_allocated_bytes": 1557619200,
+      "peak_reserved_bytes": 1600126976,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-boundaries"
+    },
+    {
+      "name": "impulse-1428479",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            1428479
+          ],
+          "dtype": "float32",
+          "sha256": "33cf75e236fe889eb979e4f9639106718f2bec2de2d84af106f9906c6d84031f"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            744
+          ],
+          "dtype": "float32",
+          "sha256": "2356c1302c9ec7805f40bcb138b313ecd2c5704e204370a7ecdce3d4bdef9451"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            744
+          ],
+          "dtype": "float32",
+          "sha256": "fd3790ac09c6e035ffef7d559e42b34e8454ec4c262ca920d658644df51a8b3b"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            1428480
+          ],
+          "dtype": "float32",
+          "sha256": "5b3d6614e4abfa630f3b9a0937ab4478b67b43bf4f5fc1517f48812000e962ce"
+        }
+      },
+      "elapsed_seconds": 1.834552892978536,
+      "peak_allocated_bytes": 3402402304,
+      "peak_reserved_bytes": 3982491648,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-boundaries"
+    },
+    {
+      "name": "sine-1428479",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            1428479
+          ],
+          "dtype": "float32",
+          "sha256": "383cd44b469b90272aef0054a64ecde2ff56ff045057ed848db1e6b89f3e6186"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            744
+          ],
+          "dtype": "float32",
+          "sha256": "c0f5f0684b51d8147c52d186bb006cc4c0c6f97ff94c384e74a2d2e4b99895b6"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            744
+          ],
+          "dtype": "float32",
+          "sha256": "8f930337de1804ceb08ad190f97223881a12f8dab239ce48d8d2bcf3077c8855"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            1428480
+          ],
+          "dtype": "float32",
+          "sha256": "c991f131f7881e52bff913dcd30710f324d37902f917fdd033aaff30463d2b54"
+        }
+      },
+      "elapsed_seconds": 1.7955532720079646,
+      "peak_allocated_bytes": 3414959104,
+      "peak_reserved_bytes": 3984588800,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-boundaries"
+    },
+    {
+      "name": "noise-1428479",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            1428479
+          ],
+          "dtype": "float32",
+          "sha256": "64783fb493c21803878e19e982b9dc17fbef7f26fcc1fcc7c78183f460e4bd3c"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            744
+          ],
+          "dtype": "float32",
+          "sha256": "4c2f601911b76f1da0187ef912d2be001f7d7fa4d2981343343805395d3ae18d"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            744
+          ],
+          "dtype": "float32",
+          "sha256": "35c32c8d314192d3293d41cc917be0c8456dae1ef4ddd9aed99f94bc0e8fb2d9"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            1428480
+          ],
+          "dtype": "float32",
+          "sha256": "ea33d0b3e01eb3a8c7a9b26a49220f6ecb137e0ea6a6093d11a191f21f6c9715"
+        }
+      },
+      "elapsed_seconds": 1.8093013980251271,
+      "peak_allocated_bytes": 3414959104,
+      "peak_reserved_bytes": 3984588800,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-boundaries"
+    },
+    {
+      "name": "impulse-1428480",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            1428480
+          ],
+          "dtype": "float32",
+          "sha256": "584cb1708c6eba2aec2758890cb414c7872a1df92c7b22c5f84830587010d66e"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            744
+          ],
+          "dtype": "float32",
+          "sha256": "2356c1302c9ec7805f40bcb138b313ecd2c5704e204370a7ecdce3d4bdef9451"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            744
+          ],
+          "dtype": "float32",
+          "sha256": "fd3790ac09c6e035ffef7d559e42b34e8454ec4c262ca920d658644df51a8b3b"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            1428480
+          ],
+          "dtype": "float32",
+          "sha256": "5b3d6614e4abfa630f3b9a0937ab4478b67b43bf4f5fc1517f48812000e962ce"
+        }
+      },
+      "elapsed_seconds": 1.7862498479953501,
+      "peak_allocated_bytes": 3414960640,
+      "peak_reserved_bytes": 3984588800,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-boundaries"
+    },
+    {
+      "name": "sine-1428480",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            1428480
+          ],
+          "dtype": "float32",
+          "sha256": "8f2a35dabbf24a87a475158d6117f630482ec0396b4c99127db0537caae0c6d3"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            744
+          ],
+          "dtype": "float32",
+          "sha256": "c0f5f0684b51d8147c52d186bb006cc4c0c6f97ff94c384e74a2d2e4b99895b6"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            744
+          ],
+          "dtype": "float32",
+          "sha256": "8f930337de1804ceb08ad190f97223881a12f8dab239ce48d8d2bcf3077c8855"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            1428480
+          ],
+          "dtype": "float32",
+          "sha256": "c991f131f7881e52bff913dcd30710f324d37902f917fdd033aaff30463d2b54"
+        }
+      },
+      "elapsed_seconds": 1.7922849069873337,
+      "peak_allocated_bytes": 3414960640,
+      "peak_reserved_bytes": 3984588800,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-boundaries"
+    },
+    {
+      "name": "noise-1428480",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            1428480
+          ],
+          "dtype": "float32",
+          "sha256": "579d65914c1267ef803ca768e72727ecddb65581399dff7f720291a8ed292cb2"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            744
+          ],
+          "dtype": "float32",
+          "sha256": "4c2f601911b76f1da0187ef912d2be001f7d7fa4d2981343343805395d3ae18d"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            744
+          ],
+          "dtype": "float32",
+          "sha256": "35c32c8d314192d3293d41cc917be0c8456dae1ef4ddd9aed99f94bc0e8fb2d9"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            1428480
+          ],
+          "dtype": "float32",
+          "sha256": "ea33d0b3e01eb3a8c7a9b26a49220f6ecb137e0ea6a6093d11a191f21f6c9715"
+        }
+      },
+      "elapsed_seconds": 1.8132736759725958,
+      "peak_allocated_bytes": 3414960640,
+      "peak_reserved_bytes": 3984588800,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-boundaries"
+    },
+    {
+      "name": "impulse-1428481",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            1428481
+          ],
+          "dtype": "float32",
+          "sha256": "71b672bfd49d4bce85497c6b8ca626f5913182dd9dbc56b61ff72da3af070416"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            744
+          ],
+          "dtype": "float32",
+          "sha256": "2356c1302c9ec7805f40bcb138b313ecd2c5704e204370a7ecdce3d4bdef9451"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            744
+          ],
+          "dtype": "float32",
+          "sha256": "fd3790ac09c6e035ffef7d559e42b34e8454ec4c262ca920d658644df51a8b3b"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            1428480
+          ],
+          "dtype": "float32",
+          "sha256": "5b3d6614e4abfa630f3b9a0937ab4478b67b43bf4f5fc1517f48812000e962ce"
+        }
+      },
+      "elapsed_seconds": 1.8205106219975278,
+      "peak_allocated_bytes": 3414961152,
+      "peak_reserved_bytes": 3984588800,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-boundaries"
+    },
+    {
+      "name": "sine-1428481",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            1428481
+          ],
+          "dtype": "float32",
+          "sha256": "749168b0ee2a0d4a493fe5748b76debd96094fd09faf5b1a82a3c68f937c62d6"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            744
+          ],
+          "dtype": "float32",
+          "sha256": "c0f5f0684b51d8147c52d186bb006cc4c0c6f97ff94c384e74a2d2e4b99895b6"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            744
+          ],
+          "dtype": "float32",
+          "sha256": "8f930337de1804ceb08ad190f97223881a12f8dab239ce48d8d2bcf3077c8855"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            1428480
+          ],
+          "dtype": "float32",
+          "sha256": "c991f131f7881e52bff913dcd30710f324d37902f917fdd033aaff30463d2b54"
+        }
+      },
+      "elapsed_seconds": 1.8223860730067827,
+      "peak_allocated_bytes": 3414961152,
+      "peak_reserved_bytes": 3984588800,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-boundaries"
+    },
+    {
+      "name": "noise-1428481",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            1428481
+          ],
+          "dtype": "float32",
+          "sha256": "22d9db5f4f43457b5109f718386c49ff2f8b48a5cf61366504949eb21dd4747a"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            744
+          ],
+          "dtype": "float32",
+          "sha256": "4c2f601911b76f1da0187ef912d2be001f7d7fa4d2981343343805395d3ae18d"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            744
+          ],
+          "dtype": "float32",
+          "sha256": "35c32c8d314192d3293d41cc917be0c8456dae1ef4ddd9aed99f94bc0e8fb2d9"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            1428480
+          ],
+          "dtype": "float32",
+          "sha256": "ea33d0b3e01eb3a8c7a9b26a49220f6ecb137e0ea6a6093d11a191f21f6c9715"
+        }
+      },
+      "elapsed_seconds": 1.8236431400000583,
+      "peak_allocated_bytes": 3414961152,
+      "peak_reserved_bytes": 3984588800,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-boundaries"
+    },
+    {
+      "name": "impulse-5760",
+      "source": "waveform",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "7269778786ece51c1dd86f561c93cdc585d168feba53d9bb7d3f3df6b8ad548d"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            3
+          ],
+          "dtype": "float32",
+          "sha256": "e0fe5f2e5077cc3f1ba6355bbab3ca249a49f1cf2fbda491245fd38531ac0681"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            3
+          ],
+          "dtype": "float32",
+          "sha256": "5f5ea06731dd94954da31ca24859dd9d90c231e6052906c4dce91347f5ea3069"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "aa07ea7a6737a00520da2f8f09fabc687b4526828c6980ac844e12822e622168"
+        }
+      },
+      "elapsed_seconds": 0.30943246799870394,
+      "peak_allocated_bytes": 1557744640,
+      "peak_reserved_bytes": 1602224128,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-synthetic"
+    },
+    {
+      "name": "sine-5760",
+      "source": "waveform",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "415d8e7fe8a085b9088a98eaf5a7a63edbf34a8256a77f00adf76221e86b39e8"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            3
+          ],
+          "dtype": "float32",
+          "sha256": "16c164550714a92767d28649a4563eee14baef743ba44a707dc6775101156c34"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            3
+          ],
+          "dtype": "float32",
+          "sha256": "3edbd263c0a67cd68f155e78dcfb075f73892eec1b62f5e3b549eaf79ab49fbc"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "541f04d6e11bdb924ecb0fda8c0db43b0528aab466673052aac459fb258a3a7e"
+        }
+      },
+      "elapsed_seconds": 0.07387165701948106,
+      "peak_allocated_bytes": 1557792256,
+      "peak_reserved_bytes": 1602224128,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-synthetic"
+    },
+    {
+      "name": "noise-5760",
+      "source": "waveform",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "3ab9683d64c80497848f4c56893252c48fca8f671d1821c258807bfa5ed2da88"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            3
+          ],
+          "dtype": "float32",
+          "sha256": "db38acca49e348ac48d5b51cd154f9832decbd0bae0d0d2eefb46bbbd22fb9a1"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            3
+          ],
+          "dtype": "float32",
+          "sha256": "b532c2753e3b6289b8f62a76ab54be5665e0840ce6618a2c4d7697e33f4d9df2"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "7c03742127650a943cc3701d8730f430d0752607b23850b5f1eb9405f679ebca"
+        }
+      },
+      "elapsed_seconds": 0.07452136999927461,
+      "peak_allocated_bytes": 1557792256,
+      "peak_reserved_bytes": 1602224128,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-synthetic"
+    },
+    {
+      "name": "synthetic-5760",
+      "source": "direct-latent",
+      "tensors": {
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            3
+          ],
+          "dtype": "float32",
+          "sha256": "e83587813e1bf395da54de958a4ef247cd22797212404328c112e4d22daf7e69"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            3
+          ],
+          "dtype": "float32",
+          "sha256": "789297269cebab9fd16fc938db2e258cf4f078f5dedc6359c10ddace2e64c2f0"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            5760
+          ],
+          "dtype": "float32",
+          "sha256": "c62161d747d950bc4c6647d88fb5e061edfd2415d42054bbf6b7cd6409fe9c07"
+        }
+      },
+      "elapsed_seconds": 0.03745844500372186,
+      "peak_allocated_bytes": 1557792256,
+      "peak_reserved_bytes": 1602224128,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-synthetic"
+    },
+    {
+      "name": "music-channel-0-144000",
+      "source": "waveform",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            144000
+          ],
+          "dtype": "float32",
+          "sha256": "5171adbccd34cf1577bd9846c2c8f570e12899b9b51aa54400fb42f25bd044f1"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            75
+          ],
+          "dtype": "float32",
+          "sha256": "e61d31d13d07475a69675bad917c9e9693784a6a213daca4e60ded82be034264"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            75
+          ],
+          "dtype": "float32",
+          "sha256": "e5baf0b53566943ffa081b279ea3473c3483a0fae1fe301c25bc860ba8f4a44b"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            144000
+          ],
+          "dtype": "float32",
+          "sha256": "366f74704875d42c51c2dd156c33957e71637557f638185b164eeeca9638c245"
+        }
+      },
+      "elapsed_seconds": 0.3164894270012155,
+      "peak_allocated_bytes": 1591454720,
+      "peak_reserved_bytes": 1763704832,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-music"
+    },
+    {
+      "name": "music-channel-1-144000",
+      "source": "waveform",
+      "tensors": {
+        "waveform": {
+          "shape": [
+            1,
+            1,
+            144000
+          ],
+          "dtype": "float32",
+          "sha256": "0c7687876789a5530d7058c3a5a0eba7ae863e58ca1097269f0544490a74782c"
+        },
+        "sq.latent": {
+          "shape": [
+            1,
+            128,
+            75
+          ],
+          "dtype": "float32",
+          "sha256": "e031f4982971c2c995441b5c74e43dddea1e98cdd1fc16649fc50bfe324fb8d0"
+        },
+        "sq.quantized": {
+          "shape": [
+            1,
+            128,
+            75
+          ],
+          "dtype": "float32",
+          "sha256": "6af4d43c2d0f41de915ce39ffd1735a6e280f72b619fb0f94d7f18982e2e257f"
+        },
+        "sq.decoded": {
+          "shape": [
+            1,
+            1,
+            144000
+          ],
+          "dtype": "float32",
+          "sha256": "b3fad19675e5725eda33a7d89af30015dfb22b1a5c8dbe8952b1639ba4f26130"
+        }
+      },
+      "elapsed_seconds": 0.24163139899610542,
+      "peak_allocated_bytes": 1590851584,
+      "peak_reserved_bytes": 1763704832,
+      "spansynth_encode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "spansynth_decode": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "reference_set": "sq-music"
+    }
+  ],
+  "source_manifests": {
+    "sq-cuda": "15927a008ea96e5edceafbe7cd85b7d243477a1b7ead965c8df6be48e63168d7",
+    "sq-boundaries": "968b8c13a1fabe821fa561ff4175579868559f89d09af01e8f2ea76bb949faf0",
+    "sq-synthetic": "a4ff6aa8152008f346159ac0cae0b45d92c0e3bfc0460a1ffa4936bfd5a3d44c",
+    "sq-music": "27539534236a623426e69d7e33a7fbe5d5d438d7bd0dc0ea61884fbd7f9581a9"
+  }
+}

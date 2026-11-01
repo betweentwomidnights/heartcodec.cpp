@@ -1,0 +1,1 @@
+{"mix":"q8_0","scope":"codec","policy":"sq-conv-v1","file_bytes":188124832,"types":{"f32":{"tensors":229,"bytes":13008304},"q8_0":{"tensors":110,"bytes":175089664}}}
