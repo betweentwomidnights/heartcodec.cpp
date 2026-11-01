@@ -1,0 +1,81 @@
+{
+  "backend": "cuda",
+  "cases": [
+    {
+      "name": "frames-372-window-372-steps-10",
+      "windows": [
+        {
+          "flow": {
+            "max_abs": 6.288290023803711e-06,
+            "relative_l2": 1.7716023518328677e-06,
+            "passed": true
+          },
+          "scalar_level_mismatches": 1,
+          "scalar_level_mismatch_fraction": 5.250336021505377e-06,
+          "channels": [
+            {
+              "max_abs": 8.00006091594696e-06,
+              "relative_l2": 1.6370005652760681e-06,
+              "passed": true
+            },
+            {
+              "max_abs": 4.801899194717407e-06,
+              "relative_l2": 1.0934075108803249e-06,
+              "passed": true
+            }
+          ],
+          "changed_levels": [
+            {
+              "index": 53105,
+              "frame": 207,
+              "channel": 0,
+              "feature": 113,
+              "reference": -0.16667184233665466,
+              "native": -0.16666609048843384,
+              "reference_level": -2,
+              "native_level": -1
+            }
+          ],
+          "passed": true
+        }
+      ],
+      "teacher_forced_assembly": {
+        "max_abs": 8.00006091594696e-06,
+        "relative_l2": 1.3988652266643476e-06,
+        "passed": true
+      },
+      "wall_seconds_including_model_loads": 19.0,
+      "end_to_end": {
+        "max_abs": 0.005442639347165823,
+        "relative_l2": 0.0008192809419495589,
+        "passed": true
+      },
+      "end_to_end_vs_native_flow_assembly": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "passed": true
+      },
+      "end_to_end_waveform_gate_applies": false,
+      "end_to_end_gate_policy": "When SQ levels change, gate flow error and level-change rate separately; require full native decode to match independent assembly of native flow outputs. Preserve upstream waveform error as an evaluation. No tolerance changes.",
+      "output_samples_per_channel": 1428480,
+      "target_length_exact": true,
+      "maximum_observed_device_used_mib": 5906,
+      "memory_sampling": "nvidia-smi total GPU memory, 250ms polling; includes desktop/driver; may miss transients",
+      "stats": {
+        "elapsed_seconds": 9.6393,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 3291221248
+      },
+      "passed": true
+    }
+  ],
+  "gates": {
+    "flow_max_abs": 0.001,
+    "flow_relative_l2": 0.0001,
+    "waveform_max_abs": 0.01,
+    "waveform_relative_l2": 0.001,
+    "scalar_level_mismatch_fraction": 0.0001
+  },
+  "passed": true,
+  "strict_upstream_waveform_gate_passed": true
+}

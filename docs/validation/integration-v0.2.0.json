@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-01",
+  "ggml_revision": "07b77b0112cc30861b49116b057bac33e819ee06",
+  "windows": {
+    "platform": "x64",
+    "compiler": "MSVC 19.44",
+    "cuda": "12.8.61",
+    "architecture": "120a-real",
+    "native_ctest": "2/2 passed on CPU and CUDA",
+    "python_tooling": "7/7 passed",
+    "package_consumers": [
+      "installed static C consumer: passed with SQ/flow models",
+      "parent imported GGML target: passed",
+      "parent source shared GGML target: passed",
+      "HeartCodec DLL C consumer: passed with SQ/flow models"
+    ],
+    "abi_checks": [
+      "unsupported version rejection",
+      "frozen-prefix tail canary",
+      "undersized initializer rejection",
+      "component unload/reload",
+      "planar/interleaved token-view equality",
+      "invalid token rejection",
+      "result lifetime beyond context/model destruction",
+      "idempotent result release"
+    ]
+  },
+  "spark": {
+    "platform": "ARM64 Linux",
+    "compiler": "GCC 11.4",
+    "cmake": "3.22.1",
+    "image": "heartcodec-dev:20261101",
+    "native_ctest": "2/2 passed",
+    "installed_package_c_consumer": "passed",
+    "execution": "dedicated Docker containers only"
+  },
+  "flow": {
+    "cpu_fixtures": 5,
+    "cuda_fixtures": 6,
+    "all_component_gates_passed": true
+  },
+  "stereo": {
+    "fixtures": 4,
+    "all_component_and_independent_assembly_gates_passed": true,
+    "strict_upstream_waveform_evaluation": "3/4 passed; 4-step full-window stress case exceeds gate with 3 changed SQ levels",
+    "default_ten_step_waveform_gate_passed": true
+  },
+  "mulacover": {
+    "local_repository": "C:/dev/mulacover.cpp",
+    "reference_dtypes": [
+      "float32",
+      "bfloat16"
+    ],
+    "payloads_verified_per_dtype": 616,
+    "cache_reset_replay": "bit-exact for conditional and CFG=1.5, three teacher-forced frames",
+    "native_generator_implemented": false,
+    "quantized_generator_implemented": false
+  },
+  "sq_regression": {
+    "cpu_fixtures": 33,
+    "cuda_fixtures": 33,
+    "all_fp32_gates_passed": true,
+    "changed_scalar_levels": 0
+  }
+}

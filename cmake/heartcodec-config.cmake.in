@@ -1,0 +1,11 @@
+@PACKAGE_INIT@
+include(CMakeFindDependencyMacro)
+if(NOT TARGET ggml::ggml)
+    find_dependency(ggml CONFIG)
+endif()
+if(NOT TARGET heartcodec::ggml_dependency)
+    add_library(heartcodec::ggml_dependency INTERFACE IMPORTED)
+    set_target_properties(heartcodec::ggml_dependency PROPERTIES INTERFACE_LINK_LIBRARIES ggml::ggml)
+endif()
+include("${CMAKE_CURRENT_LIST_DIR}/heartcodec-targets.cmake")
+check_required_components(heartcodec)

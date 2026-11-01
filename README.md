@@ -4,13 +4,18 @@ Shared native HeartCodec primitives for future MuLaCover and SpanSynth consumers
 in the gary4local / gary4juce ecosystem. Implementation follows sa3.cpp and uses
 the shared [betweentwomidnights/ggml](https://github.com/betweentwomidnights/ggml) fork.
 
-The first completed step is the [development environment assessment](docs/DEVELOPMENT_ENVIRONMENT.md).
-Use **spark-c7ca for full FP32 reference generation and full-pipeline parity**.
-The RTX 5070 Laptop remains useful for isolated SQ work and native backend tests.
-**Base SQ encode, quantize, and decode now run locally on laptop CPU and CUDA.**
-The Windows checkout is the main development environment for these primitives.
-FP32 passes 33 frozen Spark fixtures with zero scalar-level mismatches; encoder
-stage checks also pass. RVQ/flow and the full tokenizer remain future work.
+**Native RVQ tokens now decode to 48 kHz stereo on the 8GB RTX 5070 Laptop.**
+RVQ lookup, the full FP32 flow transformer, guided Euler sampling, stereo splitting,
+window context, overlap/crossfade and trimming run locally using the shared GGML
+fork. Flow and SQ weights load in separate stages. The laptop is the primary
+native development workspace; Spark Docker containers generate upstream fixtures.
+The [RVQ/flow and stereo report](docs/FLOW_AND_STEREO.md) records parity, memory,
+and the small number of SQ rounding-boundary changes in the long fixture.
+
+Base SQ encode/quantize/decode continues to pass its frozen parity suite. Full
+audio-to-RVQ tokenization (query/feature encoders) remains future work. MuLaCover
+generator development lives in the sibling `mulacover.cpp` repository, where
+FP32/BF16 prompt, symbolic, logits and KV-cache reference fixtures are established.
 
 The [laptop development and quantization report](docs/LAPTOP_DEVELOPMENT.md) includes
 local FP16, Q8, Q6, Q5_K_M, and Q4_K_M measurements. Q4_K_M reduces the combined SQ
@@ -26,6 +31,8 @@ python -m venv .venv
 .\scripts\build-windows.ps1 cuda
 .\scripts\evaluate-windows.ps1 -Backend cuda -Suite parity
 .\scripts\evaluate-windows.ps1 -Backend cuda -Suite quantization
+.\scripts\evaluate-windows.ps1 -Backend cuda -Suite flow
+.\scripts\evaluate-windows.ps1 -Backend cuda -Suite stereo
 ```
 
 The frozen GGUF and fixture files are already present in this workspace and remain
@@ -45,8 +52,14 @@ counts against the index when present. Storage scenarios exclude execution memor
 The checked-in [audit](docs/checkpoint-audit.json) records exact checkpoint revisions.
 
 The [implementation brief](shared-heartcodec-cpp-implementation-brief.md) defines the
-larger roadmap. The next model milestone is RVQ and the flow decoder, followed by
-query and feature extraction. Quantization stays controlled per component.
+larger roadmap. The next generator milestone is native teacher-forced MuLaCover
+parity, then its Q4_K_M policy. Query and feature extraction remain later work.
+Quantization stays controlled per component; the flow GGUF currently requires F32.
+
+Downstream builds consume `heartcodec::heartcodec` through `find_package` or
+`add_subdirectory`, reusing an existing GGML target. The negotiated C ABI is
+resolved through `heartcodec_get_api(HEARTCODEC_ABI_VERSION_1)`. See the
+[integration contract](docs/C_ABI_V1.md) for ownership, layouts and build examples.
 
 Keep 25 Hz / 128-channel SQ latents and 12.5 Hz / eight-stream RVQ tokens as distinct
 representations. Generic missing operators belong in the shared GGML fork.

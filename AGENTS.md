@@ -21,3 +21,10 @@
   Q4_K_M operation does not imply tokenizer compatibility or audio transparency.
 - Keep weights, large tensor fixtures, caches, and builds out of Git. Keep small
   manifests/comparison reports in `docs/` so validation remains reviewable.
+- Native RVQ/flow and token-to-stereo decoding now run on the laptop. Use
+  `refdata/flow-cuda` and `refdata/stereo-cuda`; see `docs/FLOW_AND_STEREO.md` for
+  rounding-boundary differences. Do not treat small FP32 flow error as proof of
+  identical SQ levels. Flow GGUF is currently strict F32; its quantization is not
+  implemented. MuLaCover generator fixtures live in sibling `mulacover.cpp`.
+- Expose reusable functionality through the frozen negotiated C ABI and
+  `heartcodec::heartcodec`. Reuse a downstream's GGML target, never add a second copy.

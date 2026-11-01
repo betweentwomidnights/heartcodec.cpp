@@ -1,12 +1,35 @@
 # Spark Docker workflow
 
 Workspace: `/home/kev/dev/heartcodec.cpp` on `spark-c7ca`.
-Reference checkouts: `/home/kev/dev/_heartcodec_refs/{heartlib,spansynth-edit}`.
+Reference checkouts: `/home/kev/dev/_heartcodec_refs/{heartlib,spansynth-edit,MuLaCover}`.
 Run commands below from the project root on Spark. Python, model execution,
 dependency installation, builds, and tests run **inside Docker**. Host directories
 are persistent mounts. Reference repositories are mounted read-only during runs.
 
 ## Images
+
+RVQ/flow and MuLaCover references use `heartcodec-reference:20261101`, built with
+`bash scripts/spark.sh image-reference` from `docker/Dockerfile.reference`.
+The validated immutable image ID is
+`sha256:70947194330272d2aed83dfa51923165ef013a32b0a03f9be8afb2d65957524b`.
+It adds transformers 4.57.6, torchtune 0.4.0, vector-quantize-pytorch 1.27.15,
+tokenizers 0.22.1 and MIDI support, retaining Torch 2.7.1+cu128. NumPy is 2.0.2.
+The script sets USER/LOGNAME/HOME and a mounted Inductor cache explicitly, because
+Torch compilation imports need a valid username when running a numeric Docker UID.
+
+After `bootstrap` has supplied GGUF tooling, the additional commands are:
+
+```bash
+bash scripts/spark.sh prepare-decoder
+bash scripts/spark.sh convert-flow
+bash scripts/spark.sh reference-flow
+bash scripts/spark.sh reference-stereo
+```
+
+Only preparation/download commands use network access. Inference/conversion uses
+`--network none`. The sibling `/home/kev/dev/mulacover.cpp` uses this same reference
+image for its pinned Qwen/MuLaCover fixtures; it does not load HeartCodec during
+generator parity. Production service containers remain untouched.
 
 The reference uses the already-installed SA3 image, verified by immutable image ID:
 

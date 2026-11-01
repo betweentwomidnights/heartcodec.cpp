@@ -1,0 +1,12 @@
+{
+  "architecture": "heartcodec-flow",
+  "format_version": 1,
+  "dtype": "float32",
+  "runtime_tensors": 339,
+  "bytes": 5957218848,
+  "sha256": "5c9cdbfae26ccd3e96355c541cade0feca37cfd8696746b724c294095949f523",
+  "checkpoint_revision": "f889dab0532cfa4bf459f2a3367eb6d346b8eeda",
+  "heartlib_revision": "5858ca8f1ffe58d62be7c007ea55f1033c5ca456",
+  "ggml_revision": "07b77b0112cc30861b49116b057bac33e819ee06",
+  "reference_image": "sha256:70947194330272d2aed83dfa51923165ef013a32b0a03f9be8afb2d65957524b"
+}

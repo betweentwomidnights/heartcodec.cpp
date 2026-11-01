@@ -1,6 +1,6 @@
 param(
     [ValidateSet('cpu','cuda')][string]$Backend = 'cuda',
-    [ValidateSet('parity','quantization')][string]$Suite = 'parity',
+    [ValidateSet('parity','quantization','flow','stereo')][string]$Suite = 'parity',
     [string]$Reference = 'refdata/laptop-goldens'
 )
 $ErrorActionPreference = 'Stop'
@@ -17,6 +17,17 @@ try {
         & $python tools/compare-sq-roundtrip.py --reference $Reference --cli $cli `
             --model models/heartcodec-sq-codec-f32.gguf --backend $Backend --output "refdata/windows-$Backend-parity"
         if ($LASTEXITCODE) { throw 'FP32 parity failed.' }
+    } elseif ($Suite -eq 'flow') {
+        & $python tools/compare-flow.py --reference refdata/flow-cuda `
+            --cli "build-windows-$Backend/bin/Release/heartcodec-flow.exe" `
+            --model models/heartcodec-flow-f32.gguf --backend $Backend --output "refdata/native-flow-$Backend"
+        if ($LASTEXITCODE) { throw 'Flow parity failed.' }
+    } elseif ($Suite -eq 'stereo') {
+        & $python tools/compare-stereo.py --reference refdata/stereo-cuda `
+            --flow-cli "build-windows-$Backend/bin/Release/heartcodec-flow.exe" --sq-cli $cli `
+            --flow-model models/heartcodec-flow-f32.gguf --sq-model models/heartcodec-sq-codec-f32.gguf `
+            --backend $Backend --output "refdata/native-stereo-$Backend"
+        if ($LASTEXITCODE) { throw 'Stereo component/assembly parity failed.' }
     } else {
         foreach ($mix in @('f16','q8_0','q6_k','q5_k_m','q4_k_m','q4_k_m-encoder','q4_k_m-decoder')) {
             $model = "models/heartcodec-sq-codec-$mix.gguf"

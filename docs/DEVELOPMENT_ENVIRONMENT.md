@@ -5,8 +5,11 @@ Assessment date: October 31, 2026 (America/Phoenix).
 This document records the initial assessment. For implementation results completed
 November 1, see [SQ decoder parity](SQ_PARITY.md) and the [Docker workflow](SPARK_WORKFLOW.md).
 The [laptop development report](LAPTOP_DEVELOPMENT.md) supersedes the development
-location recommendation for the completed SQ primitives; full-model reference
-work remains a separate, larger-memory workload.
+location recommendation for the completed SQ primitives. The later
+[RVQ/flow and stereo measurements](FLOW_AND_STEREO.md) also establish complete
+token-to-audio native decoding on the laptop through staged component loading.
+The full audio tokenizer and unquantized MuLaCover reference remain larger-memory
+Spark workloads; the initial resident-weight estimate below is historical.
 
 ## Decision
 

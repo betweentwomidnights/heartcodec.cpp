@@ -1,0 +1,557 @@
+{
+  "backend": "cpu",
+  "model": "models\\heartcodec-flow-f32.gguf",
+  "reference_revision": "5858ca8f1ffe58d62be7c007ea55f1033c5ca456",
+  "gates": {
+    "max_abs": 0.001,
+    "relative_l2": 0.0001
+  },
+  "cases": [
+    {
+      "name": "frames-4",
+      "tensors": {
+        "rvq": {
+          "max_abs": 1.1920928955078125e-07,
+          "relative_l2": 1.209616928482238e-07,
+          "passed": true
+        },
+        "velocity": {
+          "max_abs": 2.6226043701171875e-06,
+          "relative_l2": 6.15370157297816e-07,
+          "passed": true
+        },
+        "stage.proj_in": {
+          "max_abs": 7.152557373046875e-07,
+          "relative_l2": 4.826094109724627e-07,
+          "passed": true
+        },
+        "stage.transformer_blocks.0": {
+          "max_abs": 9.5367431640625e-07,
+          "relative_l2": 4.5039046837761624e-07,
+          "passed": true
+        },
+        "stage.transformer_blocks.23": {
+          "max_abs": 3.0517578125e-05,
+          "relative_l2": 2.261885747178946e-07,
+          "passed": true
+        },
+        "stage.connection_proj": {
+          "max_abs": 1.5497207641601562e-06,
+          "relative_l2": 5.423800196701931e-07,
+          "passed": true
+        },
+        "stage.transformer_blocks_2.0": {
+          "max_abs": 4.112720489501953e-06,
+          "relative_l2": 5.388550114820468e-07,
+          "passed": true
+        },
+        "stage.transformer_blocks_2.5": {
+          "max_abs": 6.198883056640625e-06,
+          "relative_l2": 6.572219451122049e-07,
+          "passed": true
+        },
+        "stage.proj_out": {
+          "max_abs": 2.6226043701171875e-06,
+          "relative_l2": 6.15370157297816e-07,
+          "passed": true
+        },
+        "flow_output": {
+          "max_abs": 5.97536563873291e-06,
+          "relative_l2": 1.2117132947351928e-06,
+          "passed": true
+        },
+        "euler.0": {
+          "max_abs": 0.0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "euler.1": {
+          "max_abs": 1.2516975402832031e-06,
+          "relative_l2": 4.222244689695921e-07,
+          "passed": true
+        },
+        "euler.2": {
+          "max_abs": 2.1457672119140625e-06,
+          "relative_l2": 8.032837159700264e-07,
+          "passed": true
+        },
+        "euler.3": {
+          "max_abs": 4.082918167114258e-06,
+          "relative_l2": 1.269597317485401e-06,
+          "passed": true
+        },
+        "euler.4": {
+          "max_abs": 5.97536563873291e-06,
+          "relative_l2": 1.5107695328506244e-06,
+          "passed": true
+        },
+        "mu": {
+          "max_abs": 7.450580596923828e-08,
+          "relative_l2": 3.3067326569324445e-07,
+          "passed": true
+        }
+      },
+      "prefix_exact": true,
+      "passed": true,
+      "stats": {
+        "rvq": {
+          "elapsed_seconds": 0.0008251,
+          "weight_buffer_bytes": 5957189632,
+          "graph_buffer_bytes": 8832
+        },
+        "step": {
+          "elapsed_seconds": 0.200194,
+          "weight_buffer_bytes": 5957189632,
+          "graph_buffer_bytes": 1284160
+        },
+        "flow": {
+          "elapsed_seconds": 1.5383,
+          "weight_buffer_bytes": 5957189632,
+          "graph_buffer_bytes": 903232
+        }
+      }
+    },
+    {
+      "name": "frames-9",
+      "tensors": {
+        "rvq": {
+          "max_abs": 1.1920928955078125e-07,
+          "relative_l2": 1.3390670726055038e-07,
+          "passed": true
+        },
+        "velocity": {
+          "max_abs": 3.337860107421875e-06,
+          "relative_l2": 6.255461743683975e-07,
+          "passed": true
+        },
+        "stage.proj_in": {
+          "max_abs": 8.344650268554688e-07,
+          "relative_l2": 5.064067982375585e-07,
+          "passed": true
+        },
+        "stage.transformer_blocks.0": {
+          "max_abs": 2.86102294921875e-06,
+          "relative_l2": 4.799116726341679e-07,
+          "passed": true
+        },
+        "stage.transformer_blocks.23": {
+          "max_abs": 7.62939453125e-05,
+          "relative_l2": 2.6934170682673745e-07,
+          "passed": true
+        },
+        "stage.connection_proj": {
+          "max_abs": 1.7881393432617188e-06,
+          "relative_l2": 5.747051315975507e-07,
+          "passed": true
+        },
+        "stage.transformer_blocks_2.0": {
+          "max_abs": 9.5367431640625e-06,
+          "relative_l2": 5.970864061562293e-07,
+          "passed": true
+        },
+        "stage.transformer_blocks_2.5": {
+          "max_abs": 5.245208740234375e-06,
+          "relative_l2": 6.817825702373327e-07,
+          "passed": true
+        },
+        "stage.proj_out": {
+          "max_abs": 3.337860107421875e-06,
+          "relative_l2": 6.255461743683975e-07,
+          "passed": true
+        },
+        "flow_output": {
+          "max_abs": 7.092952728271484e-06,
+          "relative_l2": 1.4438628633313577e-06,
+          "passed": true
+        },
+        "euler.0": {
+          "max_abs": 0.0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "euler.1": {
+          "max_abs": 1.817941665649414e-06,
+          "relative_l2": 5.452000043707713e-07,
+          "passed": true
+        },
+        "euler.2": {
+          "max_abs": 3.5762786865234375e-06,
+          "relative_l2": 9.717864484774866e-07,
+          "passed": true
+        },
+        "euler.3": {
+          "max_abs": 5.2228569984436035e-06,
+          "relative_l2": 1.3803089435388962e-06,
+          "passed": true
+        },
+        "euler.4": {
+          "max_abs": 7.092952728271484e-06,
+          "relative_l2": 1.6370546785502462e-06,
+          "passed": true
+        },
+        "mu": {
+          "max_abs": 8.940696716308594e-08,
+          "relative_l2": 3.2594727748056134e-07,
+          "passed": true
+        }
+      },
+      "prefix_exact": true,
+      "passed": true,
+      "stats": {
+        "rvq": {
+          "elapsed_seconds": 0.001224,
+          "weight_buffer_bytes": 5957189632,
+          "graph_buffer_bytes": 19872
+        },
+        "step": {
+          "elapsed_seconds": 0.421104,
+          "weight_buffer_bytes": 5957189632,
+          "graph_buffer_bytes": 2594944
+        },
+        "flow": {
+          "elapsed_seconds": 3.44787,
+          "weight_buffer_bytes": 5957189632,
+          "graph_buffer_bytes": 1845376
+        }
+      }
+    },
+    {
+      "name": "frames-4-steps-1",
+      "tensors": {
+        "rvq": {
+          "max_abs": 1.1920928955078125e-07,
+          "relative_l2": 1.3986425736475822e-07,
+          "passed": true
+        },
+        "velocity": {
+          "max_abs": 5.066394805908203e-06,
+          "relative_l2": 7.185947793808418e-07,
+          "passed": true
+        },
+        "stage.proj_in": {
+          "max_abs": 8.344650268554688e-07,
+          "relative_l2": 4.87572771453155e-07,
+          "passed": true
+        },
+        "stage.transformer_blocks.0": {
+          "max_abs": 9.5367431640625e-07,
+          "relative_l2": 4.613135278223772e-07,
+          "passed": true
+        },
+        "stage.transformer_blocks.23": {
+          "max_abs": 4.57763671875e-05,
+          "relative_l2": 2.700582147264991e-07,
+          "passed": true
+        },
+        "stage.connection_proj": {
+          "max_abs": 1.430511474609375e-06,
+          "relative_l2": 5.378263712762685e-07,
+          "passed": true
+        },
+        "stage.transformer_blocks_2.0": {
+          "max_abs": 9.5367431640625e-06,
+          "relative_l2": 5.568456599225222e-07,
+          "passed": true
+        },
+        "stage.transformer_blocks_2.5": {
+          "max_abs": 8.58306884765625e-06,
+          "relative_l2": 8.632926588260765e-07,
+          "passed": true
+        },
+        "stage.proj_out": {
+          "max_abs": 5.066394805908203e-06,
+          "relative_l2": 7.185947793808418e-07,
+          "passed": true
+        },
+        "flow_output": {
+          "max_abs": 4.649162292480469e-06,
+          "relative_l2": 1.5435004703126464e-06,
+          "passed": true
+        },
+        "euler.0": {
+          "max_abs": 0.0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "euler.1": {
+          "max_abs": 4.649162292480469e-06,
+          "relative_l2": 3.0422688064746038e-06,
+          "passed": true
+        },
+        "mu": {
+          "max_abs": 8.940696716308594e-08,
+          "relative_l2": 3.228742622071377e-07,
+          "passed": true
+        },
+        "flow_default_schedule": {
+          "max_abs": 4.649162292480469e-06,
+          "relative_l2": 1.5435004703126464e-06,
+          "passed": true
+        }
+      },
+      "prefix_exact": true,
+      "passed": true,
+      "stats": {
+        "rvq": {
+          "elapsed_seconds": 0.0007907,
+          "weight_buffer_bytes": 5957189632,
+          "graph_buffer_bytes": 8832
+        },
+        "step": {
+          "elapsed_seconds": 0.204379,
+          "weight_buffer_bytes": 5957189632,
+          "graph_buffer_bytes": 1284160
+        },
+        "flow": {
+          "elapsed_seconds": 0.365063,
+          "weight_buffer_bytes": 5957189632,
+          "graph_buffer_bytes": 903232
+        }
+      }
+    },
+    {
+      "name": "frames-4-steps-3",
+      "tensors": {
+        "rvq": {
+          "max_abs": 1.7881393432617188e-07,
+          "relative_l2": 1.3966280947956104e-07,
+          "passed": true
+        },
+        "velocity": {
+          "max_abs": 3.0994415283203125e-06,
+          "relative_l2": 6.427652124634479e-07,
+          "passed": true
+        },
+        "stage.proj_in": {
+          "max_abs": 7.748603820800781e-07,
+          "relative_l2": 4.826228409840257e-07,
+          "passed": true
+        },
+        "stage.transformer_blocks.0": {
+          "max_abs": 2.1457672119140625e-06,
+          "relative_l2": 4.5521492780014543e-07,
+          "passed": true
+        },
+        "stage.transformer_blocks.23": {
+          "max_abs": 2.288818359375e-05,
+          "relative_l2": 2.0478774471834942e-07,
+          "passed": true
+        },
+        "stage.connection_proj": {
+          "max_abs": 2.1457672119140625e-06,
+          "relative_l2": 5.53886642653256e-07,
+          "passed": true
+        },
+        "stage.transformer_blocks_2.0": {
+          "max_abs": 4.291534423828125e-06,
+          "relative_l2": 5.585678949265064e-07,
+          "passed": true
+        },
+        "stage.transformer_blocks_2.5": {
+          "max_abs": 4.76837158203125e-06,
+          "relative_l2": 6.612146215105228e-07,
+          "passed": true
+        },
+        "stage.proj_out": {
+          "max_abs": 3.0994415283203125e-06,
+          "relative_l2": 6.427652124634479e-07,
+          "passed": true
+        },
+        "flow_output": {
+          "max_abs": 2.950429916381836e-06,
+          "relative_l2": 8.843951428621168e-07,
+          "passed": true
+        },
+        "euler.0": {
+          "max_abs": 0.0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "euler.1": {
+          "max_abs": 1.4901161193847656e-06,
+          "relative_l2": 5.281779724952114e-07,
+          "passed": true
+        },
+        "euler.2": {
+          "max_abs": 1.9073486328125e-06,
+          "relative_l2": 9.651372568053074e-07,
+          "passed": true
+        },
+        "euler.3": {
+          "max_abs": 2.950429916381836e-06,
+          "relative_l2": 1.256765244277684e-06,
+          "passed": true
+        },
+        "mu": {
+          "max_abs": 8.940696716308594e-08,
+          "relative_l2": 3.126470519407131e-07,
+          "passed": true
+        },
+        "flow_default_schedule": {
+          "max_abs": 3.0100345611572266e-06,
+          "relative_l2": 8.774344092981991e-07,
+          "passed": true
+        }
+      },
+      "prefix_exact": true,
+      "passed": true,
+      "stats": {
+        "rvq": {
+          "elapsed_seconds": 0.0007861,
+          "weight_buffer_bytes": 5957189632,
+          "graph_buffer_bytes": 8832
+        },
+        "step": {
+          "elapsed_seconds": 0.196316,
+          "weight_buffer_bytes": 5957189632,
+          "graph_buffer_bytes": 1284160
+        },
+        "flow": {
+          "elapsed_seconds": 1.13039,
+          "weight_buffer_bytes": 5957189632,
+          "graph_buffer_bytes": 903232
+        }
+      }
+    },
+    {
+      "name": "frames-4-steps-10",
+      "tensors": {
+        "rvq": {
+          "max_abs": 1.1920928955078125e-07,
+          "relative_l2": 1.221186445687416e-07,
+          "passed": true
+        },
+        "velocity": {
+          "max_abs": 3.0994415283203125e-06,
+          "relative_l2": 6.177263083636327e-07,
+          "passed": true
+        },
+        "stage.proj_in": {
+          "max_abs": 7.152557373046875e-07,
+          "relative_l2": 4.802003519300076e-07,
+          "passed": true
+        },
+        "stage.transformer_blocks.0": {
+          "max_abs": 7.152557373046875e-07,
+          "relative_l2": 4.3687311321254697e-07,
+          "passed": true
+        },
+        "stage.transformer_blocks.23": {
+          "max_abs": 2.288818359375e-05,
+          "relative_l2": 2.0000200141861818e-07,
+          "passed": true
+        },
+        "stage.connection_proj": {
+          "max_abs": 1.430511474609375e-06,
+          "relative_l2": 5.40293720003441e-07,
+          "passed": true
+        },
+        "stage.transformer_blocks_2.0": {
+          "max_abs": 7.62939453125e-06,
+          "relative_l2": 5.470502037814309e-07,
+          "passed": true
+        },
+        "stage.transformer_blocks_2.5": {
+          "max_abs": 9.5367431640625e-06,
+          "relative_l2": 6.274698067169344e-07,
+          "passed": true
+        },
+        "stage.proj_out": {
+          "max_abs": 3.0994415283203125e-06,
+          "relative_l2": 6.177263083636327e-07,
+          "passed": true
+        },
+        "flow_output": {
+          "max_abs": 4.1425228118896484e-06,
+          "relative_l2": 8.719813694173168e-07,
+          "passed": true
+        },
+        "euler.0": {
+          "max_abs": 0.0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "euler.1": {
+          "max_abs": 4.76837158203125e-07,
+          "relative_l2": 1.3660222015295453e-07,
+          "passed": true
+        },
+        "euler.2": {
+          "max_abs": 9.5367431640625e-07,
+          "relative_l2": 2.2120205320700385e-07,
+          "passed": true
+        },
+        "euler.3": {
+          "max_abs": 9.5367431640625e-07,
+          "relative_l2": 3.0513144352184437e-07,
+          "passed": true
+        },
+        "euler.4": {
+          "max_abs": 1.1920928955078125e-06,
+          "relative_l2": 3.9949659975608834e-07,
+          "passed": true
+        },
+        "euler.5": {
+          "max_abs": 1.6093254089355469e-06,
+          "relative_l2": 5.131818001021819e-07,
+          "passed": true
+        },
+        "euler.6": {
+          "max_abs": 2.0265579223632812e-06,
+          "relative_l2": 6.360204384179101e-07,
+          "passed": true
+        },
+        "euler.7": {
+          "max_abs": 2.86102294921875e-06,
+          "relative_l2": 7.541857006975804e-07,
+          "passed": true
+        },
+        "euler.8": {
+          "max_abs": 3.069639205932617e-06,
+          "relative_l2": 8.500426403992209e-07,
+          "passed": true
+        },
+        "euler.9": {
+          "max_abs": 3.6954879760742188e-06,
+          "relative_l2": 9.223398154481719e-07,
+          "passed": true
+        },
+        "euler.10": {
+          "max_abs": 4.1425228118896484e-06,
+          "relative_l2": 9.593973301178385e-07,
+          "passed": true
+        },
+        "mu": {
+          "max_abs": 8.940696716308594e-08,
+          "relative_l2": 3.28654743462562e-07,
+          "passed": true
+        },
+        "flow_default_schedule": {
+          "max_abs": 4.1425228118896484e-06,
+          "relative_l2": 8.719813694173168e-07,
+          "passed": true
+        }
+      },
+      "prefix_exact": true,
+      "passed": true,
+      "stats": {
+        "rvq": {
+          "elapsed_seconds": 0.0008692,
+          "weight_buffer_bytes": 5957189632,
+          "graph_buffer_bytes": 8832
+        },
+        "step": {
+          "elapsed_seconds": 0.196394,
+          "weight_buffer_bytes": 5957189632,
+          "graph_buffer_bytes": 1284160
+        },
+        "flow": {
+          "elapsed_seconds": 3.81324,
+          "weight_buffer_bytes": 5957189632,
+          "graph_buffer_bytes": 903232
+        }
+      }
+    }
+  ],
+  "passed": true
+}

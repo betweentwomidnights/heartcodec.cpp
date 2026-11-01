@@ -5,6 +5,8 @@
 #include "ggml-alloc.h"
 #include "gguf.h"
 #include <map>
+#include <memory>
+#include <stdexcept>
 #include <set>
 #include <string>
 #include <vector>
@@ -19,6 +21,7 @@ struct Model {
     std::map<std::string, float> slopes;
     std::map<std::string, ConvSpec> convolutions;
     std::string part;
+    bool flow = false;
     bool matrix_layout = false;
     size_t graph_bytes = 0;
     Model() = default;
@@ -32,6 +35,26 @@ struct Model {
 std::vector<float> sq_decode(Model & model, const float * latents, int64_t frames, const char * dump);
 struct Encoded { std::vector<float> data; int64_t frames; };
 Encoded sq_encode(Model & model, const float * waveform, int64_t samples, const char * dump);
+std::vector<int32_t> token_data(const heartcodec_tokens_v1 * tokens);
+std::vector<float> rvq_decode(Model &, const int32_t *, int64_t frames, bool condition = false);
+std::vector<float> flow_step(Model &, const float *, int64_t frames, float time, const char * dump);
+std::vector<float> flow_decode(Model &, const int32_t *, int64_t frames, const heartcodec_flow_config_v1 &, const char * dump);
+void validate_flow_config(const heartcodec_flow_config_v1 * config, int64_t frames);
 heartcodec_status_v1 error(heartcodec_error_v1 * out, heartcodec_status_v1 status, const char * message);
 }
-struct heartcodec_context { heartcodec::Model model; };
+struct heartcodec_context {
+    std::unique_ptr<heartcodec::Model> models[2];
+    std::string paths[2];
+    std::string backend;
+    int threads = 4;
+    heartcodec::Model & get(int component) {
+        if (!models[component]) {
+            if (paths[component].empty()) throw std::invalid_argument("Component model path is not registered");
+            auto model = std::make_unique<heartcodec::Model>();
+            model->load(paths[component].c_str(), backend.c_str(), threads);
+            if (model->flow != (component == 1)) throw std::invalid_argument("Wrong component architecture");
+            models[component] = std::move(model);
+        }
+        return *models[component];
+    }
+};

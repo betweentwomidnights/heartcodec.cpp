@@ -6,7 +6,10 @@ refs="${HEARTCODEC_REFS:-$(dirname "$project_root")/_heartcodec_refs}"
 base_id=sha256:4e63792da2db6bd4de97a16666cc49278cd5a092c427738261847288af270437
 base_tag=heartcodec-reference-base:20261101
 image=heartcodec-dev:20261101
-common=(--rm --user "$(id -u):$(id -g)" -v "$project_root:/workspace" -w /workspace)
+reference_image=heartcodec-reference:20261101
+common=(--rm --user "$(id -u):$(id -g)" -e USER=heartcodec -e LOGNAME=heartcodec
+    -e HOME=/workspace -e TORCHINDUCTOR_CACHE_DIR=/workspace/.cache/inductor
+    -v "$project_root:/workspace" -w /workspace)
 python=/opt/sa3-venv/bin/python
 case "${1:-}" in
     image)
@@ -16,6 +19,29 @@ case "${1:-}" in
         ;;
     bootstrap)
         docker run "${common[@]}" "$base_tag" "$python" tools/bootstrap-gguf.py
+        ;;
+    image-reference)
+        docker build -t "$reference_image" -f "$project_root/docker/Dockerfile.reference" "$project_root/docker"
+        ;;
+    prepare-decoder)
+        docker run "${common[@]}" -e HF_HUB_OFFLINE=0 -e HF_HUB_DISABLE_XET=1 \
+            -e HF_HOME=/workspace/.cache/huggingface "$reference_image" "$python" tools/prepare-decoder.py --output models/full-decoder
+        ;;
+    convert-flow)
+        docker run "${common[@]}" --network none -v "$refs:/refs:ro" "$reference_image" "$python" \
+            tools/convert-flow-to-gguf.py --heartlib /refs/heartlib --source models/full-decoder/source.json \
+            --output models/heartcodec-flow-f32.gguf
+        ;;
+    reference-flow)
+        docker run "${common[@]}" --gpus all --network none -e CUBLAS_WORKSPACE_CONFIG=:4096:8 \
+            -v "$refs:/refs:ro" "$reference_image" "$python" reference/export_flow.py \
+            --heartlib /refs/heartlib --source models/full-decoder/source.json --output refdata/flow-cuda
+        ;;
+    reference-stereo)
+        docker run "${common[@]}" --gpus all --network none -e CUBLAS_WORKSPACE_CONFIG=:4096:8 \
+            -v "$refs:/refs:ro" "$reference_image" "$python" reference/export_stereo.py \
+            --heartlib /refs/heartlib --source models/full-decoder/source.json \
+            --sq-weights models/sq/sq.safetensors --sq-config models/sq/config.json --output refdata/stereo-cuda
         ;;
     prepare)
         docker run "${common[@]}" -e HF_HUB_OFFLINE=0 -e HF_HUB_DISABLE_XET=1 \
@@ -56,7 +82,7 @@ case "${1:-}" in
             --model models/heartcodec-sq-decoder-f32.gguf --output "${4:-refdata/native-$backend}" --backend "$backend"
         ;;
     *)
-        echo 'Usage: bash scripts/spark.sh image|bootstrap|prepare|reference [OUT SAMPLES]|convert|build-cpu|build-cuda|precision-test|compare [cpu|cuda REF OUT]' >&2
+        echo 'Usage: bash scripts/spark.sh image|image-reference|bootstrap|prepare|prepare-decoder|reference [OUT SAMPLES]|reference-flow|reference-stereo|convert|convert-flow|build-cpu|build-cuda|precision-test|compare [cpu|cuda REF OUT]' >&2
         exit 2
         ;;
 esac

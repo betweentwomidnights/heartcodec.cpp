@@ -1,0 +1,270 @@
+{
+  "model": "models\\heartcodec-sq-codec-f32.gguf",
+  "model_bytes": 672196160,
+  "reference": "refdata\\sq-pooling-boundary",
+  "stft": {
+    "fft_size": 1024,
+    "hop": 256,
+    "window": "symmetric Hann",
+    "center": false,
+    "log_floor": 1e-07
+  },
+  "backend": "cuda",
+  "ggml_cuda_tf32": "0",
+  "mode": "fp32-parity",
+  "cases": [
+    {
+      "name": "impulse-2",
+      "decode_stats": {
+        "elapsed_seconds": 0.151319,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 4427008
+      },
+      "decode": {
+        "max_abs": 3.762543201446533e-07,
+        "relative_l2": 1.7541824357850445e-06,
+        "rmse": 1.2815371320138067e-07,
+        "spectral_convergence": 1.273144361488488e-06,
+        "log_magnitude_l1": 0.004367990250069552
+      },
+      "encode_stats": {
+        "elapsed_seconds": 0.133262,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 454656
+      },
+      "encode": {
+        "max_abs": 1.9371509552001953e-06,
+        "relative_l2": 3.4542717713558397e-06,
+        "rmse": 2.2806478017065392e-07
+      },
+      "quantized_mismatches": 0,
+      "quantized_elements": 128,
+      "quantized_mismatch_rate": 0.0,
+      "roundtrip_reuses_reference_levels": true,
+      "roundtrip_stats": {
+        "elapsed_seconds": 0.154901,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 4427008
+      },
+      "roundtrip": {
+        "max_abs": 3.762543201446533e-07,
+        "relative_l2": 1.7541824357850445e-06,
+        "rmse": 1.2815371320138067e-07,
+        "spectral_convergence": 1.273144361488488e-06,
+        "log_magnitude_l1": 0.004367990250069552
+      },
+      "fp32_gates_passed": true
+    },
+    {
+      "name": "sine-2",
+      "decode_stats": {
+        "elapsed_seconds": 0.153036,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 4427008
+      },
+      "decode": {
+        "max_abs": 4.0978193283081055e-07,
+        "relative_l2": 1.7538956310941945e-06,
+        "rmse": 1.2793355911643058e-07,
+        "spectral_convergence": 1.440909283398243e-06,
+        "log_magnitude_l1": 0.004016879944924707
+      },
+      "encode_stats": {
+        "elapsed_seconds": 0.120988,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 454656
+      },
+      "encode": {
+        "max_abs": 1.996755599975586e-06,
+        "relative_l2": 3.3975506982923496e-06,
+        "rmse": 2.2441243089014823e-07
+      },
+      "quantized_mismatches": 0,
+      "quantized_elements": 128,
+      "quantized_mismatch_rate": 0.0,
+      "roundtrip_reuses_reference_levels": true,
+      "roundtrip_stats": {
+        "elapsed_seconds": 0.168619,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 4427008
+      },
+      "roundtrip": {
+        "max_abs": 4.0978193283081055e-07,
+        "relative_l2": 1.7538956310941945e-06,
+        "rmse": 1.2793355911643058e-07,
+        "spectral_convergence": 1.440909283398243e-06,
+        "log_magnitude_l1": 0.004016879944924707
+      },
+      "fp32_gates_passed": true
+    },
+    {
+      "name": "noise-2",
+      "decode_stats": {
+        "elapsed_seconds": 0.161966,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 4427008
+      },
+      "decode": {
+        "max_abs": 4.0978193283081055e-07,
+        "relative_l2": 1.7538956310941945e-06,
+        "rmse": 1.2793355911643058e-07,
+        "spectral_convergence": 1.440909283398243e-06,
+        "log_magnitude_l1": 0.004016879944924707
+      },
+      "encode_stats": {
+        "elapsed_seconds": 0.129394,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 454656
+      },
+      "encode": {
+        "max_abs": 2.115964889526367e-06,
+        "relative_l2": 3.5738648795047956e-06,
+        "rmse": 2.3606157767792768e-07
+      },
+      "quantized_mismatches": 0,
+      "quantized_elements": 128,
+      "quantized_mismatch_rate": 0.0,
+      "roundtrip_reuses_reference_levels": true,
+      "roundtrip_stats": {
+        "elapsed_seconds": 0.175155,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 4427008
+      },
+      "roundtrip": {
+        "max_abs": 4.0978193283081055e-07,
+        "relative_l2": 1.7538956310941945e-06,
+        "rmse": 1.2793355911643058e-07,
+        "spectral_convergence": 1.440909283398243e-06,
+        "log_magnitude_l1": 0.004016879944924707
+      },
+      "fp32_gates_passed": true
+    },
+    {
+      "name": "impulse-1922",
+      "decode_stats": {
+        "elapsed_seconds": 0.157122,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 8850688
+      },
+      "decode": {
+        "max_abs": 4.209578037261963e-07,
+        "relative_l2": 2.249313323772077e-06,
+        "rmse": 8.240621981587847e-08,
+        "spectral_convergence": 2.513733557838856e-06,
+        "log_magnitude_l1": 0.002233665537822371
+      },
+      "encode_stats": {
+        "elapsed_seconds": 0.134318,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 4385536
+      },
+      "encode": {
+        "max_abs": 7.271766662597656e-06,
+        "relative_l2": 3.527929925921379e-06,
+        "rmse": 1.0069618940177886e-06
+      },
+      "quantized_mismatches": 0,
+      "quantized_elements": 256,
+      "quantized_mismatch_rate": 0.0,
+      "roundtrip_reuses_reference_levels": true,
+      "roundtrip_stats": {
+        "elapsed_seconds": 0.166012,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 8850688
+      },
+      "roundtrip": {
+        "max_abs": 4.209578037261963e-07,
+        "relative_l2": 2.249313323772077e-06,
+        "rmse": 8.240621981587847e-08,
+        "spectral_convergence": 2.513733557838856e-06,
+        "log_magnitude_l1": 0.002233665537822371
+      },
+      "fp32_gates_passed": true
+    },
+    {
+      "name": "sine-1922",
+      "decode_stats": {
+        "elapsed_seconds": 0.160405,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 8850688
+      },
+      "decode": {
+        "max_abs": 6.407499313354492e-07,
+        "relative_l2": 1.2108336098043645e-06,
+        "rmse": 1.1579916928581648e-07,
+        "spectral_convergence": 6.478362881072908e-07,
+        "log_magnitude_l1": 0.009802716155625961
+      },
+      "encode_stats": {
+        "elapsed_seconds": 0.151844,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 4385536
+      },
+      "encode": {
+        "max_abs": 4.589557647705078e-06,
+        "relative_l2": 3.7416212718440574e-06,
+        "rmse": 1.2082275361333584e-06
+      },
+      "quantized_mismatches": 0,
+      "quantized_elements": 256,
+      "quantized_mismatch_rate": 0.0,
+      "roundtrip_reuses_reference_levels": true,
+      "roundtrip_stats": {
+        "elapsed_seconds": 0.15922,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 8850688
+      },
+      "roundtrip": {
+        "max_abs": 6.407499313354492e-07,
+        "relative_l2": 1.2108336098043645e-06,
+        "rmse": 1.1579916928581648e-07,
+        "spectral_convergence": 6.478362881072908e-07,
+        "log_magnitude_l1": 0.009802716155625961
+      },
+      "fp32_gates_passed": true
+    },
+    {
+      "name": "noise-1922",
+      "decode_stats": {
+        "elapsed_seconds": 0.153577,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 8850688
+      },
+      "decode": {
+        "max_abs": 3.3527612686157227e-07,
+        "relative_l2": 1.7007826977569026e-06,
+        "rmse": 6.597504423185012e-08,
+        "spectral_convergence": 1.2856655284904824e-06,
+        "log_magnitude_l1": 0.0018651686367009907
+      },
+      "encode_stats": {
+        "elapsed_seconds": 0.151735,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 4385536
+      },
+      "encode": {
+        "max_abs": 3.993511199951172e-06,
+        "relative_l2": 3.044131462048954e-06,
+        "rmse": 6.921954747887212e-07
+      },
+      "quantized_mismatches": 0,
+      "quantized_elements": 256,
+      "quantized_mismatch_rate": 0.0,
+      "roundtrip_reuses_reference_levels": true,
+      "roundtrip_stats": {
+        "elapsed_seconds": 0.214147,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 8850688
+      },
+      "roundtrip": {
+        "max_abs": 3.3527612686157227e-07,
+        "relative_l2": 1.7007826977569026e-06,
+        "rmse": 6.597504423185012e-08,
+        "spectral_convergence": 1.2856655284904824e-06,
+        "log_magnitude_l1": 0.0018651686367009907
+      },
+      "fp32_gates_passed": true
+    }
+  ],
+  "fp32_gates_passed": true
+}

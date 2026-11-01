@@ -59,22 +59,31 @@ void Model::load(const char * path, const char * requested, int threads) {
         if (id < 0 || gguf_get_kv_type(gguf, id) != GGUF_TYPE_UINT32 || gguf_get_val_u32(gguf, id) != value)
             throw std::runtime_error(std::string("Unsupported GGUF metadata: ") + key);
     };
-    string_meta("general.architecture", "heartcodec-sq");
-    const int part_id = gguf_find_key(gguf, "heartcodec.sq.part");
-    if (part_id < 0 || gguf_get_kv_type(gguf, part_id) != GGUF_TYPE_STRING)
-        throw std::runtime_error("Missing SQ component metadata");
-    part = gguf_get_val_str(gguf, part_id);
-    if (part != "encoder" && part != "decoder" && part != "codec")
-        throw std::runtime_error("Unsupported SQ component");
-    const int version_id = gguf_find_key(gguf, "heartcodec.sq.format_version");
-    if (version_id < 0 || gguf_get_kv_type(gguf, version_id) != GGUF_TYPE_UINT32)
-        throw std::runtime_error("Missing SQ format version");
-    const auto version = gguf_get_val_u32(gguf, version_id);
-    if (version == 2) { string_meta("heartcodec.sq.weight_layout", "matmul"); matrix_layout = true; }
-    else if (version != 1 || part != "decoder") throw std::runtime_error("Unsupported SQ format version");
-    uint_meta("heartcodec.sq.sample_rate", 48000);
-    uint_meta("heartcodec.sq.latent_dim", 128);
-    uint_meta("heartcodec.sq.samples_per_frame", 1920);
+    const int arch_id = gguf_find_key(gguf, "general.architecture");
+    if (arch_id < 0 || gguf_get_kv_type(gguf, arch_id) != GGUF_TYPE_STRING)
+        throw std::runtime_error("Missing architecture");
+    flow = std::string(gguf_get_val_str(gguf, arch_id)) == "heartcodec-flow";
+    if (flow) {
+        uint_meta("heartcodec.flow.format_version", 1);
+        part = "flow";
+    } else {
+        string_meta("general.architecture", "heartcodec-sq");
+        const int part_id = gguf_find_key(gguf, "heartcodec.sq.part");
+        if (part_id < 0 || gguf_get_kv_type(gguf, part_id) != GGUF_TYPE_STRING)
+            throw std::runtime_error("Missing SQ component metadata");
+        part = gguf_get_val_str(gguf, part_id);
+        if (part != "encoder" && part != "decoder" && part != "codec")
+            throw std::runtime_error("Unsupported SQ component");
+        const int version_id = gguf_find_key(gguf, "heartcodec.sq.format_version");
+        if (version_id < 0 || gguf_get_kv_type(gguf, version_id) != GGUF_TYPE_UINT32)
+            throw std::runtime_error("Missing SQ format version");
+        const auto version = gguf_get_val_u32(gguf, version_id);
+        if (version == 2) { string_meta("heartcodec.sq.weight_layout", "matmul"); matrix_layout = true; }
+        else if (version != 1 || part != "decoder") throw std::runtime_error("Unsupported SQ format version");
+        uint_meta("heartcodec.sq.sample_rate", 48000);
+        uint_meta("heartcodec.sq.latent_dim", 128);
+        uint_meta("heartcodec.sq.samples_per_frame", 1920);
+    }
     validate(); // Reject shape errors before GGML graph assertions can fire.
     buffer = ggml_backend_alloc_ctx_tensors(weights, backend);
     if (!buffer) throw std::runtime_error("Cannot allocate model weights");
@@ -123,6 +132,47 @@ void Model::validate() {
         else shape(p + ".weight", {k, in, out}, true);
         shape(p + ".bias", {out});
     };
+    if (flow) {
+        auto linear = [&](const std::string & p, int in, int out, bool bias = true) {
+            shape(p + ".weight", {in, out});
+            if (bias) shape(p + ".bias", {out});
+        };
+        for (int i = 0; i < 8; ++i)
+            shape("vq_embed.layers." + std::to_string(i) + "._codebook.embed", {32, 8192});
+        linear("vq_embed.project_out", 32, 512);
+        linear("cond_feature_emb", 512, 512);
+        shape("zero_cond_embedding1", {512});
+        auto project = [&](const std::string & p, int in, int out) {
+            shape(p + ".ffn_1.weight", {3, in, out});
+            shape(p + ".ffn_1.bias", {out});
+            linear(p + ".ffn_2", out, out);
+        };
+        project("estimator.proj_in", 1024, 1536);
+        project("estimator.connection_proj", 2560, 3072);
+        project("estimator.proj_out", 3072, 256);
+        for (int group = 0; group < 2; ++group) {
+            const int d = group ? 3072 : 1536, hidden = group ? 8192 : 4096;
+            const std::string suffix = group ? "_2" : "";
+            const auto p = "estimator.adaln_single" + suffix;
+            linear(p + ".emb.timestep_embedder.linear_1", 512, d);
+            linear(p + ".emb.timestep_embedder.linear_2", d, d);
+            linear(p + ".linear", d, 6 * d);
+            shape("estimator.scale_shift_table" + suffix, {d, 2});
+            for (int i = 0; i < (group ? 6 : 24); ++i) {
+                const auto b = "estimator.transformer_blocks" + suffix + "." + std::to_string(i);
+                shape(b + ".scale_shift_table", {d, 6});
+                shape(b + ".attn_norm.weight", {d});
+                shape(b + ".mlp_norm.weight", {d});
+                for (auto name : {"q_proj", "k_proj", "v_proj", "o_proj"}) linear(b + ".attn." + name, d, d, false);
+                linear(b + ".mlp.gate", d, hidden, false);
+                linear(b + ".mlp.up", d, hidden, false);
+                linear(b + ".mlp.down", hidden, d, false);
+            }
+        }
+        if (expected.size() != size_t(gguf_get_n_tensors(gguf)))
+            throw std::runtime_error("Unexpected tensors in flow GGUF");
+        return;
+    }
     if (part != "encoder") {
     conv("sq.decoder.0", 5, 128, 2048);
     const int strides[] = {5, 4, 4, 4, 3};

@@ -52,7 +52,12 @@ heartcodec_status_v1 heartcodec_context_create_v1(const heartcodec_config_v1 * c
         return heartcodec::error(e, HEARTCODEC_INVALID_ARGUMENT_V1, "Invalid decoder configuration");
     try {
         auto context = std::make_unique<heartcodec_context>();
-        context->model.load(c->model_path, c->backend, c->cpu_threads);
+        context->backend = c->backend; context->threads = c->cpu_threads;
+        auto model = std::make_unique<heartcodec::Model>();
+        model->load(c->model_path, c->backend, c->cpu_threads);
+        const int component = model->flow ? 1 : 0;
+        context->paths[component] = c->model_path;
+        context->models[component] = std::move(model);
         *out = context.release();
         return heartcodec::error(e, HEARTCODEC_OK_V1, "");
     } catch (const std::invalid_argument & ex) { return heartcodec::error(e, HEARTCODEC_INVALID_ARGUMENT_V1, ex.what()); }
@@ -71,8 +76,11 @@ void heartcodec_sq_latents_free_v1(heartcodec_sq_latents_v1 * l) {
 heartcodec_status_v1 heartcodec_get_memory_v1(heartcodec_context * c, heartcodec_memory_v1 * m, heartcodec_error_v1 * e) {
     if (!c || !m || m->size < sizeof(*m))
         return heartcodec::error(e, HEARTCODEC_INVALID_ARGUMENT_V1, "Invalid memory statistics request");
-    m->weight_buffer_bytes = ggml_backend_buffer_get_size(c->model.buffer);
-    m->graph_buffer_bytes = c->model.graph_bytes;
+    m->weight_buffer_bytes = m->graph_buffer_bytes = 0;
+    for (const auto & model : c->models) if (model) {
+        m->weight_buffer_bytes += ggml_backend_buffer_get_size(model->buffer);
+        m->graph_buffer_bytes += model->graph_bytes;
+    }
     return heartcodec::error(e, HEARTCODEC_OK_V1, "");
 }
 void heartcodec_audio_free_v1(heartcodec_audio_v1 * a) {
@@ -87,7 +95,7 @@ heartcodec_status_v1 heartcodec_sq_decode_v1(heartcodec_context * c, const float
         frames > std::numeric_limits<int64_t>::max() / 1920)
         return heartcodec::error(e, HEARTCODEC_INVALID_ARGUMENT_V1, "Invalid SQ decode buffers or frame count");
     try {
-        auto data = heartcodec::sq_decode(c->model, latents, frames, dump);
+        auto data = heartcodec::sq_decode(c->get(0), latents, frames, dump);
         if (!std::all_of(data.begin(), data.end(), [](float value) { return std::isfinite(value); }))
             throw std::runtime_error("SQ decoder produced nonfinite output");
         auto samples = std::make_unique<float[]>(data.size());
@@ -106,7 +114,7 @@ heartcodec_status_v1 heartcodec_sq_encode_v1(heartcodec_context * c, const float
     try {
         if (!std::all_of(waveform, waveform + samples, [](float x) { return std::isfinite(x); }))
             throw std::invalid_argument("Waveform must be finite");
-        auto result = heartcodec::sq_encode(c->model, waveform, samples, dump);
+        auto result = heartcodec::sq_encode(c->get(0), waveform, samples, dump);
         if (!std::all_of(result.data.begin(), result.data.end(), [](float x) { return std::isfinite(x); }))
             throw std::runtime_error("SQ encoder produced nonfinite output");
         auto data = std::make_unique<float[]>(result.data.size());

@@ -1,0 +1,236 @@
+{
+  "backend": "cuda",
+  "cases": [
+    {
+      "name": "frames-4-window-93",
+      "windows": [
+        {
+          "flow": {
+            "max_abs": 4.932284355163574e-06,
+            "relative_l2": 1.8182733620051279e-06,
+            "passed": true
+          },
+          "scalar_level_mismatches": 0,
+          "scalar_level_mismatch_fraction": 0.0,
+          "channels": [
+            {
+              "max_abs": 4.5299530029296875e-06,
+              "relative_l2": 1.3516375433776874e-06,
+              "passed": true
+            },
+            {
+              "max_abs": 4.26173210144043e-06,
+              "relative_l2": 1.3256517017076063e-06,
+              "passed": true
+            }
+          ],
+          "changed_levels": [],
+          "passed": true
+        }
+      ],
+      "teacher_forced_assembly": {
+        "max_abs": 2.473592758178711e-06,
+        "relative_l2": 1.3416859531898944e-06,
+        "passed": true
+      },
+      "wall_seconds_including_model_loads": 10.686999999976251,
+      "end_to_end": {
+        "max_abs": 2.473592758178711e-06,
+        "relative_l2": 1.3416859531898944e-06,
+        "passed": true
+      },
+      "end_to_end_vs_native_flow_assembly": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "passed": true
+      },
+      "end_to_end_waveform_gate_applies": true,
+      "end_to_end_gate_policy": "When SQ levels change, gate flow error and level-change rate separately; require full native decode to match independent assembly of native flow outputs. Preserve upstream waveform error as an evaluation. No tolerance changes.",
+      "output_samples_per_channel": 15360,
+      "target_length_exact": true,
+      "maximum_observed_device_used_mib": 5826,
+      "memory_sampling": "nvidia-smi total GPU memory, 250ms polling; includes desktop/driver; may miss transients",
+      "stats": {
+        "elapsed_seconds": 2.21152,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 822807808
+      },
+      "passed": true
+    },
+    {
+      "name": "frames-100-window-93",
+      "windows": [
+        {
+          "flow": {
+            "max_abs": 4.6193599700927734e-06,
+            "relative_l2": 2.053287247482006e-06,
+            "passed": true
+          },
+          "scalar_level_mismatches": 0,
+          "scalar_level_mismatch_fraction": 0.0,
+          "channels": [
+            {
+              "max_abs": 3.860890865325928e-05,
+              "relative_l2": 9.575280642974184e-06,
+              "passed": true
+            },
+            {
+              "max_abs": 1.9548460841178894e-06,
+              "relative_l2": 1.2822329251280524e-06,
+              "passed": true
+            }
+          ],
+          "changed_levels": [],
+          "passed": true
+        },
+        {
+          "flow": {
+            "max_abs": 2.9206275939941406e-06,
+            "relative_l2": 1.8178842705756052e-06,
+            "passed": true
+          },
+          "scalar_level_mismatches": 0,
+          "scalar_level_mismatch_fraction": 0.0,
+          "channels": [
+            {
+              "max_abs": 6.470829248428345e-06,
+              "relative_l2": 1.8867706174526984e-06,
+              "passed": true
+            },
+            {
+              "max_abs": 3.7141144275665283e-06,
+              "relative_l2": 1.610937606226492e-06,
+              "passed": true
+            }
+          ],
+          "changed_levels": [],
+          "passed": true
+        }
+      ],
+      "teacher_forced_assembly": {
+        "max_abs": 3.860890865325928e-05,
+        "relative_l2": 5.6700257225776916e-06,
+        "passed": true
+      },
+      "wall_seconds_including_model_loads": 11.827999999979511,
+      "end_to_end": {
+        "max_abs": 3.860890865325928e-05,
+        "relative_l2": 5.6700257225776916e-06,
+        "passed": true
+      },
+      "end_to_end_vs_native_flow_assembly": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "passed": true
+      },
+      "end_to_end_waveform_gate_applies": true,
+      "end_to_end_gate_policy": "When SQ levels change, gate flow error and level-change rate separately; require full native decode to match independent assembly of native flow outputs. Preserve upstream waveform error as an evaluation. No tolerance changes.",
+      "output_samples_per_channel": 384000,
+      "target_length_exact": true,
+      "maximum_observed_device_used_mib": 5826,
+      "memory_sampling": "nvidia-smi total GPU memory, 250ms polling; includes desktop/driver; may miss transients",
+      "stats": {
+        "elapsed_seconds": 3.27164,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 822807808
+      },
+      "passed": true
+    },
+    {
+      "name": "frames-372-window-372",
+      "windows": [
+        {
+          "flow": {
+            "max_abs": 1.8656253814697266e-05,
+            "relative_l2": 3.0392636011857936e-06,
+            "passed": true
+          },
+          "scalar_level_mismatches": 3,
+          "scalar_level_mismatch_fraction": 1.575100806451613e-05,
+          "channels": [
+            {
+              "max_abs": 9.812414646148682e-06,
+              "relative_l2": 1.6017316171325832e-06,
+              "passed": true
+            },
+            {
+              "max_abs": 5.867332220077515e-06,
+              "relative_l2": 1.8944456588144824e-06,
+              "passed": true
+            }
+          ],
+          "changed_levels": [
+            {
+              "index": 6883,
+              "frame": 26,
+              "channel": 1,
+              "feature": 99,
+              "reference": 0.38888806104660034,
+              "native": 0.38888901472091675,
+              "reference_level": 3,
+              "native_level": 4
+            },
+            {
+              "index": 143708,
+              "frame": 561,
+              "channel": 0,
+              "feature": 92,
+              "reference": -0.05555462837219238,
+              "native": -0.05555620789527893,
+              "reference_level": 0,
+              "native_level": -1
+            },
+            {
+              "index": 166279,
+              "frame": 649,
+              "channel": 1,
+              "feature": 7,
+              "reference": 0.38888901472091675,
+              "native": 0.3888882100582123,
+              "reference_level": 4,
+              "native_level": 3
+            }
+          ],
+          "passed": true
+        }
+      ],
+      "teacher_forced_assembly": {
+        "max_abs": 9.812414646148682e-06,
+        "relative_l2": 1.7445619848865862e-06,
+        "passed": true
+      },
+      "wall_seconds_including_model_loads": 13.375,
+      "end_to_end": {
+        "max_abs": 0.010834749788045883,
+        "relative_l2": 0.001636118027637105,
+        "passed": false
+      },
+      "end_to_end_vs_native_flow_assembly": {
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "passed": true
+      },
+      "end_to_end_waveform_gate_applies": false,
+      "end_to_end_gate_policy": "When SQ levels change, gate flow error and level-change rate separately; require full native decode to match independent assembly of native flow outputs. Preserve upstream waveform error as an evaluation. No tolerance changes.",
+      "output_samples_per_channel": 1428480,
+      "target_length_exact": true,
+      "maximum_observed_device_used_mib": 5906,
+      "memory_sampling": "nvidia-smi total GPU memory, 250ms polling; includes desktop/driver; may miss transients",
+      "stats": {
+        "elapsed_seconds": 4.92328,
+        "weight_buffer_bytes": 672182784,
+        "graph_buffer_bytes": 3291221248
+      },
+      "passed": true
+    }
+  ],
+  "gates": {
+    "flow_max_abs": 0.001,
+    "flow_relative_l2": 0.0001,
+    "waveform_max_abs": 0.01,
+    "waveform_relative_l2": 0.001,
+    "scalar_level_mismatch_fraction": 0.0001
+  },
+  "passed": true,
+  "strict_upstream_waveform_gate_passed": false
+}
