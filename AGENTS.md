@@ -11,6 +11,10 @@
 - Use `betweentwomidnights/ggml`; keep generic kernels and backend fixes there.
   The initial SQ milestone pins `07b77b0112cc30861b49116b057bac33e819ee06`
   (shared branch `feature/heartcodec-cuda-f32-precision`).
+- GGML changes and pin updates require coordination across consumers. First try
+  the existing in-tree target/API. If a change is essential, isolate it in a
+  separate worktree/branch and open a focused draft PR for cross-agent review;
+  keep consumer pins unchanged until adoption is coordinated after review.
 - Match unquantized intermediate tensors before quantization or optimization.
   SQ latents and RVQ codes are distinct representations.
 - The laptop checkout at `C:\dev\heartcodec.cpp` is now the primary development
