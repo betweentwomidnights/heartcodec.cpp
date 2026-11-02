@@ -1,5 +1,8 @@
 @PACKAGE_INIT@
 include(CMakeFindDependencyMacro)
+if(@HEARTCODEC_CUDA@ AND @HEARTCODEC_STATIC@)
+    find_dependency(CUDAToolkit)
+endif()
 if(NOT TARGET ggml::ggml)
     find_dependency(ggml CONFIG)
 endif()

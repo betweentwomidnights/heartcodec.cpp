@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-02",
+  "capability": "heartcodec_rng.h v1",
+  "frozen_core_or_flow_abi_changed": false,
+  "oracle_torch": "2.7.1+cu128",
+  "oracle_device": "NVIDIA GB10",
+  "target_cuda_grid_cap": 288,
+  "reference_cases": 31,
+  "values_per_device": 85205452,
+  "spark_and_laptop_values_and_offsets_bit_exact": true,
+  "actual_codec_random_call_graph_verified": true,
+  "additional_codec_noise_values": 571392,
+  "windows_cpu_ctests": 6,
+  "windows_cuda_ctests": 6,
+  "spark_cuda_ctests": 6,
+  "standalone_windows_b77_cpu_dll_ctests": 4,
+  "full_song_native_f32_tokens": {
+    "frames": 861,
+    "codebooks": 8,
+    "codes": 6888,
+    "bit_exact": true,
+    "changed_codes": 0,
+    "eos_position_exact": true,
+    "sampler_final_offset": 27584,
+    "decoder_final_offset": 12
+  },
+  "full_song_waveform": {
+    "max_abs": 0.08275547623634338,
+    "relative_l2": 0.002990610036214733,
+    "passed": false,
+    "cosine": 0.9999955281216282,
+    "max_abs_limit": 0.01,
+    "relative_l2_limit": 0.001,
+    "limits_source": "heartcodec.cpp/tools/compare-stereo.py end-to-end waveform gate",
+    "scalar_level_mismatch_diagnosis": "not measured for this full-song case; no exception assumed"
+  },
+  "full_song_waveform_parity_accepted": false,
+  "shared_ggml_pin": "b77ae790e628270af46a8af1eca38441c23f1252",
+  "isolated_mulacover_development_ggml": "0f2ed045eaff6bf01bed074878b6988248efbc22",
+  "ggml_bump_check_started": false
+}

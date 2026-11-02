@@ -18,6 +18,12 @@ passes the six flow cases and MuLaCover's 600-tensor CUDA suite on Spark.
 The [RVQ/flow and stereo report](docs/FLOW_AND_STEREO.md) records parity, memory,
 and the small number of SQ rounding-boundary changes in the long fixture.
 
+An opt-in [Torch CUDA Philox capability](docs/TORCH_CUDA_RNG.md) now supplies
+bit-exact normal/exponential streams for MuLaCover sampling and codec noise.
+The separate capability preserves frozen core/flow APIs and legacy seed behavior.
+Matched RNG reproduces all 6,888 upstream F32 generator codes for the real-song
+control; the full-song decoded waveform still fails its unchanged strict limits.
+
 Base SQ encode/quantize/decode continues to pass its frozen parity suite. Full
 audio-to-RVQ tokenization (query/feature encoders) remains future work. MuLaCover
 generator development lives in the sibling `mulacover.cpp` repository, where

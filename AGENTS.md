@@ -40,3 +40,12 @@
   implemented. MuLaCover generator fixtures live in sibling `mulacover.cpp`.
 - Expose reusable functionality through the frozen negotiated C ABI and
   `heartcodec::heartcodec`. Reuse a downstream's GGML target, never add a second copy.
+- `heartcodec_rng.h` adds a separate negotiated Torch CUDA Philox capability;
+  frozen core/flow layouts and legacy RNG defaults remain unchanged. See
+  `docs/TORCH_CUDA_RNG.md`. CUDA normal/exponential streams match Torch bit-for-bit
+  on Spark and laptop when target grid cap 288 is explicit. CPU builds report
+  this capability's generation unavailable, without RNG fallback.
+  Sibling MuLaCover now matches all 861 upstream frames / 6,888 codes and EOS.
+  Full-song decoded audio still fails unchanged strict waveform limits (max_abs
+  0.0827555, relative L2 0.00299061); scalar-level diagnostics for that case remain
+  outstanding. Do not call waveform parity passed or assume a rounding exception.

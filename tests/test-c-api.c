@@ -1,7 +1,10 @@
 #include "heartcodec.h"
+#include "heartcodec_rng.h"
 #include <string.h>
 
 int main(void) {
+    const heartcodec_rng_api_v1 * rng=heartcodec_get_rng_api(1);
+    if(!rng||rng->size<HEARTCODEC_RNG_API_V1_SIZE||rng->version!=1||heartcodec_get_rng_api(0))return 1;
     const heartcodec_api_v1 * api = heartcodec_get_api(HEARTCODEC_ABI_VERSION_1);
     if (!api || api->size < HEARTCODEC_API_V1_SIZE || api->abi_version != HEARTCODEC_ABI_VERSION_1) return 1;
     if (heartcodec_get_api(0) || heartcodec_get_api(2) || !api->tokens_decode) return 1;
