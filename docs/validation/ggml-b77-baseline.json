@@ -1,0 +1,140 @@
+{
+  "ggml_revision": "b77ae790e628270af46a8af1eca38441c23f1252",
+  "date": "2026-11-01",
+  "consumer_pin_adopts_review_candidate": false,
+  "baseline_cuda_parity_passed": false,
+  "cpu": {
+    "sq": {
+      "cases": 27,
+      "encoder_cases": 26,
+      "passed": true,
+      "changed_levels": 0,
+      "max_decode_abs": 3.777630627155304e-05,
+      "max_decode_relative_l2": 2.8243320095986728e-05
+    },
+    "pooling_boundary": {
+      "cases": 6,
+      "encoder_cases": 6,
+      "passed": true,
+      "changed_levels": 0,
+      "max_decode_abs": 5.252659320831299e-07,
+      "max_decode_relative_l2": 2.4578707797949694e-06
+    },
+    "flow": {
+      "passed": true,
+      "cases": [
+        {
+          "name": "frames-4",
+          "passed": true,
+          "failed_tensors": 0,
+          "velocity": {
+            "max_abs": 2.6226043701171875e-06,
+            "relative_l2": 6.15370157297816e-07,
+            "passed": true
+          }
+        },
+        {
+          "name": "frames-9",
+          "passed": true,
+          "failed_tensors": 0,
+          "velocity": {
+            "max_abs": 3.337860107421875e-06,
+            "relative_l2": 6.255461743683975e-07,
+            "passed": true
+          }
+        },
+        {
+          "name": "frames-4-steps-1",
+          "passed": true,
+          "failed_tensors": 0,
+          "velocity": {
+            "max_abs": 5.066394805908203e-06,
+            "relative_l2": 7.185947793808418e-07,
+            "passed": true
+          }
+        },
+        {
+          "name": "frames-4-steps-3",
+          "passed": true,
+          "failed_tensors": 0,
+          "velocity": {
+            "max_abs": 3.0994415283203125e-06,
+            "relative_l2": 6.427652124634479e-07,
+            "passed": true
+          }
+        },
+        {
+          "name": "frames-4-steps-10",
+          "passed": true,
+          "failed_tensors": 0,
+          "velocity": {
+            "max_abs": 3.0994415283203125e-06,
+            "relative_l2": 6.177263083636327e-07,
+            "passed": true
+          }
+        }
+      ]
+    },
+    "native_ctest": {
+      "tests": 3,
+      "passed": true
+    },
+    "python_tooling": {
+      "tests": 7,
+      "passed": true
+    }
+  },
+  "cuda": {
+    "flow": {
+      "passed": false,
+      "cases": [
+        {
+          "name": "frames-4",
+          "passed": false,
+          "failed_tensors": 15,
+          "velocity": {
+            "max_abs": 0.0073544979095458984,
+            "relative_l2": 0.0016726630037129562,
+            "passed": false
+          }
+        },
+        {
+          "name": "frames-9",
+          "passed": false,
+          "failed_tensors": 7,
+          "velocity": {
+            "max_abs": 3.5762786865234375e-06,
+            "relative_l2": 6.965855264531348e-07,
+            "passed": true
+          }
+        }
+      ]
+    },
+    "matmul_source_f32": {
+      "passed": false,
+      "k": 512,
+      "m": 64,
+      "failed_n": [
+        5,
+        8,
+        16
+      ],
+      "passed_n": [
+        1,
+        17,
+        25,
+        64
+      ],
+      "max_abs": 0.00139586601,
+      "max_relative_l2": 0.000771207677,
+      "tf32": false
+    },
+    "sq_long_noise_crosscheck": {
+      "case": "noise-1428479",
+      "passed_existing_gates": true,
+      "changed_levels": 1,
+      "elements": 95232,
+      "rate": 1.0500672043010754e-05
+    }
+  }
+}

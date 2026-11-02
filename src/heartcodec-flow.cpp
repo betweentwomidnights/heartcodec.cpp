@@ -33,7 +33,8 @@ struct Graph {
     ~Graph() { if (allocator) ggml_gallocr_free(allocator); if (ctx) ggml_free(ctx); }
     ggml_tensor * mm(ggml_tensor * a, ggml_tensor * b) {
         auto * y = ggml_mul_mat(ctx, a, b);
-        ggml_mul_mat_set_prec(y, GGML_PREC_F32);
+        if (!ggml_prec_set_acc(y, GGML_PREC_F32) || !ggml_prec_set_src(y, GGML_PREC_F32, 1))
+            throw std::runtime_error("Cannot request flow matmul precision");
         return y;
     }
     ggml_tensor * linear(const std::string & p, ggml_tensor * x, bool bias = true) {

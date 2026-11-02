@@ -1,5 +1,9 @@
 # RVQ, flow and stereo decoder validation
 
+Historical validation on `07b77b0`. The current shared pin is `b77ae79`, whose
+FP32 CUDA precision regression is documented in [the alignment report](GGML_B77_ALIGNMENT.md).
+The passing CUDA claims in this report do not apply to the new pin.
+
 November 1, 2026. The RTX 5070 Laptop is now the primary native development
 environment for **complete RVQ-token-to-48kHz-stereo decoding**, including full
 FP32 flow weights. Spark remains the Docker-only upstream oracle environment.

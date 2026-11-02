@@ -28,7 +28,9 @@ ggml_tensor * conv(ggml_context * ctx, Model & model, const std::string & p,
     cols = ggml_reshape_2d(ctx, cols, k * spec.in_channels, cols->ne[1]);
     auto * matrix = model.matrix_layout ? w : ggml_reshape_2d(ctx, w, k * spec.in_channels, spec.out_channels);
     auto * y = ggml_mul_mat(ctx, matrix, cols);
-    ggml_mul_mat_set_prec(y, GGML_PREC_F32);
+    if (!ggml_prec_set_acc(y, GGML_PREC_F32) ||
+        (matrix->type == GGML_TYPE_F32 && !ggml_prec_set_src(y, GGML_PREC_F32, 1)))
+        throw std::runtime_error("Cannot request SQ matmul precision");
     y = ggml_cont(ctx, ggml_transpose(ctx, y));
     return ggml_add(ctx, y, ggml_reshape_2d(ctx, model.tensor(p + ".bias"), 1, spec.out_channels));
 }
@@ -41,7 +43,9 @@ ggml_tensor * upsample(ggml_context * ctx, Model & model, const std::string & p,
                       ggml_tensor * x, int stride, int channels) {
     auto * columns = ggml_mul_mat(ctx, model.tensor(p + ".weight"),
                                  ggml_cont(ctx, ggml_transpose(ctx, x)));
-    ggml_mul_mat_set_prec(columns, GGML_PREC_F32);
+    if (!ggml_prec_set_acc(columns, GGML_PREC_F32) ||
+        (columns->src[0]->type == GGML_TYPE_F32 && !ggml_prec_set_src(columns, GGML_PREC_F32, 1)))
+        throw std::runtime_error("Cannot request SQ transpose matmul precision");
     auto * y = ggml_col2im_1d(ctx, columns, stride, channels, 0);
     // Upstream causal ConvTranspose1d crops stride samples only on the right.
     y = ggml_cont(ctx, ggml_view_2d(ctx, y, x->ne[0] * stride, channels, y->nb[1], 0));

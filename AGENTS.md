@@ -9,12 +9,16 @@
 - Use `scripts/spark.sh` for the established container workflow. Reference code is
   mounted read-only from the sibling `_heartcodec_refs` directory.
 - Use `betweentwomidnights/ggml`; keep generic kernels and backend fixes there.
-  The initial SQ milestone pins `07b77b0112cc30861b49116b057bac33e819ee06`
-  (shared branch `feature/heartcodec-cuda-f32-precision`).
+  The coordinated pin is `b77ae790e628270af46a8af1eca38441c23f1252` on
+  `feature/shared-sa3-acestep-v0.17`. The branch name is historical; use exact
+  commit identity rather than inferring the upstream release from its name.
+  Earlier `07b77b0` parity reports are historical until revalidated on this pin.
 - GGML changes and pin updates require coordination across consumers. First try
   the existing in-tree target/API. If a change is essential, isolate it in a
   separate worktree/branch and open a focused draft PR for cross-agent review;
   keep consumer pins unchanged until adoption is coordinated after review.
+  Any necessary new GGML PR must start from the coordinated `b77ae79` baseline
+  and target `feature/shared-sa3-acestep-v0.17`; never patch the shared checkout.
 - Match unquantized intermediate tensors before quantization or optimization.
   SQ latents and RVQ codes are distinct representations.
 - The laptop checkout at `C:\dev\heartcodec.cpp` is now the primary development

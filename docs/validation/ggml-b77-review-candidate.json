@@ -1,0 +1,161 @@
+{
+  "ggml_revision": "0f2ed045eaff6bf01bed074878b6988248efbc22",
+  "shared_ggml_baseline": "b77ae790e628270af46a8af1eca38441c23f1252",
+  "unadopted_review_candidate": true,
+  "date": "2026-11-01",
+  "backend": "cuda",
+  "device": "NVIDIA GB10",
+  "tf32": false,
+  "cublas_compute_type": "auto",
+  "native_ctest": {
+    "tests": 5,
+    "passed": true
+  },
+  "existing_mul_mat_tests": {
+    "tests": 78,
+    "passed": true
+  },
+  "flow": {
+    "passed": true,
+    "gates": {
+      "max_abs": 0.001,
+      "relative_l2": 0.0001
+    },
+    "cases": [
+      {
+        "name": "frames-4",
+        "passed": true,
+        "velocity": {
+          "max_abs": 2.6226043701171875e-06,
+          "relative_l2": 6.014759189862247e-07,
+          "passed": true
+        },
+        "max_abs": 4.57763671875e-05,
+        "max_relative_l2": 1.4587856378368448e-06
+      },
+      {
+        "name": "frames-9",
+        "passed": true,
+        "velocity": {
+          "max_abs": 3.5762786865234375e-06,
+          "relative_l2": 6.965855264531348e-07,
+          "passed": true
+        },
+        "max_abs": 4.57763671875e-05,
+        "max_relative_l2": 1.7341872479596992e-06
+      },
+      {
+        "name": "frames-372",
+        "passed": true,
+        "velocity": {
+          "max_abs": 9.924173355102539e-06,
+          "relative_l2": 1.645202308715398e-06,
+          "passed": true
+        },
+        "max_abs": 0.00025177001953125,
+        "max_relative_l2": 2.9985283031868386e-06
+      },
+      {
+        "name": "frames-4-steps-1",
+        "passed": true,
+        "velocity": {
+          "max_abs": 3.337860107421875e-06,
+          "relative_l2": 6.437467914020585e-07,
+          "passed": true
+        },
+        "max_abs": 6.103515625e-05,
+        "max_relative_l2": 2.976124110383463e-06
+      },
+      {
+        "name": "frames-4-steps-3",
+        "passed": true,
+        "velocity": {
+          "max_abs": 2.384185791015625e-06,
+          "relative_l2": 5.830034573642419e-07,
+          "passed": true
+        },
+        "max_abs": 3.814697265625e-05,
+        "max_relative_l2": 1.2606281602339625e-06
+      },
+      {
+        "name": "frames-4-steps-10",
+        "passed": true,
+        "velocity": {
+          "max_abs": 3.337860107421875e-06,
+          "relative_l2": 6.02410426739039e-07,
+          "passed": true
+        },
+        "max_abs": 2.288818359375e-05,
+        "max_relative_l2": 9.766109901124372e-07
+      }
+    ]
+  },
+  "source_precision_regression": {
+    "passed": true,
+    "cuda_cases": 14,
+    "k": 512,
+    "m": 64,
+    "n": [
+      1,
+      5,
+      8,
+      16,
+      17,
+      25,
+      64
+    ],
+    "accumulation": [
+      "default",
+      "F32"
+    ],
+    "max_abs": 1.55230601e-06
+  },
+  "sq": {
+    "main": {
+      "cases": 27,
+      "passed_existing_gates": true,
+      "encoder_cases": 26,
+      "changed_levels": 3,
+      "level_change_cases": [
+        {
+          "name": "noise-1428479",
+          "changed": 1,
+          "elements": 95232,
+          "rate": 1.0500672043010754e-05
+        },
+        {
+          "name": "noise-1428480",
+          "changed": 1,
+          "elements": 95232,
+          "rate": 1.0500672043010754e-05
+        },
+        {
+          "name": "noise-1428481",
+          "changed": 1,
+          "elements": 95232,
+          "rate": 1.0500672043010754e-05
+        }
+      ],
+      "max_decode_abs": 5.244649946689606e-05,
+      "max_decode_relative_l2": 3.2057578460542414e-05
+    },
+    "boundary": {
+      "cases": 6,
+      "passed_existing_gates": true,
+      "encoder_cases": 6,
+      "changed_levels": 0,
+      "level_change_cases": [],
+      "max_decode_abs": 5.364418029785156e-07,
+      "max_decode_relative_l2": 2.2853265138907003e-06
+    },
+    "baseline_crosscheck": {
+      "case": "noise-1428479",
+      "baseline_changed_levels": 1,
+      "candidate_changed_levels": 1,
+      "baseline_and_candidate_metrics_equal": true,
+      "scope": "Frozen reference-level roundtrip, not zero-level-change equivalence or full native encoder-decoder audio transparency"
+    }
+  },
+  "review_pull_request": "https://github.com/betweentwomidnights/ggml/pull/21",
+  "review_base_branch": "feature/shared-sa3-acestep-v0.17"
+}
