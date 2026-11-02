@@ -4,6 +4,11 @@ Shared native HeartCodec primitives for future MuLaCover and SpanSynth consumers
 in the gary4local / gary4juce ecosystem. Implementation follows sa3.cpp and uses
 the shared [betweentwomidnights/ggml](https://github.com/betweentwomidnights/ggml) fork.
 
+Clone with `git clone --recurse-submodules https://github.com/betweentwomidnights/heartcodec.cpp.git`.
+The generator lives in [mulacover.cpp](https://github.com/betweentwomidnights/mulacover.cpp).
+Only source, tooling and compact reports are published; weights, audio and raw
+fixtures are excluded. See [third-party source/model terms](THIRD_PARTY_NOTICES.md).
+
 **Native RVQ tokens now decode to 48 kHz stereo on the 8GB RTX 5070 Laptop.**
 RVQ lookup, the full FP32 flow transformer, guided Euler sampling, stereo splitting,
 window context, overlap/crossfade and trimming run locally using the shared GGML
@@ -64,8 +69,9 @@ counts against the index when present. Storage scenarios exclude execution memor
 The checked-in [audit](docs/checkpoint-audit.json) records exact checkpoint revisions.
 
 The [implementation brief](shared-heartcodec-cpp-implementation-brief.md) defines the
-larger roadmap. The next generator milestone is native teacher-forced MuLaCover
-parity, then its Q4_K_M policy. Query and feature extraction remain later work.
+larger roadmap. Sibling MuLaCover now has full-song matched-RNG F32 token parity
+and experimental Q4_K_M generation; strict decoder waveform differences remain.
+Query and feature extraction remain later work.
 Quantization stays controlled per component; the flow GGUF currently requires F32.
 
 Downstream builds consume `heartcodec::heartcodec` through `find_package` or
