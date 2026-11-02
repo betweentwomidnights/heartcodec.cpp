@@ -19,6 +19,10 @@
   keep consumer pins unchanged until adoption is coordinated after review.
   Any necessary new GGML PR must start from the coordinated `b77ae79` baseline
   and target `feature/shared-sa3-acestep-v0.17`; never patch the shared checkout.
+- User authorized MuLaCover-only development using isolated CUDA fix `0f2ed045`
+  before coordinated adoption. Sibling MuLaCover supplies that single GGML target;
+  this repository's shared submodule remains `b77ae79`. Defer ggml-bump-check and
+  all five sibling bumps until MuLaCover has been confirmed working.
 - Match unquantized intermediate tensors before quantization or optimization.
   SQ latents and RVQ codes are distinct representations.
 - The laptop checkout at `C:\dev\heartcodec.cpp` is now the primary development

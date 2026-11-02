@@ -1,5 +1,10 @@
 # Shared GGML baseline and precision review
 
+Later user decision: MuLaCover may use the isolated fix as its development
+dependency now. The sibling's `dependencies/ggml-development.json` records it;
+this repository's GGML gitlink stays at `b77ae79`. ggml-bump-check and the five
+sibling updates are deferred until MuLaCover has been confirmed working.
+
 November 1, 2026. User-selected baseline:
 `b77ae790e628270af46a8af1eca38441c23f1252` in
 `betweentwomidnights/ggml`, branch `feature/shared-sa3-acestep-v0.17`.
