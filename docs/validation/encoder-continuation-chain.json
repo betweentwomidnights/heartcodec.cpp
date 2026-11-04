@@ -1,0 +1,73 @@
+{
+  "date": "2026-11-04",
+  "input": "Native CPU HeartCodec waveform encoder produces 372 guide frames from the original 29.76-second WAV",
+  "encoder_guide_sha256": "bdbeab789d35496a3744f41410ab4ffeaecf91e7a0a9759dd1a9e7ae075ab342",
+  "output": {
+    "frames": 1095,
+    "prompt_frames": 25,
+    "symbolic_frames": 540,
+    "score_mode": "none",
+    "cache_capacity": 1536,
+    "audio_prefix_frames": 372,
+    "newly_generated_frames": 723,
+    "guide_source_frames": 372,
+    "guide_source_start_frame": 0,
+    "requested_new_frames": 1125,
+    "continuation_samples_per_channel": 2776320,
+    "guidance": 1.5,
+    "temperature": 1,
+    "top_k": 250,
+    "seed": 1701,
+    "experimental_tempo": {
+      "method": "conditional-cross-attention-gaussian-v1",
+      "bpm": 0,
+      "width_beats": 1,
+      "offset_beats": 0,
+      "local_window": 0
+    },
+    "eos": true,
+    "replay_checked": false,
+    "terminal_contract_passed": true,
+    "generator_released_before_decode": true,
+    "generation_with_checks_seconds": 206.467,
+    "weight_bytes": 2939920896,
+    "cache_bytes": 705232896,
+    "graph_bytes": 54968832,
+    "audio_samples_per_channel": 4204800,
+    "audio_peak": 0.974264,
+    "audio_rms": 0.166555,
+    "decode_seconds": 41.0226,
+    "decoder_seed": 1701,
+    "decoder_steps": 10,
+    "segment_codes": 372,
+    "decoder_guidance": 1.25,
+    "rng": "torch-cuda",
+    "rng_cuda_blocks": 288,
+    "sampler_offset_per_head": 4,
+    "sampler_start_offset": 0,
+    "sampler_final_offset": 23168,
+    "decoder_final_offset": 16,
+    "decoder_rng_windows": 4,
+    "ggml_commit": "0f2ed045"
+  },
+  "files": [
+    {
+      "file": "codes.i32",
+      "sha256": "0a72c959b0f677761877f4f96c9f8281f4e8f43e44d5493e04932d682bb02a18",
+      "matches_accepted_native_baseline": true
+    },
+    {
+      "file": "audio.wav",
+      "sha256": "b40778a842f0fbea75a71120bb262fb5d5f0a4b4f6ec9095899a009ab9799fa3",
+      "matches_accepted_native_baseline": true
+    },
+    {
+      "file": "continuation.wav",
+      "sha256": "47493d786031a8b11ab51a6fa0e040302b19d0b5ed455ef21af66856ac4246ac",
+      "matches_accepted_native_baseline": true
+    }
+  ],
+  "native_inference_invoked_python": false,
+  "style_conditioning": "Reused cached instrumental text and Qwen preset; custom-style frontend remains reference preprocessing",
+  "scope": "Agreement with accepted native Q4 continuation, not upstream strict waveform parity"
+}

@@ -1,0 +1,638 @@
+{
+  "reference_manifest_sha256": "02b3405798d46f18e4bfea7fd9e9c8ca6ae21faf0eb72a788cd07639504f0759",
+  "model_sha256": "b7cd97fb1cc48764070851777ed00c5b56540730ae7372ad39e2d8c92486c297",
+  "reference_heartlib_revision": "5858ca8f1ffe58d62be7c007ea55f1033c5ca456",
+  "reference_encoder_revision": "e6020510612d6653b73d6cd54393ef80929e3c81",
+  "reference_decoder_revision": "f889dab0532cfa4bf459f2a3367eb6d346b8eeda",
+  "reference_device": "cpu",
+  "native_run": {
+    "mode": "encode",
+    "frames": 625,
+    "source_samples": 2205000,
+    "source_rate": 44100,
+    "source_channels": 2,
+    "resampled_samples": 1200000,
+    "seconds": 8.99221,
+    "weight_bytes": 2157091968,
+    "graph_bytes": 2156167168
+  },
+  "mode": "raw",
+  "gates": {
+    "max_abs": 0.001,
+    "relative_l2": 0.0001,
+    "code_ids": "all exact",
+    "margin_values": "diagnostic only; not a gate waiver"
+  },
+  "stages": [
+    {
+      "case": "source-chunk-0",
+      "tensor": "input.acoustic",
+      "max_abs": 0.00011968612670898438,
+      "relative_l2": 3.948930710992812e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "input.semantic",
+      "max_abs": 0.0005774497985839844,
+      "relative_l2": 3.461556722396887e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "input.whisper",
+      "max_abs": 0.004364728927612305,
+      "relative_l2": 8.712179264219995e-06,
+      "passed": false
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "input.wavlm",
+      "max_abs": 2.47955322265625e-05,
+      "relative_l2": 2.1238782126720493e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "chunk24",
+      "max_abs": 1.7881393432617188e-07,
+      "relative_l2": 2.3798676823860858e-08,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "resampled24",
+      "max_abs": 1.7881393432617188e-07,
+      "relative_l2": 2.3753103873622474e-08,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.feature.muencoder.preprocessor_melspec_2048",
+      "max_abs": 0.000396728515625,
+      "relative_l2": 4.6231890735997326e-07,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "input.mu_mel",
+      "max_abs": 2.1696090698242188e-05,
+      "relative_l2": 4.0990660299149823e-07,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.feature.muencoder.conv",
+      "max_abs": 0.0003204345703125,
+      "relative_l2": 4.496230287949363e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.feature.muencoder.conformer.layers.0",
+      "max_abs": 0.0001583099365234375,
+      "relative_l2": 4.141553557268296e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.feature.muencoder.conformer.layers.1",
+      "max_abs": 0.00011968612670898438,
+      "relative_l2": 3.948930710992811e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.feature.muencoder.conformer.layers.10",
+      "max_abs": 0.0005774497985839844,
+      "relative_l2": 3.4615567223968874e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.feature.resample_24k_to_16k",
+      "max_abs": 1.7881393432617188e-07,
+      "relative_l2": 2.5324960669740727e-08,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.feature.wavlm_encoder.feature_extractor",
+      "max_abs": 5.252659320831299e-07,
+      "relative_l2": 2.867306863321343e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.feature.wavlm_encoder.feature_projection",
+      "max_abs": 1.2099742889404297e-05,
+      "relative_l2": 2.386005788887349e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.feature.wavlm_encoder.encoder.pos_conv_embed",
+      "max_abs": 1.3589859008789062e-05,
+      "relative_l2": 1.6393967596816637e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.feature.wavlm_encoder.encoder.layers.0",
+      "max_abs": 8.404254913330078e-06,
+      "relative_l2": 3.126079224059829e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.feature.wavlm_encoder.encoder.layers.5",
+      "max_abs": 1.4066696166992188e-05,
+      "relative_l2": 2.7073888288863334e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.feature.wavlm_encoder.encoder.layers.8",
+      "max_abs": 0.0001157522201538086,
+      "relative_l2": 2.88202820728345e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "input.whisper_mel",
+      "max_abs": 8.106231689453125e-06,
+      "relative_l2": 4.301316821085008e-07,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.feature.whisper_encoder.conv1",
+      "max_abs": 6.67572021484375e-06,
+      "relative_l2": 4.252629410139413e-07,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.feature.whisper_encoder.conv2",
+      "max_abs": 1.7881393432617188e-05,
+      "relative_l2": 9.383738350919018e-07,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.feature.whisper_encoder.layers.0",
+      "max_abs": 2.1696090698242188e-05,
+      "relative_l2": 1.8765610407275158e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.feature.whisper_encoder.layers.11",
+      "max_abs": 0.021026611328125,
+      "relative_l2": 1.1263034373552502e-05,
+      "passed": false
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.feature.whisper_encoder",
+      "max_abs": 0.00872945785522461,
+      "relative_l2": 1.1439746458568609e-05,
+      "passed": false
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.query.cond_fusion_layer_acoustic",
+      "max_abs": 5.1021575927734375e-05,
+      "relative_l2": 2.7531296784464074e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.query.cond_fusion_layer_semantic",
+      "max_abs": 0.00018739700317382812,
+      "relative_l2": 2.9367230289134063e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.query.cond_fusion_layer_phone",
+      "max_abs": 6.079673767089844e-06,
+      "relative_l2": 1.8317146811385038e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.query.feature_proj",
+      "max_abs": 0.0001827087253332138,
+      "relative_l2": 2.4792446875772054e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.query.encoder_transformers.0",
+      "max_abs": 0.00018584728240966797,
+      "relative_l2": 2.4523824365118415e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.query.encoder_transformers.1",
+      "max_abs": 0.0001881122589111328,
+      "relative_l2": 2.5011827201968126e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.query.encoder_transformers.5",
+      "max_abs": 0.00018715858459472656,
+      "relative_l2": 2.5767237050170827e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "query",
+      "max_abs": 5.125999450683594e-06,
+      "relative_l2": 4.5785080640217145e-07,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "rvq.projected",
+      "max_abs": 3.4384429454803467e-06,
+      "relative_l2": 1.6317329836540827e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "input.acoustic",
+      "max_abs": 0.00027742236852645874,
+      "relative_l2": 4.418286119011754e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "input.semantic",
+      "max_abs": 0.00027108192443847656,
+      "relative_l2": 3.784666926233484e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "input.whisper",
+      "max_abs": 0.0013208389282226562,
+      "relative_l2": 6.383709613907061e-06,
+      "passed": false
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "input.wavlm",
+      "max_abs": 4.863739013671875e-05,
+      "relative_l2": 3.654838976918076e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "chunk24",
+      "max_abs": 1.7881393432617188e-07,
+      "relative_l2": 2.3718279895099834e-08,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.feature.muencoder.preprocessor_melspec_2048",
+      "max_abs": 0.0003719329833984375,
+      "relative_l2": 1.0768522796201009e-07,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "input.mu_mel",
+      "max_abs": 2.0265579223632812e-05,
+      "relative_l2": 1.0159797090595029e-07,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.feature.muencoder.conv",
+      "max_abs": 0.0007848739624023438,
+      "relative_l2": 3.198527212311095e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.feature.muencoder.conformer.layers.0",
+      "max_abs": 0.00033906102180480957,
+      "relative_l2": 4.6131277610662026e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.feature.muencoder.conformer.layers.1",
+      "max_abs": 0.00027742236852645874,
+      "relative_l2": 4.418286119011754e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.feature.muencoder.conformer.layers.10",
+      "max_abs": 0.00027108192443847656,
+      "relative_l2": 3.784666926233484e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.feature.resample_24k_to_16k",
+      "max_abs": 1.7881393432617188e-07,
+      "relative_l2": 2.5279507997361956e-08,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.feature.wavlm_encoder.feature_extractor",
+      "max_abs": 4.954636096954346e-07,
+      "relative_l2": 4.382451063039481e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.feature.wavlm_encoder.feature_projection",
+      "max_abs": 2.104043960571289e-05,
+      "relative_l2": 5.658038557871987e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.feature.wavlm_encoder.encoder.pos_conv_embed",
+      "max_abs": 2.6881694793701172e-05,
+      "relative_l2": 3.7374759140896206e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.feature.wavlm_encoder.encoder.layers.0",
+      "max_abs": 1.7523765563964844e-05,
+      "relative_l2": 6.967898745221923e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.feature.wavlm_encoder.encoder.layers.5",
+      "max_abs": 3.129243850708008e-05,
+      "relative_l2": 4.471898998335592e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.feature.wavlm_encoder.encoder.layers.8",
+      "max_abs": 0.0001468658447265625,
+      "relative_l2": 4.689859037136268e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "input.whisper_mel",
+      "max_abs": 9.5367431640625e-06,
+      "relative_l2": 4.4505665867000644e-07,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.feature.whisper_encoder.conv1",
+      "max_abs": 5.491077899932861e-06,
+      "relative_l2": 4.583339595802614e-07,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.feature.whisper_encoder.conv2",
+      "max_abs": 1.8358230590820312e-05,
+      "relative_l2": 9.78300143220569e-07,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.feature.whisper_encoder.layers.0",
+      "max_abs": 2.1576881408691406e-05,
+      "relative_l2": 1.8629557886031596e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.feature.whisper_encoder.layers.11",
+      "max_abs": 0.02398681640625,
+      "relative_l2": 9.011568388451887e-06,
+      "passed": false
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.feature.whisper_encoder",
+      "max_abs": 0.0026044845581054688,
+      "relative_l2": 8.430665092517084e-06,
+      "passed": false
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.query.cond_fusion_layer_acoustic",
+      "max_abs": 9.226799011230469e-05,
+      "relative_l2": 3.137905904770662e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.query.cond_fusion_layer_semantic",
+      "max_abs": 5.900859832763672e-05,
+      "relative_l2": 2.9849784935728086e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.query.cond_fusion_layer_phone",
+      "max_abs": 1.9550323486328125e-05,
+      "relative_l2": 2.7986311346638043e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.query.feature_proj",
+      "max_abs": 7.748603820800781e-05,
+      "relative_l2": 2.5440890472217986e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.query.encoder_transformers.0",
+      "max_abs": 7.534027099609375e-05,
+      "relative_l2": 2.441870405886693e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.query.encoder_transformers.1",
+      "max_abs": 7.724761962890625e-05,
+      "relative_l2": 2.4468223849010846e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "stage.query.encoder_transformers.5",
+      "max_abs": 8.392333984375e-05,
+      "relative_l2": 2.5387832622288905e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "query",
+      "max_abs": 7.092952728271484e-06,
+      "relative_l2": 4.97393985986963e-07,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "rvq.projected",
+      "max_abs": 4.202127456665039e-06,
+      "relative_l2": 1.6125387396136835e-06,
+      "passed": true
+    }
+  ],
+  "rvq_margin_diagnostics": [
+    {
+      "case": "source-chunk-0",
+      "tensor": "rvq.margin.0",
+      "max_abs": 2.86102294921875e-06,
+      "relative_l2": 8.658318695003324e-06
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "rvq.margin.1",
+      "max_abs": 2.0265579223632812e-06,
+      "relative_l2": 1.45394660512771e-05
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "rvq.margin.2",
+      "max_abs": 1.6689300537109375e-06,
+      "relative_l2": 1.6148996971268554e-05
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "rvq.margin.3",
+      "max_abs": 1.8477439880371094e-06,
+      "relative_l2": 2.2001423874991267e-05
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "rvq.margin.4",
+      "max_abs": 2.2649765014648438e-06,
+      "relative_l2": 2.7213536558379075e-05
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "rvq.margin.5",
+      "max_abs": 0.01682409644126892,
+      "relative_l2": 0.05477552586590336
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "rvq.margin.6",
+      "max_abs": 0.00705564022064209,
+      "relative_l2": 0.027184004369364557
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "rvq.margin.7",
+      "max_abs": 0.018049493432044983,
+      "relative_l2": 0.09110432231509137
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "rvq.margin.0",
+      "max_abs": 6.139278411865234e-06,
+      "relative_l2": 2.164263394663368e-05
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "rvq.margin.1",
+      "max_abs": 2.5033950805664062e-06,
+      "relative_l2": 1.3813251312148586e-05
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "rvq.margin.2",
+      "max_abs": 2.3245811462402344e-06,
+      "relative_l2": 1.5147892346065467e-05
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "rvq.margin.3",
+      "max_abs": 2.1457672119140625e-06,
+      "relative_l2": 2.4721614935876504e-05
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "rvq.margin.4",
+      "max_abs": 3.516674041748047e-06,
+      "relative_l2": 3.302596305454781e-05
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "rvq.margin.5",
+      "max_abs": 2.652406692504883e-06,
+      "relative_l2": 4.273380944095133e-05
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "rvq.margin.6",
+      "max_abs": 2.562999725341797e-06,
+      "relative_l2": 4.6233282272727486e-05
+    },
+    {
+      "case": "source-chunk-1",
+      "tensor": "rvq.margin.7",
+      "max_abs": 3.844499588012695e-06,
+      "relative_l2": 7.870395284758338e-05
+    }
+  ],
+  "codes": {
+    "shape_match": true,
+    "expected_frames": 625,
+    "actual_frames": 625,
+    "total_compared_codes": 5000,
+    "changed_codes": 4,
+    "differences": [
+      {
+        "frame": 259,
+        "level": 4,
+        "expected": 6144,
+        "actual": 7217
+      },
+      {
+        "frame": 259,
+        "level": 5,
+        "expected": 6050,
+        "actual": 794
+      },
+      {
+        "frame": 259,
+        "level": 6,
+        "expected": 4683,
+        "actual": 4228
+      },
+      {
+        "frame": 259,
+        "level": 7,
+        "expected": 2905,
+        "actual": 4381
+      }
+    ],
+    "passed": false,
+    "sha256": "6c4526c1d59ff0362489d515130bc2dd6b85dc34417063b192803bcf12021584"
+  },
+  "skipped_reference_values": [
+    "waveform: borrowed PCM input",
+    "query mode: borrowed feature inputs and upstream audio/feature stages outside the tested query boundary",
+    "rvq.quantized: decoder projection, outside encoding API"
+  ],
+  "all_stage_gates_passed": false,
+  "code_parity_passed": false,
+  "passed": false
+}

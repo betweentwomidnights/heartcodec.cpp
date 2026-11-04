@@ -1,0 +1,118 @@
+{
+  "date": "2026-11-04",
+  "strict_gates_unchanged": {
+    "max_abs": 0.001,
+    "relative_l2": 0.0001,
+    "code_ids": "all exact"
+  },
+  "reference_cpu_manifest_sha256": "02b3405798d46f18e4bfea7fd9e9c8ca6ae21faf0eb72a788cd07639504f0759",
+  "reference_cuda_manifest_sha256": "ff6334088e5af8f69746263a0ce93271e2fc3a3b3322767603994aeffde6917e",
+  "cuda_oracle_scope": "Frozen CPU tensors; no end-to-end CUDA tokenize claim",
+  "cuda_oracle_effective_weights_materialized_on_cpu": true,
+  "torch_cpu_vs_cuda_codes": {
+    "compared_codes": 5000,
+    "changed_codes": 4,
+    "differences": [
+      {
+        "frame": 259,
+        "level": 4,
+        "cpu": 6144,
+        "cuda": 7217
+      },
+      {
+        "frame": 259,
+        "level": 5,
+        "cpu": 6050,
+        "cuda": 794
+      },
+      {
+        "frame": 259,
+        "level": 6,
+        "cpu": 4683,
+        "cuda": 4228
+      },
+      {
+        "frame": 259,
+        "level": 7,
+        "cpu": 2905,
+        "cuda": 4381
+      }
+    ]
+  },
+  "first_changed_code": {
+    "frame": 259,
+    "level": 4,
+    "reference_winner_margin": 5.960464477539063e-08
+  },
+  "earlier_cross_boundary_runs": [
+    {
+      "boundary": "native CPU query -> native CUDA RVQ",
+      "compared_codes": 2976,
+      "changed_codes": 0,
+      "code_sha256": "ea5ef00ad9cac38e7e6646b284af9fe7abaa9c31fda73f9146dc25b1eb52960a"
+    },
+    {
+      "boundary": "native CUDA query -> native CPU RVQ",
+      "compared_codes": 2976,
+      "changed_codes": 4,
+      "code_sha256": "418d41d2c25264173f2db62475ed0a69b43c63097a3c179f6dfffc3e1bb23c73"
+    },
+    {
+      "boundary": "native CUDA features -> native CPU query/RVQ",
+      "compared_codes": 2976,
+      "changed_codes": 0,
+      "code_sha256": "ea5ef00ad9cac38e7e6646b284af9fe7abaa9c31fda73f9146dc25b1eb52960a"
+    },
+    {
+      "boundary": "reference CPU features -> native CUDA query/RVQ, initial rotary",
+      "compared_codes": 2976,
+      "changed_codes": 4,
+      "code_sha256": "418d41d2c25264173f2db62475ed0a69b43c63097a3c179f6dfffc3e1bb23c73"
+    },
+    {
+      "boundary": "reference CPU features -> native CUDA query/RVQ, frozen rotary",
+      "compared_codes": 2976,
+      "changed_codes": 4,
+      "code_sha256": "418d41d2c25264173f2db62475ed0a69b43c63097a3c179f6dfffc3e1bb23c73"
+    }
+  ],
+  "rotary_query_comparison": [
+    {
+      "implementation": "original reconstructed frequencies",
+      "max_abs": 4.3511390686035156e-05,
+      "relative_l2": 2.2742252085640606e-06,
+      "passed": true
+    },
+    {
+      "implementation": "checkpoint F32 inverse frequencies",
+      "max_abs": 1.6689300537109375e-06,
+      "relative_l2": 2.5002686824129707e-07,
+      "passed": true
+    }
+  ],
+  "torch_cpu_vs_cuda_whisper_chunk0": [
+    {
+      "tensor": "input.whisper",
+      "reference_max_abs": 34.281524658203125,
+      "max_abs": 0.0035448074340820312,
+      "relative_l2": 8.246644606886905e-06,
+      "passed": false
+    },
+    {
+      "tensor": "stage.feature.whisper_encoder.layers.11",
+      "reference_max_abs": 813.5119018554688,
+      "max_abs": 0.01312255859375,
+      "relative_l2": 9.467017080086183e-06,
+      "passed": false
+    },
+    {
+      "tensor": "stage.feature.whisper_encoder",
+      "reference_max_abs": 34.83998107910156,
+      "max_abs": 0.007090091705322266,
+      "relative_l2": 1.0924095920420652e-05,
+      "passed": false
+    }
+  ],
+  "interpretation": "Native CUDA agrees with the independently run CUDA neural-stage code IDs. CPU-code mismatch and strict Whisper activation failures remain open; no tolerance or rounding waiver.",
+  "passed": false
+}

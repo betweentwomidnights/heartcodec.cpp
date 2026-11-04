@@ -29,8 +29,15 @@ The separate capability preserves frozen core/flow APIs and legacy seed behavior
 Matched RNG reproduces all 6,888 upstream F32 generator codes for the real-song
 control; the full-song decoded waveform still fails its unchanged strict limits.
 
-Base SQ encode/quantize/decode continues to pass its frozen parity suite. Full
-audio-to-RVQ tokenization (query/feature encoders) remains future work. MuLaCover
+An experimental [full waveform-to-RVQ encoder](docs/AUDIO_ENCODER.md) now runs
+natively on the laptop through a separate negotiated C capability. CPU matches
+all 8,000 code IDs across three raw-audio fixtures; CUDA matches two fixtures but
+changes four codes in one 50-second frame. Strict intermediate activation gates
+remain open on both backends. Encoder weights are F32; no encoder quantization
+is implemented. Native encoding reproduces the guide for the accepted complete
+MuLaCover continuation byte-for-byte, removing its audio-guide Python runtime.
+
+Base SQ encode/quantize/decode continues to pass its frozen parity suite. MuLaCover
 generator development lives in the sibling `mulacover.cpp` repository, where
 FP32/BF16 prompt, symbolic, logits and KV-cache reference fixtures are established.
 
@@ -39,11 +46,9 @@ local FP16, Q8, Q6, Q5_K_M, and Q4_K_M measurements. Q4_K_M reduces the combined
 weights from 641 MiB to 123 MiB, but changes encoder levels and reconstructed audio.
 FP32 remains the SQ default; quantized SQ models are experimental.
 
-Start local work with:
+Start native local work with:
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
 .\scripts\build-windows.ps1 cpu
 .\scripts\build-windows.ps1 cuda
 .\scripts\evaluate-windows.ps1 -Backend cuda -Suite parity
@@ -55,6 +60,8 @@ python -m venv .venv
 The frozen GGUF and fixture files are already present in this workspace and remain
 outside Git. The [Docker workflow](docs/SPARK_WORKFLOW.md) remains available for
 reference generation on Spark. Spark work continues to run inside Docker.
+Native inference needs neither Python nor Torch. Optional checkpoint inspection,
+conversion and offline comparison use the development Python requirements.
 
 Reproduce the checkpoint inventory without installing PyTorch or downloading weights:
 
@@ -71,7 +78,8 @@ The checked-in [audit](docs/checkpoint-audit.json) records exact checkpoint revi
 The [implementation brief](shared-heartcodec-cpp-implementation-brief.md) defines the
 larger roadmap. Sibling MuLaCover now has full-song matched-RNG F32 token parity
 and experimental Q4_K_M generation; strict decoder waveform differences remain.
-Query and feature extraction remain later work.
+Encoder parity work remains open as recorded above; native custom-style prompt
+preparation remains a separate MuLaCover milestone.
 Quantization stays controlled per component; the flow GGUF currently requires F32.
 
 Downstream builds consume `heartcodec::heartcodec` through `find_package` or

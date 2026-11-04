@@ -12,6 +12,43 @@ common=(--rm --user "$(id -u):$(id -g)" -e USER=heartcodec -e LOGNAME=heartcodec
     -v "$project_root:/workspace" -w /workspace)
 python=/opt/sa3-venv/bin/python
 case "${1:-}" in
+    reference-encoder-cuda-stages)
+        encoder_cache="$(dirname "$project_root")/mulacover.cpp/.cache/huggingface"
+        docker run "${common[@]}" --gpus all --network none -e CUBLAS_WORKSPACE_CONFIG=:4096:8 \
+            -v "$refs:/refs:ro" -v "$encoder_cache:/encoder-cache:ro" \
+            "$reference_image" "$python" reference/export_encoder_cuda_stages.py \
+            --heartlib /refs/heartlib \
+            --encoder-snapshot /encoder-cache/hub/models--HeartMuLa--HeartCodec-oss-encoder/snapshots/e6020510612d6653b73d6cd54393ef80929e3c81 \
+            --decoder-snapshot /workspace/.cache/huggingface/hub/models--HeartMuLa--HeartCodec-oss-20260123/snapshots/f889dab0532cfa4bf459f2a3367eb6d346b8eeda \
+            --reference "${2:-refdata/encoder50-cpu-v1}" --output "${3:-refdata/encoder50-cuda-stages}"
+        ;;
+    reference-encoder|reference-encoder50|convert-encoder)
+        encoder_cache="$(dirname "$project_root")/mulacover.cpp/.cache/huggingface"
+        encoder_snapshot=/encoder-cache/hub/models--HeartMuLa--HeartCodec-oss-encoder/snapshots/e6020510612d6653b73d6cd54393ef80929e3c81
+        decoder_snapshot=/workspace/.cache/huggingface/hub/models--HeartMuLa--HeartCodec-oss-20260123/snapshots/f889dab0532cfa4bf459f2a3367eb6d346b8eeda
+        cover="${HEARTCODEC_ENCODER_INPUT:-$(dirname "$project_root")/mulacover.cpp/refdata/bpm-prefix}"
+        if [[ "$1" == convert-encoder ]]; then
+            encoder_program=tools/convert-encoder-to-gguf.py
+            encoder_args=(--output "${2:-models/heartcodec-encoder-f32.gguf}")
+        else
+            encoder_program=reference/export_encoder.py
+            if [[ "$1" == reference-encoder50 ]]; then
+                cover="$(dirname "$project_root")/mulacover.cpp/refdata/cursor-continuation"
+                encoder_args=(--output "${2:-refdata/encoder50-cpu}" --audio /encoder-input/source-first-50.wav \
+                    --expected-codes /encoder-input/encoded50/guide-1.i32)
+            else
+                encoder_audio="${HEARTCODEC_ENCODER_AUDIO:-source-first-2976.wav}"
+                encoder_codes="${HEARTCODEC_ENCODER_EXPECTED_CODES-encoded-long/guide-1.i32}"
+                encoder_args=(--output "${2:-refdata/encoder-cpu}" --audio "/encoder-input/$encoder_audio")
+                if [[ -n "$encoder_codes" ]]; then encoder_args+=(--expected-codes "/encoder-input/$encoder_codes"); fi
+            fi
+        fi
+        docker run "${common[@]}" --network none -v "$refs:/refs:ro" \
+            -v "$encoder_cache:/encoder-cache:ro" -v "$cover:/encoder-input:ro" \
+            "$reference_image" "$python" "$encoder_program" \
+            --heartlib /refs/heartlib --encoder-snapshot "$encoder_snapshot" \
+            --decoder-snapshot "$decoder_snapshot" "${encoder_args[@]}"
+        ;;
     image)
         docker image inspect "$base_id" >/dev/null
         docker tag "$base_id" "$base_tag"
@@ -82,7 +119,7 @@ case "${1:-}" in
             --model models/heartcodec-sq-decoder-f32.gguf --output "${4:-refdata/native-$backend}" --backend "$backend"
         ;;
     *)
-        echo 'Usage: bash scripts/spark.sh image|image-reference|bootstrap|prepare|prepare-decoder|reference [OUT SAMPLES]|reference-flow|reference-stereo|convert|convert-flow|build-cpu|build-cuda|precision-test|compare [cpu|cuda REF OUT]' >&2
+        echo 'Usage: bash scripts/spark.sh image|image-reference|bootstrap|prepare|prepare-decoder|reference [OUT SAMPLES]|reference-flow|reference-stereo|reference-encoder [OUT]|reference-encoder50 [OUT]|reference-encoder-cuda-stages [CPU_REF OUT]|convert|convert-flow|convert-encoder [OUT]|build-cpu|build-cuda|precision-test|compare [cpu|cuda REF OUT]' >&2
         exit 2
         ;;
 esac

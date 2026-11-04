@@ -1,7 +1,7 @@
 # Third-party source and model inventory
 
-This project contains inspection/reference tooling and a native Base SQ decoder
-graph based on the documented HeartCodec architecture and the SA3 GGML graph
+This project contains inspection/reference tooling and native SQ, RVQ/flow and
+waveform-encoder graphs based on the documented HeartCodec architecture and SA3 GGML graph
 patterns. Upstream Python source checkouts are siblings outside the project. Model
 weights and generated GGUFs are not redistributed here. The shared GGML runtime is
 included as a pinned submodule with its own license.
@@ -12,6 +12,21 @@ included as a pinned submodule with its own license.
 | [mimbres/spansynth-edit](https://github.com/mimbres/spansynth-edit) | Apache-2.0 source; inspect codec attribution before copying implementation |
 | [HeartMuLa/MuLaCover](https://github.com/HeartMuLa/MuLaCover) | Apache-2.0 source; separate MODEL_LICENSE restricts weights and outputs to noncommercial use |
 | [betweentwomidnights/ggml](https://github.com/betweentwomidnights/ggml) | Required shared runtime fork; preserve its license when adding dependency |
+
+## Waveform encoder attribution
+
+The native encoder reimplements the inference path in HeartLib revision
+5858ca8f1ffe58d62be7c007ea55f1033c5ca456, together with the Whisper, WavLM and
+Wav2Vec2-Conformer behavior in Transformers 4.57.6. Those reference sources use
+Apache-2.0; a copy is included in `third_party/LICENSE-Apache-2.0.txt`.
+The MuEncoder frontend retains MusicFM / ByteDance's MIT copyright and permission
+text in `third_party/LICENSE-MusicFM.txt`.
+
+The residual-codebook distance convention follows vector-quantize-pytorch 1.27.15;
+the new native implementation uses the original decoder's trained codebooks and
+does not bundle its Python package. Native graph, preprocessing, ABI and CLI work
+is maintained here. Reference Python/third-party checkouts and all checkpoint
+payloads remain outside this repository's distributed source.
 
 Before distributing converted weights, record the exact checkpoint license at the
 pinned revision for HeartCodec decoder, HeartCodec encoder, Qwen, and every embedded
