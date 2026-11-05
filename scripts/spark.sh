@@ -12,6 +12,19 @@ common=(--rm --user "$(id -u):$(id -g)" -e USER=heartcodec -e LOGNAME=heartcodec
     -v "$project_root:/workspace" -w /workspace)
 python=/opt/sa3-venv/bin/python
 case "${1:-}" in
+    reference-whisper)
+        encoder_cache="$(dirname "$project_root")/mulacover.cpp/.cache/huggingface"
+        gpu=(); if [[ "${5:-cpu}" == cuda ]]; then gpu=(--gpus all); fi
+        whisper_args=(--dtype "${HEARTCODEC_WHISPER_DTYPE:-f32}" --threads "${HEARTCODEC_WHISPER_THREADS:-8}")
+        if [[ "${HEARTCODEC_WHISPER_MKLDNN:-1}" == 0 ]]; then whisper_args+=(--disable-mkldnn); fi
+        if [[ "${HEARTCODEC_WHISPER_LINEAR_CONTROL:-0}" == 1 ]]; then whisper_args+=(--linear-control); fi
+        docker run "${common[@]}" "${gpu[@]}" --network none -e CUBLAS_WORKSPACE_CONFIG=:4096:8 \
+            -v "$refs:/refs:ro" -v "$encoder_cache:/encoder-cache:ro" \
+            "$reference_image" "$python" reference/export_whisper.py --heartlib /refs/heartlib \
+            --encoder-snapshot /encoder-cache/hub/models--HeartMuLa--HeartCodec-oss-encoder/snapshots/e6020510612d6653b73d6cd54393ef80929e3c81 \
+            --decoder-snapshot /workspace/.cache/huggingface/hub/models--HeartMuLa--HeartCodec-oss-20260123/snapshots/f889dab0532cfa4bf459f2a3367eb6d346b8eeda \
+            --reference "${2:-refdata/encoder50-cpu-v1}" --output "${3:-refdata/whisper-cpu-trace}" --case "${4:-source-chunk-0}" --device "${5:-cpu}" "${whisper_args[@]}"
+        ;;
     reference-encoder-cuda-stages)
         encoder_cache="$(dirname "$project_root")/mulacover.cpp/.cache/huggingface"
         docker run "${common[@]}" --gpus all --network none -e CUBLAS_WORKSPACE_CONFIG=:4096:8 \
@@ -119,7 +132,7 @@ case "${1:-}" in
             --model models/heartcodec-sq-decoder-f32.gguf --output "${4:-refdata/native-$backend}" --backend "$backend"
         ;;
     *)
-        echo 'Usage: bash scripts/spark.sh image|image-reference|bootstrap|prepare|prepare-decoder|reference [OUT SAMPLES]|reference-flow|reference-stereo|reference-encoder [OUT]|reference-encoder50 [OUT]|reference-encoder-cuda-stages [CPU_REF OUT]|convert|convert-flow|convert-encoder [OUT]|build-cpu|build-cuda|precision-test|compare [cpu|cuda REF OUT]' >&2
+        echo 'Usage: bash scripts/spark.sh image|image-reference|bootstrap|prepare|prepare-decoder|reference [OUT SAMPLES]|reference-flow|reference-stereo|reference-encoder [OUT]|reference-encoder50 [OUT]|reference-encoder-cuda-stages [CPU_REF OUT]|reference-whisper [CPU_REF OUT CASE DEVICE]|convert|convert-flow|convert-encoder [OUT]|build-cpu|build-cuda|precision-test|compare [cpu|cuda REF OUT]' >&2
         exit 2
         ;;
 esac

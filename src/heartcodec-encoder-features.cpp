@@ -10,23 +10,37 @@ ggml_tensor * pointwise(Graph & g,const std::string & p,ggml_tensor * x) {
     auto * w=g.model.tensor(p+".weight");return g.mm(ggml_reshape_2d(g.ctx,w,w->ne[1],w->ne[2]),x);
 }
 }
-std::vector<float> whisper(Model & model,const float * mel,const char * directory) {
+std::vector<float> whisper(Model & model,const float * mel,const char * directory,const float * hidden,int first_layer,int end_layer) {
+    if(first_layer<0||end_layer>12||first_layer>=end_layer)throw std::invalid_argument("Invalid Whisper layer interval");
     Graph g(model,directory&&*directory);auto * c=g.ctx;
-    auto * x=g.conv1("wh.conv1",g.input(mel,80,3000),1,1);
-    g.keep("stage.feature.whisper_encoder.conv1",channel_major(g,x));x=ggml_gelu_erf(c,x);
-    x=g.conv1("wh.conv2",x,2,1);g.keep("stage.feature.whisper_encoder.conv2",channel_major(g,x));x=ggml_gelu_erf(c,x);
-    x=ggml_add(c,x,model.tensor("wh.embed_positions.weight"));
-    for(int i=0;i<12;++i) {
-        const auto p="wh.layers."+std::to_string(i);
-        auto * normalized=g.norm(p+".attn_layer_norm",x);
-        auto * q=g.linear(p+".attn.q_proj",normalized),* k=g.linear(p+".attn.k_proj",normalized,false),* v=g.linear(p+".attn.v_proj",normalized);
-        auto * attended=g.attention(q,k,v,64,12,nullptr,true);
-        x=ggml_add(c,x,g.linear(p+".attn.out_proj",attended));
-        normalized=g.norm(p+".final_layer_norm",x);
-        x=ggml_add(c,x,g.linear(p+".fc2",ggml_gelu_erf(c,g.linear(p+".fc1",normalized))));
-        if(i==0||i==11)x=g.keep("stage.feature.whisper_encoder.layers."+std::to_string(i),x);
+    ggml_tensor * x=nullptr;
+    if(hidden)x=g.input(hidden,768,1500);
+    else {
+        x=g.conv1("wh.conv1",g.input(mel,80,3000),1,1);
+        g.keep("stage.feature.whisper_encoder.conv1",channel_major(g,x));x=ggml_gelu_erf(c,x);
+        g.keep("trace.whisper.gelu1",x);
+        x=g.conv1("wh.conv2",x,2,1);g.keep("stage.feature.whisper_encoder.conv2",channel_major(g,x));x=ggml_gelu_erf(c,x);
+        x=ggml_add(c,x,model.tensor("wh.embed_positions.weight"));
+        g.keep("trace.whisper.embedded",x);
     }
-    x=g.keep("stage.feature.whisper_encoder",g.norm("wh.norm",x),true);
+    for(int i=first_layer;i<end_layer;++i) {
+        const auto p="wh.layers."+std::to_string(i);
+        const auto trace="trace.whisper.layers."+std::to_string(i);
+        auto * normalized=g.norm(p+".attn_layer_norm",x);
+        if(i==0||i==5||i==6||i==11)g.keep(trace+".self_attn_layer_norm",normalized);
+        auto * q=g.linear(p+".attn.q_proj",normalized),* k=g.linear(p+".attn.k_proj",normalized,false),* v=g.linear(p+".attn.v_proj",normalized);
+        if(i==0||i==5||i==6||i==11){g.keep(trace+".self_attn.q_proj",q);g.keep(trace+".self_attn.k_proj",k);g.keep(trace+".self_attn.v_proj",v);}
+        auto * attended=g.attention(q,k,v,64,12,nullptr,true);
+        auto * projected=g.linear(p+".attn.out_proj",attended);
+        if(i==0||i==5||i==6||i==11){g.keep(trace+".attn_head_output",attended);g.keep(trace+".self_attn.out_proj",projected);}
+        x=ggml_add(c,x,projected);
+        normalized=g.norm(p+".final_layer_norm",x);
+        auto * fc1=g.linear(p+".fc1",normalized),* activated=ggml_gelu_erf(c,fc1),* fc2=g.linear(p+".fc2",activated);
+        if(i==0||i==5||i==6||i==11){g.keep(trace+".final_layer_norm",normalized);g.keep(trace+".fc1",fc1);g.keep(trace+".activated",activated);g.keep(trace+".fc2",fc2);}
+        x=ggml_add(c,x,fc2);
+        x=g.keep("stage.feature.whisper_encoder.layers."+std::to_string(i),x);
+    }
+    x=hidden?g.keep("whisper.layer_output",x,true):g.keep("stage.feature.whisper_encoder",g.norm("wh.norm",x),true);
     g.execute(directory);return values(x);
 }
 

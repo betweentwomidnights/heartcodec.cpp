@@ -57,12 +57,12 @@ static Wave read_wave(const std::filesystem::path & path) {
 }
 int main(int argc,char ** argv) {
     try {
-        if(argc<2)throw std::runtime_error("Usage: heartcodec-encode encode --model MODEL --input AUDIO.wav --output FRESH_DIR [--backend cpu|cuda --threads 8 --dump 0|1]; diagnostic query|rvq|preprocess|features|mu|whisper|wavlm modes additionally use --frames N and a fixture input directory");
+        if(argc<2)throw std::runtime_error("Usage: heartcodec-encode encode --model MODEL --input AUDIO.wav --output FRESH_DIR [--backend cpu|cuda --threads 8 --dump 0|1]; static diagnostic query|rvq|preprocess|features|mu|whisper|wavlm modes use --frames N and fixture directories; whisper-layer|whisper-linear use a hidden-state file and --layer N [--projection NAME]");
         const std::string mode=argv[1];
-        if(mode!="encode"&&mode!="query"&&mode!="rvq"&&mode!="preprocess"&&mode!="features"&&mode!="whisper"&&mode!="wavlm"&&mode!="mu")throw std::runtime_error("Unknown encoder mode");
+        if(mode!="encode"&&mode!="query"&&mode!="rvq"&&mode!="preprocess"&&mode!="features"&&mode!="whisper"&&mode!="whisper-layer"&&mode!="whisper-linear"&&mode!="wavlm"&&mode!="mu")throw std::runtime_error("Unknown encoder mode");
         std::map<std::string,std::string> args;
         for(int i=2;i<argc;i+=2)if(i+1>=argc||!args.emplace(argv[i],argv[i+1]).second)throw std::runtime_error("Missing/duplicate encoder option");
-        for(const auto & p:args)if(p.first!="--model"&&p.first!="--input"&&p.first!="--output"&&p.first!="--frames"&&p.first!="--backend"&&p.first!="--threads"&&p.first!="--sample-rate"&&p.first!="--dump")throw std::runtime_error("Unknown encoder option");
+        for(const auto & p:args)if(p.first!="--model"&&p.first!="--input"&&p.first!="--output"&&p.first!="--frames"&&p.first!="--backend"&&p.first!="--threads"&&p.first!="--sample-rate"&&p.first!="--dump"&&p.first!="--layer"&&p.first!="--projection")throw std::runtime_error("Unknown encoder option");
         const int64_t frames=mode=="encode"?0:std::stoll(args.at("--frames"));
         if(mode!="encode"&&(frames<1||frames>8192||(mode=="query"&&(frames%2||frames>744))))throw std::runtime_error("Invalid encoder frame count");
         const std::filesystem::path input(args.at("--input")),output(args.at("--output"));
@@ -113,6 +113,24 @@ int main(int argc,char ** argv) {
             auto audio16=heartcodec::encoder::resample(model,chunk.data(),714480,24000,16000,2);
             write(output/"stage.feature.resample_24k_to_16k.f32",audio16);
             heartcodec::encoder::mel_features(model,chunk.data(),audio16.data(),output.string().c_str());
+            query_frames=0;
+        } else if(mode=="whisper-linear") {
+            const int layer=std::stoi(args.at("--layer"));const auto projection=args.at("--projection");
+            if(layer<0||layer>11||(projection!="fc1"&&projection!="fc2"&&projection!="q_proj"&&projection!="k_proj"&&projection!="v_proj"&&projection!="out_proj"))throw std::runtime_error("Invalid Whisper projection");
+            const auto suffix=projection=="fc1"||projection=="fc2"?projection:"attn."+projection;
+            const auto name="wh.layers."+std::to_string(layer)+"."+suffix;
+            const auto width=model.tensor(name+".weight")->ne[0];auto data=read<float>(input,size_t(width*frames*2));
+            heartcodec::encoder::Graph g(model,true);
+            const auto key="trace.whisper.layers."+std::to_string(layer)+"."+(projection=="fc1"||projection=="fc2"?projection:"self_attn."+projection);
+            g.keep(key,g.linear(name,g.input(data.data(),width,frames*2),projection!="k_proj"),true);g.execute(output.string().c_str());query_frames=0;
+        } else if(mode=="whisper-layer") {
+            const int layer=std::stoi(args.at("--layer"));
+            if(layer<0||layer>11||frames!=1500)throw std::runtime_error("Whisper layer diagnostics require layer 0--11 and 1500 frames");
+            auto data=read<float>(input,2*1500*768);
+            for(int ch=0;ch<2;++ch) {
+                const auto debug=(output/("channel-"+std::to_string(ch))).string();
+                heartcodec::encoder::whisper(model,nullptr,debug.c_str(),data.data()+ch*1500*768,layer,layer+1);
+            }
             query_frames=0;
         } else if(mode=="whisper"||mode=="mu"||mode=="wavlm") {
             std::array<std::vector<float>,2> features;

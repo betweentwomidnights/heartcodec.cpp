@@ -162,6 +162,11 @@ Jiterator path does not support GB10. Strict Whisper activation failures remain
 even against the CUDA-stage oracle; neither backend agreement nor the measured
 CPU/CUDA differences waive a gate. See the boundary diagnostics report.
 
+The [Whisper investigation](WHISPER_PARITY.md) adds per-layer/projection tests,
+independent F64 controls and a separately labeled candidate accuracy contract.
+It preserves the original failed limits and exact-code checks. No numerical
+runtime experiment or new GGML patch from that investigation is adopted.
+
 The new CPU encoder's 372-frame guide was also passed into the native Q4
 continuation/decoder. All 8,760 output codes, full 87.6-second WAV and 57.84-second
 new-only WAV match the user's accepted native listening baseline byte-for-byte.

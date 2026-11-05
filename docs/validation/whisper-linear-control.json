@@ -1,0 +1,34 @@
+{
+  "torch": "2.7.1+cu128",
+  "torch_config": "PyTorch built with:\n  - GCC 11.2\n  - C++ Version: 201703\n  - Intel(R) MKL-DNN v3.7.1 (Git Hash 8d263e693366ef8db40acc569cc7d8edf644556d)\n  - OpenMP 201511 (a.k.a. OpenMP 4.5)\n  - LAPACK is enabled (usually provided by MKL)\n  - NNPACK is enabled\n  - CPU capability usage: DEFAULT\n  - Build settings: BLAS_INFO=nvpl, BUILD_TYPE=Release, COMMIT_SHA=e2d141dbde55c2a4370fac5165b0561b6af4798b, CUDA_VERSION=12.8, CUDNN_VERSION=9.8.0, CXX_COMPILER=/opt/rh/gcc-toolset-11/root/usr/bin/c++, CXX_FLAGS=-ffunction-sections -fdata-sections -D_GLIBCXX_USE_CXX11_ABI=1 -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -DNDEBUG -DUSE_KINETO -DLIBKINETO_NOROCTRACER -DLIBKINETO_NOXPUPTI=ON -DUSE_PYTORCH_QNNPACK -DAT_BUILD_ARM_VEC256_WITH_SLEEF -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -O2 -fPIC -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Werror=range-loop-construct -Werror=bool-operation -Wnarrowing -Wno-missing-field-initializers -Wno-unknown-pragmas -Wno-unused-parameter -Wno-strict-overflow -Wno-strict-aliasing -Wno-stringop-overflow -Wsuggest-override -Wno-psabi -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Wno-stringop-overflow, LAPACK_INFO=nvpl, TORCH_VERSION=2.7.1, USE_CUDA=ON, USE_CUDNN=ON, USE_CUSPARSELT=ON, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_GLOO=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, USE_ROCM_KERNEL_ASSERT=OFF, \n",
+  "input_sha256": "22d56084790cc60f2b4c0821ce970b00abe931d4515c758bcc24bd8ccf0f55b5",
+  "repeated_linear_vs_frozen": {
+    "max_abs": 0.0,
+    "relative_l2": 0.0
+  },
+  "separate_matmul_bias_vs_linear": {
+    "max_abs": 0.00018310546875,
+    "relative_l2": 7.244304341865346e-08
+  },
+  "linear_vs_f64": {
+    "max_abs": 0.001953125,
+    "relative_l2": 8.638693335272577e-07
+  },
+  "separate_matmul_bias_vs_f64": {
+    "max_abs": 0.001953125,
+    "relative_l2": 8.634033090668384e-07
+  },
+  "nobias_matmul_vs_f64": {
+    "max_abs": 0.001953125,
+    "relative_l2": 8.64109405066525e-07
+  },
+  "native_cpu_vs_f64": {
+    "max_abs": 0.0001220703125,
+    "relative_l2": 6.856149974412802e-08
+  },
+  "f64_output_sha256": "81c341fa300fc0db7ab7c948336e8645992672e17c795c864fd88601d8911cf7",
+  "independent_torch_numpy_f64_outputs_byte_exact": true,
+  "native_cpu_code_baseline": "b77ae79",
+  "model_sha256": "b7cd97fb1cc48764070851777ed00c5b56540730ae7372ad39e2d8c92486c297",
+  "scope": "Isolated layer6 FC2 with identical frozen activated inputs; not a complete encoder parity pass"
+}

@@ -70,6 +70,17 @@
   Whisper activations. Frozen checkpoint rotary frequencies closed the earlier
   MuEncoder gate failures. Do not call complete encoder parity
   passed, waive code mismatches, or optimize/quantize before resolving gates.
+- Whisper's deeper investigation is in `docs/WHISPER_PARITY.md`. The user accepts
+  small numerical drift in principle; a separate upstream-envelope accuracy rule
+  is a review proposal, not an automatic waiver of existing flat gates or RVQ
+  mismatches. Stock Torch CPU F32 itself differs from F64 by 0.001953125 on the
+  isolated layer6 FC2 projection; native CPU differs by 0.0001220703125. Preserve
+  these controls and original reports. Numerical runtime trials were discarded;
+  no new shared-GGML patch is adopted. Python additions remain offline diagnostics.
+  The proposed contract passes matched-mel tests on both backends for the pilot
+  and two held-out inputs. Those held-out raw-audio encodings match all 1,840 IDs
+  on both backends; CPU now matches 9,840 compared IDs. CUDA's earlier four-code
+  difference remains open. See `docs/validation/whisper-validation.json`.
 - The native CPU encoder guide -> native Q4 continuation/stereo chain matches
   all 8,760 accepted native codes and both WAVs exactly. This validates that
   listening baseline, not unchanged strict upstream waveform limits. Cached
