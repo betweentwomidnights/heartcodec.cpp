@@ -62,7 +62,8 @@
 - CPU raw fixtures match all 8,000 IDs (29.76s and 50s stereo 44.1k, 0.24s mono
   48k). CUDA on MuLaCover's authorized shared development target matches two
   cases but changes four IDs at frame259 levels4--7 in the 50s case. Measured
-  reference level4 margin is 5.96e-8; cross tests isolate query backend rounding.
+  reference level4 margin is 5.96e-8. Further tests show feature and query
+  roundoff jointly determine this result; do not isolate blame to CUDA query.
   A stock Torch CUDA neural-stage oracle (frozen CPU frontend/effective weights)
   produces those same four changes; native CUDA matches all its 5,000 codes.
   This is not an end-to-end CUDA tokenize claim or a CPU-gate waiver.
@@ -81,6 +82,15 @@
   and two held-out inputs. Those held-out raw-audio encodings match all 1,840 IDs
   on both backends; CPU now matches 9,840 compared IDs. CUDA's earlier four-code
   difference remains open. See `docs/validation/whisper-validation.json`.
+- The backend-matched RVQ audit is in `docs/RVQ_BOUNDARY.md` and
+  `docs/validation/rvq-backend-parity.json`: native CPU matches 9,840 CPU codes;
+  native CUDA matches 9,840 CUDA neural-stage codes across the same five inputs.
+  CUDA controls use frozen CPU frontend tensors, not stock end-to-end CUDA
+  tokenize. Original cross-backend four-code and activation failures remain.
+  Native CPU query on frozen upstream CPU features also changes those four IDs;
+  whole native CPU encoding matches CPU. Identical-query RVQ replay matches on
+  both backends. No tie epsilon, remapping, hidden CPU fallback or GGML change
+  is justified by this boundary. Code-only passes report activation parity null.
 - The native CPU encoder guide -> native Q4 continuation/stereo chain matches
   all 8,760 accepted native codes and both WAVs exactly. This validates that
   listening baseline, not unchanged strict upstream waveform limits. Cached

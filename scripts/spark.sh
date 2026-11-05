@@ -12,6 +12,16 @@ common=(--rm --user "$(id -u):$(id -g)" -e USER=heartcodec -e LOGNAME=heartcodec
     -v "$project_root:/workspace" -w /workspace)
 python=/opt/sa3-venv/bin/python
 case "${1:-}" in
+    reference-query-precision)
+        encoder_cache="$(dirname "$project_root")/mulacover.cpp/.cache/huggingface"
+        gpu=(); if [[ "${5:-cpu}" == cuda ]]; then gpu=(--gpus all); fi
+        docker run "${common[@]}" "${gpu[@]}" --network none -e CUBLAS_WORKSPACE_CONFIG=:4096:8 \
+            -v "$refs:/refs:ro" -v "$encoder_cache:/encoder-cache:ro" \
+            "$reference_image" "$python" reference/export_query_precision.py --heartlib /refs/heartlib \
+            --encoder-snapshot /encoder-cache/hub/models--HeartMuLa--HeartCodec-oss-encoder/snapshots/e6020510612d6653b73d6cd54393ef80929e3c81 \
+            --decoder-snapshot /workspace/.cache/huggingface/hub/models--HeartMuLa--HeartCodec-oss-20260123/snapshots/f889dab0532cfa4bf459f2a3367eb6d346b8eeda \
+            --reference "${2:-refdata/encoder50-cpu-v1}" --output "${3:-refdata/query-precision}" --arithmetic "${4:-source-f32}" --device "${5:-cpu}"
+        ;;
     reference-whisper)
         encoder_cache="$(dirname "$project_root")/mulacover.cpp/.cache/huggingface"
         gpu=(); if [[ "${5:-cpu}" == cuda ]]; then gpu=(--gpus all); fi
@@ -132,7 +142,7 @@ case "${1:-}" in
             --model models/heartcodec-sq-decoder-f32.gguf --output "${4:-refdata/native-$backend}" --backend "$backend"
         ;;
     *)
-        echo 'Usage: bash scripts/spark.sh image|image-reference|bootstrap|prepare|prepare-decoder|reference [OUT SAMPLES]|reference-flow|reference-stereo|reference-encoder [OUT]|reference-encoder50 [OUT]|reference-encoder-cuda-stages [CPU_REF OUT]|reference-whisper [CPU_REF OUT CASE DEVICE]|convert|convert-flow|convert-encoder [OUT]|build-cpu|build-cuda|precision-test|compare [cpu|cuda REF OUT]' >&2
+        echo 'Usage: bash scripts/spark.sh image|image-reference|bootstrap|prepare|prepare-decoder|reference [OUT SAMPLES]|reference-flow|reference-stereo|reference-encoder [OUT]|reference-encoder50 [OUT]|reference-encoder-cuda-stages [CPU_REF OUT]|reference-query-precision [CPU_REF OUT ARITHMETIC DEVICE]|reference-whisper [CPU_REF OUT CASE DEVICE]|convert|convert-flow|convert-encoder [OUT]|build-cpu|build-cuda|precision-test|compare [cpu|cuda REF OUT]' >&2
         exit 2
         ;;
 esac

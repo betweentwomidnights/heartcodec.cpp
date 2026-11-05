@@ -6,9 +6,10 @@ original decoder's eight RVQ codebooks. It uses `heartcodec::heartcodec` and the
 existing shared GGML target. No Python, Torch, audio subprocess or dependency
 installation is involved in native encoding.
 
-**Validation is incomplete.** Native CPU output matches all 8,000 reference
-codes across the three raw-audio fixtures below. CUDA matches two fixtures but
-changes four codes in one frame of the 50-second fixture. Strict intermediate
+**Validation is incomplete.** Native CPU matches all 9,840 CPU reference codes
+across five raw-audio fixtures. Native CUDA matches all 9,840 CUDA neural-stage
+reference codes. Against the CPU oracle, CUDA changes four codes in one frame
+of the 50-second fixture. Strict intermediate
 activation gates also remain open on both backends. Keep FP32 weights and CPU
 as the reference-compatible baseline for these fixtures; CUDA is experimental.
 Do not interpret final-code agreement as a complete numerical-parity pass.
@@ -124,11 +125,13 @@ same HeartCodec implementation and the single allowed GGML target. Keep
 
 ## Measured fixtures and open gates
 
-| Raw input | RVQ frames | CPU changed codes | CUDA changed codes |
+| Raw input | RVQ frames | CPU changed codes vs CPU | CUDA changed codes vs CPU |
 | --- | ---: | ---: | ---: |
 | Source prefix, 29.76 s, stereo 44.1 kHz | 372 | 0 / 2,976 | 0 / 2,976 |
 | Source prefix, 50 s, stereo 44.1 kHz, two chunks | 625 | 0 / 5,000 | 4 / 5,000 |
 | Derived 0.24 s excerpt, mono F32 48 kHz | 3 | 0 / 24 | 0 / 24 |
+| Held-out 16 s later song passage, stereo 44.1 kHz | 200 | 0 / 1,600 | 0 / 1,600 |
+| Held-out 2.4 s stereo tone, 48 kHz | 30 | 0 / 240 | 0 / 240 |
 
 The first two CUDA runs take about 6 / 9 seconds including model loading
 and debug dumping. CPU takes about 26 / 49 seconds. These are diagnostic
@@ -149,7 +152,9 @@ In the CUDA 50-second run, frame 259 first changes at residual level 4. Its
 reference winning score margin is `5.960464477539063e-8`, with subsequent code
 changes at levels 5--7. Cross tests isolate the query backend: reference
 features -> CUDA query changes the same four codes; CUDA features -> CPU query
-matches. CPU query -> CUDA RVQ also matches. This is measured boundary evidence,
+matches. CPU query -> CUDA RVQ also matches. Further checks show that native CPU
+query on frozen upstream CPU features also selects the CUDA-side code: feature
+and query roundoff jointly determine the boundary result. This is boundary evidence,
 not a rounding exception or a passed CUDA parity claim. Keep the CUDA mismatch
 open and do not quantize or optimize away this diagnostic.
 
@@ -166,6 +171,12 @@ The [Whisper investigation](WHISPER_PARITY.md) adds per-layer/projection tests,
 independent F64 controls and a separately labeled candidate accuracy contract.
 It preserves the original failed limits and exact-code checks. No numerical
 runtime experiment or new GGML patch from that investigation is adopted.
+
+The [RVQ boundary investigation](RVQ_BOUNDARY.md) compares all five fixtures
+against backend-matched references and replays identical queries through both
+native RVQ backends. CUDA matches its neural-stage oracle exactly; the original
+CPU/CUDA discrepancy remains explicit. No selection epsilon, remapping or hidden
+backend fallback is used. Code-only passes do not claim activation parity.
 
 The new CPU encoder's 372-frame guide was also passed into the native Q4
 continuation/decoder. All 8,760 output codes, full 87.6-second WAV and 57.84-second

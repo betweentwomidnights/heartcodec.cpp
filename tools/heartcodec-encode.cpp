@@ -91,7 +91,7 @@ int main(int argc,char ** argv) {
             std::filesystem::create_directories(output);write(output/"codes.i32",codes);
             const auto seconds=std::chrono::duration<double>(std::chrono::steady_clock::now()-start).count();
             std::ofstream report(output/"run.json");
-            report<<"{\"mode\":\"encode\",\"frames\":"<<count<<",\"source_samples\":"<<wave.num_samples<<",\"source_rate\":"<<wave.sample_rate<<",\"source_channels\":"<<wave.channels
+            report<<"{\"mode\":\"encode\",\"backend\":\""<<backend<<"\",\"frames\":"<<count<<",\"source_samples\":"<<wave.num_samples<<",\"source_rate\":"<<wave.sample_rate<<",\"source_channels\":"<<wave.channels
                   <<",\"resampled_samples\":"<<n24<<",\"seconds\":"<<seconds<<",\"weight_bytes\":"<<memory.weight_buffer_bytes<<",\"graph_bytes\":"<<memory.graph_buffer_bytes<<"}\n";
             if(!report)throw std::runtime_error("Cannot write encode report");std::cout<<"Encoded "<<count<<" RVQ frames in "<<seconds<<"s\n";return 0;
         }
@@ -172,7 +172,7 @@ int main(int argc,char ** argv) {
         if(query_frames){const auto codes=heartcodec::encoder_rvq(model,query.data(),query_frames,output.string().c_str());write(output/"codes.i32",codes);}
         const auto seconds=std::chrono::duration<double>(std::chrono::steady_clock::now()-start).count();
         std::ofstream report(output/"run.json");
-        report<<"{\"mode\":\""<<mode<<"\",\"frames\":"<<query_frames<<",\"seconds\":"<<seconds
+        report<<"{\"mode\":\""<<mode<<"\",\"backend\":\""<<backend<<"\",\"frames\":"<<query_frames<<",\"seconds\":"<<seconds
               <<",\"weight_bytes\":"<<ggml_backend_buffer_get_size(model.buffer)<<",\"graph_bytes\":"<<model.graph_bytes<<"}\n";
         if(!report)throw std::runtime_error("Cannot write encoder report");
         std::cout<<"Encoded "<<query_frames<<" RVQ frames in "<<seconds<<"s\n";return 0;

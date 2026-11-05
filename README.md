@@ -31,8 +31,10 @@ control; the full-song decoded waveform still fails its unchanged strict limits.
 
 An experimental [full waveform-to-RVQ encoder](docs/AUDIO_ENCODER.md) now runs
 natively on the laptop through a separate negotiated C capability. CPU matches
-all 8,000 code IDs across three raw-audio fixtures; CUDA matches two fixtures but
-changes four codes in one 50-second frame. Strict intermediate activation gates
+all 9,840 CPU code IDs across five raw-audio fixtures. CUDA matches all 9,840
+CUDA neural-stage oracle IDs; comparison against CPU still changes four codes
+in one 50-second frame. See the [RVQ boundary investigation](docs/RVQ_BOUNDARY.md).
+Strict intermediate activation gates
 remain open on both backends. Encoder weights are F32; no encoder quantization
 is implemented. Native encoding reproduces the guide for the accepted complete
 MuLaCover continuation byte-for-byte, removing its audio-guide Python runtime.
