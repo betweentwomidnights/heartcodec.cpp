@@ -161,7 +161,9 @@ struct Graph {
         model.graph_bytes=std::max(model.graph_bytes,ggml_gallocr_get_buffer_size(allocator,0));
         // gallocr can reuse storage. Restore every graph input, including IDs.
         for(const auto & i:inputs)ggml_backend_tensor_set(i.tensor,i.bytes.data(),0,i.bytes.size());
+        model.checkpoint();
         if(ggml_backend_graph_compute(model.backend,graph)!=GGML_STATUS_SUCCESS)throw std::runtime_error("Encoder graph execution failed");
+        model.checkpoint();
         if(dumping&&directory&&*directory) {
             std::filesystem::create_directories(directory);
             for(const auto & pair:outputs) {auto data=values(pair.second);dump(std::filesystem::path(directory)/(pair.first+".f32"),data.data(),data.size());}

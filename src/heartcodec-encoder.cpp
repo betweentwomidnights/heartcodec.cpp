@@ -50,6 +50,7 @@ heartcodec_status_v1 HEARTCODEC_CALL heartcodec_encode_v1(heartcodec_encoder_con
             throw std::invalid_argument("Waveform strides overflow address range");
         const int64_t last=(samples-1)*input->sample_stride;
         if((input->channels-1)*input->channel_stride>limit-last)throw std::invalid_argument("Waveform strides overflow address range");
+        context->model.checkpoint();
         std::vector<float> pcm(size_t(samples)*2);
         for(int ch=0;ch<2;++ch)for(int64_t i=0;i<samples;++i) {
             const float value=input->samples[i*input->sample_stride+(input->channels==1?0:ch*input->channel_stride)];
@@ -74,6 +75,7 @@ heartcodec_status_v1 HEARTCODEC_CALL heartcodec_encode_v1(heartcodec_encoder_con
             auto ids=heartcodec::encoder_rvq(context->model,query.data.data(),query.frames,debug);
             const int64_t remaining=frames-int64_t(codes.size()/8),take=std::min(remaining,query.frames);
             codes.insert(codes.end(),ids.begin(),ids.begin()+size_t(take)*8);
+            if(context->model.work)context->model.work->progress(HEARTCODEC_WORK_ENCODING_V1,int64_t(codes.size()/8),frames);
             if(int64_t(codes.size()/8)==frames)break;
         }
         if(int64_t(codes.size()/8)!=frames)throw std::runtime_error("Waveform encoder returned too few RVQ frames");
@@ -93,5 +95,15 @@ const heartcodec_encoder_api_v1 * HEARTCODEC_CALL heartcodec_get_encoder_api(uin
         heartcodec_config_init_v1,heartcodec_encoder_context_create_v1,heartcodec_encoder_context_destroy_v1,
         heartcodec_encoded_tokens_init_v1,heartcodec_encoded_tokens_free_v1,heartcodec_encode_v1,heartcodec_encoder_get_memory_v1};
     return version==1?&api:nullptr;
+}
+int32_t HEARTCODEC_CALL heartcodec_encode_controlled_v1(heartcodec_encoder_context * context,const heartcodec_waveform_v1 * input,
+        const char * directory,const heartcodec_work_control_v1 * control,heartcodec_encoded_tokens_v1 * out,heartcodec_error_v1 * e) {
+    if(!context||!control||control->size<sizeof(*control)||context->model.work)
+        return heartcodec::error(e,HEARTCODEC_INVALID_ARGUMENT_V1,"Invalid controlled encoder call or reentrant context");
+    heartcodec::Work work{control};
+    struct Scope{heartcodec::Model & model;~Scope(){model.work=nullptr;}} scope{context->model};
+    context->model.work=&work;
+    const auto status=heartcodec_encode_v1(context,input,directory,out,e);
+    return work.cancelled?heartcodec::error(e,static_cast<heartcodec_status_v1>(HEARTCODEC_WORK_CANCELLED_V1),"HeartCodec encoding cancelled"):status;
 }
 }

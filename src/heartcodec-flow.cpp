@@ -86,8 +86,10 @@ struct Graph {
         return result;
     }
     std::vector<float> run(const char * directory = nullptr) {
+        model.checkpoint();
         if (ggml_backend_graph_compute(model.backend, graph) != GGML_STATUS_SUCCESS)
             throw std::runtime_error("Flow graph execution failed");
+        model.checkpoint();
         if (directory && *directory) {
             std::filesystem::create_directories(directory);
             for (auto * t : stages) dump_values(std::filesystem::path(directory) / (std::string(t->name) + ".f32"), read(t));

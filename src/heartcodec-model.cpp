@@ -104,6 +104,7 @@ void Model::load(const char * path, const char * requested, int threads) {
     if (!file) throw std::runtime_error("Cannot open model payload");
     const auto length = file.tellg();
     for (int64_t i = 0; i < gguf_get_n_tensors(gguf); ++i) {
+        checkpoint();
         auto * t = tensor(gguf_get_tensor_name(gguf, i));
         const uint64_t offset = gguf_get_data_offset(gguf) + gguf_get_tensor_offset(gguf, i);
         const size_t bytes = ggml_nbytes(t);

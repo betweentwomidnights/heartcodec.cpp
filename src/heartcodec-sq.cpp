@@ -75,8 +75,10 @@ std::vector<float> execute(Graph & graph, Model & model, ggml_tensor * input, co
         throw std::runtime_error("Cannot allocate SQ graph");
     model.graph_bytes = ggml_gallocr_get_buffer_size(graph.allocator, 0);
     ggml_backend_tensor_set(input, values, 0, ggml_nbytes(input));
+    model.checkpoint();
     if (ggml_backend_graph_compute(model.backend, computation) != GGML_STATUS_SUCCESS)
         throw std::runtime_error("SQ graph execution failed");
+    model.checkpoint();
     std::vector<float> data(size_t(ggml_nelements(output)));
     ggml_backend_tensor_get(output, data.data(), 0, data.size() * sizeof(float));
     if (dump && *dump) for (auto * stage : stages)

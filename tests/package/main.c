@@ -1,9 +1,12 @@
 #include <heartcodec.h>
+#include <heartcodec_work.h>
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
 
 int main(int argc, char ** argv) {
+    const heartcodec_work_api_v1 * work=heartcodec_get_work_api(1);
+    if(!work||work->size<HEARTCODEC_WORK_API_V1_SIZE||heartcodec_get_work_api(99))return 1;
     const heartcodec_api_v1 * api = heartcodec_get_api(HEARTCODEC_ABI_VERSION_1);
     if (!api || api->size < HEARTCODEC_API_V1_SIZE || heartcodec_get_api(99)) return 1;
     heartcodec_config_v1 config = {0}; config.size = sizeof(config); api->config_init(&config);

@@ -91,6 +91,7 @@ heartcodec_status_v1 heartcodec_tokens_decode_v1(heartcodec_context * c, const h
             throw std::invalid_argument("Token-to-audio decode requires empty explicit context");
         if (c->paths[0].empty() || c->paths[1].empty())
             throw std::invalid_argument("Both SQ and flow model paths must be registered");
+        if(c->work)c->work->check();
         const int64_t window = config->segment_codes, hop = window / 93 * 80, overlap = window - hop;
         const int64_t length = std::max(window, tokens->frames);
         if (length > std::numeric_limits<int64_t>::max() - hop)
@@ -118,6 +119,7 @@ heartcodec_status_v1 heartcodec_tokens_decode_v1(heartcodec_context * c, const h
                 cfg.context = context.data(); cfg.prefix_frames = overlap * 2;
             }
             latents.push_back(heartcodec::flow_decode(flow, segment.data(), window, cfg, nullptr));
+            if(c->work)c->work->progress(HEARTCODEC_WORK_FLOW_V1,int64_t(latents.size()),segments);
         }
         c->models[1].reset(); // Destroy graph and weights before SQ allocation.
         auto & sq = c->get(0);
@@ -141,6 +143,7 @@ heartcodec_status_v1 heartcodec_tokens_decode_v1(heartcodec_context * c, const h
                     assembled[start + t] = float(double(assembled[start + t]) * (1 - weight) + double(audio[t]) * weight);
                 } else assembled[start + t] = audio[t];
             }
+            if(c->work)c->work->progress(HEARTCODEC_WORK_SQ_V1,int64_t(i)*2+channel+1,segments*2);
         }
         auto samples = std::make_unique<float[]>(size_t(target) * 2);
         for (int channel = 0; channel < 2; ++channel)
