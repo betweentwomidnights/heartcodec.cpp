@@ -14,7 +14,7 @@ def main():
     p.add_argument("--cli", type=Path, required=True)
     p.add_argument("--model", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True)
-    p.add_argument("--backend", choices=("cpu", "cuda"), default="cuda")
+    p.add_argument("--backend", choices=("cpu", "cuda", "vulkan", "metal"), default="cuda")
     p.add_argument("--cases", default="")
     a = p.parse_args()
     manifest = json.loads((a.reference / "manifest.json").read_text())

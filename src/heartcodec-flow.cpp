@@ -62,7 +62,7 @@ struct Graph {
         return ggml_view_1d(ctx, x, d, size_t(row) * size_t(d) * sizeof(float));
     }
     ggml_tensor * modulate(ggml_tensor * x, ggml_tensor * shift, ggml_tensor * scale) {
-        return ggml_add(ctx, ggml_mul(ctx, x, ggml_add1(ctx, scale, one)), shift);
+        return ggml_add(ctx, ggml_mul(ctx, x, ggml_add(ctx, scale, one)), shift);
     }
     ggml_tensor * one = nullptr;
     void allocate(ggml_tensor * result) {
@@ -72,7 +72,7 @@ struct Graph {
         for (int i = 0; i < ggml_graph_n_nodes(graph); ++i) {
             auto * n = ggml_graph_node(graph, i);
             if (!ggml_backend_supports_op(model.backend, n))
-                throw std::runtime_error("Unsupported flow operation: " + std::string(ggml_op_name(n->op)));
+                throw std::runtime_error("Unsupported flow operation: " + describe_op(n));
         }
         allocator = ggml_gallocr_new(ggml_backend_get_default_buffer_type(model.backend));
         if (!allocator || !ggml_gallocr_alloc_graph(allocator, graph))
@@ -86,8 +86,10 @@ struct Graph {
         return result;
     }
     std::vector<float> run(const char * directory = nullptr) {
+        model.checkpoint();
         if (ggml_backend_graph_compute(model.backend, graph) != GGML_STATUS_SUCCESS)
             throw std::runtime_error("Flow graph execution failed");
+        model.checkpoint();
         if (directory && *directory) {
             std::filesystem::create_directories(directory);
             for (auto * t : stages) dump_values(std::filesystem::path(directory) / (std::string(t->name) + ".f32"), read(t));

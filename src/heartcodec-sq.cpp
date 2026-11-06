@@ -68,15 +68,17 @@ std::vector<float> execute(Graph & graph, Model & model, ggml_tensor * input, co
     for (int i = 0; i < ggml_graph_n_nodes(computation); ++i) {
         auto * node = ggml_graph_node(computation, i);
         if (!ggml_backend_supports_op(model.backend, node))
-            throw std::runtime_error("Backend does not support operation: " + std::string(ggml_op_name(node->op)));
+            throw std::runtime_error("Backend does not support operation: " + describe_op(node));
     }
     graph.allocator = ggml_gallocr_new(ggml_backend_get_default_buffer_type(model.backend));
     if (!graph.allocator || !ggml_gallocr_alloc_graph(graph.allocator, computation))
         throw std::runtime_error("Cannot allocate SQ graph");
     model.graph_bytes = ggml_gallocr_get_buffer_size(graph.allocator, 0);
     ggml_backend_tensor_set(input, values, 0, ggml_nbytes(input));
+    model.checkpoint();
     if (ggml_backend_graph_compute(model.backend, computation) != GGML_STATUS_SUCCESS)
         throw std::runtime_error("SQ graph execution failed");
+    model.checkpoint();
     std::vector<float> data(size_t(ggml_nelements(output)));
     ggml_backend_tensor_get(output, data.data(), 0, data.size() * sizeof(float));
     if (dump && *dump) for (auto * stage : stages)

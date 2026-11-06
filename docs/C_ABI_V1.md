@@ -106,3 +106,7 @@ Torch CUDA RNG is a separate optional capability negotiated with
 `heartcodec_get_rng_api(1)` from `heartcodec_rng.h`; it does not extend or alter
 the frozen core/flow table or structs. Its owned host tensor can be borrowed
 through the existing explicit-noise fields. See [RNG semantics and validation](TORCH_CUDA_RNG.md).
+
+Cooperative worker cancellation/progress is separately negotiated through
+`heartcodec_get_work_api(1)` from `heartcodec_work.h`. See
+[controlled codec work](CONTROLLED_WORK.md); the existing tables remain frozen.
