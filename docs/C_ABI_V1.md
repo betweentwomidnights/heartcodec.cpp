@@ -4,6 +4,12 @@ The public header is `include/heartcodec.h`. It contains C types only and does
 not expose GGML or C++ ownership. Windows x64 static and DLL consumers have been
 tested, along with an ARM64 Linux build inside Spark Docker.
 
+Full waveform-to-RVQ encoding uses the separate negotiated
+`heartcodec_get_encoder_api(1)` capability in `heartcodec_encoder.h`. It leaves
+this core/flow prefix unchanged. See [the encoder contract and open numerical
+gates](AUDIO_ENCODER.md) before selecting a backend. Its owned eight-code RVQ
+results are distinct from SQ latent/audio results.
+
 ## Negotiation and ownership
 
 Resolve `heartcodec_get_api`, request `HEARTCODEC_ABI_VERSION_1`, check for a

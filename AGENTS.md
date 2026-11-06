@@ -49,3 +49,51 @@
   Full-song decoded audio still fails unchanged strict waveform limits (max_abs
   0.0827555, relative L2 0.00299061); scalar-level diagnostics for that case remain
   outstanding. Do not call waveform parity passed or assume a rounding exception.
+- Full waveform-to-RVQ encoding is now an experimental native capability in
+  `heartcodec_encoder.h`, separate from frozen core/flow/RNG layouts. It includes
+  native resampling, mel/STFT, MuEncoder/Whisper/WavLM, query fusion and original
+  decoder RVQ encoding. See `docs/AUDIO_ENCODER.md`. No native inference launches
+  Python. Reference generation/conversion stays in `scripts/spark.sh` Docker.
+  The encoder GGUF is strict F32 (983 tensors); no encoder quantization yet.
+- Complete frames are floor(original_samples*25/(2*rate)); partial source tails
+  are dropped explicitly. Mono/stereo borrowed views have element strides;
+  library-owned frame-major eight-code outputs survive context destruction.
+  Stage encoder/generator/decoder ownership and keep calls off realtime threads.
+- CPU raw fixtures match all 8,000 IDs (29.76s and 50s stereo 44.1k, 0.24s mono
+  48k). CUDA on MuLaCover's authorized shared development target matches two
+  cases but changes four IDs at frame259 levels4--7 in the 50s case. Measured
+  reference level4 margin is 5.96e-8. Further tests show feature and query
+  roundoff jointly determine this result; do not isolate blame to CUDA query.
+  A stock Torch CUDA neural-stage oracle (frozen CPU frontend/effective weights)
+  produces those same four changes; native CUDA matches all its 5,000 codes.
+  This is not an end-to-end CUDA tokenize claim or a CPU-gate waiver.
+  Strict 1e-3 max_abs / 1e-4 relative-L2 intermediate gates retain failures in
+  Whisper activations. Frozen checkpoint rotary frequencies closed the earlier
+  MuEncoder gate failures. Do not call complete encoder parity
+  passed, waive code mismatches, or optimize/quantize before resolving gates.
+- Whisper's deeper investigation is in `docs/WHISPER_PARITY.md`. The user accepts
+  small numerical drift in principle; a separate upstream-envelope accuracy rule
+  is a review proposal, not an automatic waiver of existing flat gates or RVQ
+  mismatches. Stock Torch CPU F32 itself differs from F64 by 0.001953125 on the
+  isolated layer6 FC2 projection; native CPU differs by 0.0001220703125. Preserve
+  these controls and original reports. Numerical runtime trials were discarded;
+  no new shared-GGML patch is adopted. Python additions remain offline diagnostics.
+  The proposed contract passes matched-mel tests on both backends for the pilot
+  and two held-out inputs. Those held-out raw-audio encodings match all 1,840 IDs
+  on both backends; CPU now matches 9,840 compared IDs. CUDA's earlier four-code
+  difference remains open. See `docs/validation/whisper-validation.json`.
+- The backend-matched RVQ audit is in `docs/RVQ_BOUNDARY.md` and
+  `docs/validation/rvq-backend-parity.json`: native CPU matches 9,840 CPU codes;
+  native CUDA matches 9,840 CUDA neural-stage codes across the same five inputs.
+  CUDA controls use frozen CPU frontend tensors, not stock end-to-end CUDA
+  tokenize. Original cross-backend four-code and activation failures remain.
+  Native CPU query on frozen upstream CPU features also changes those four IDs;
+  whole native CPU encoding matches CPU. Identical-query RVQ replay matches on
+  both backends. No tie epsilon, remapping, hidden CPU fallback or GGML change
+  is justified by this boundary. Code-only passes report activation parity null.
+- The native CPU encoder guide -> native Q4 continuation/stereo chain matches
+  all 8,760 accepted native codes and both WAVs exactly. This validates that
+  listening baseline, not unchanged strict upstream waveform limits. Cached
+  text/Qwen preparation is still separate. The user prefers a downstream
+  `natural_max_seconds`-style generation ceiling that permits early EOS; encoder
+  chunk duration and guide duration are independent of that job policy.

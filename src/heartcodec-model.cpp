@@ -62,8 +62,20 @@ void Model::load(const char * path, const char * requested, int threads) {
     const int arch_id = gguf_find_key(gguf, "general.architecture");
     if (arch_id < 0 || gguf_get_kv_type(gguf, arch_id) != GGUF_TYPE_STRING)
         throw std::runtime_error("Missing architecture");
-    flow = std::string(gguf_get_val_str(gguf, arch_id)) == "heartcodec-flow";
-    if (flow) {
+    const std::string architecture = gguf_get_val_str(gguf, arch_id);
+    flow = architecture == "heartcodec-flow";
+    audio_encoder = architecture == "heartcodec-encoder";
+    if (audio_encoder) {
+        uint_meta("heartcodec.encoder.format_version", 1);
+        uint_meta("heartcodec.encoder.chunk_samples", 714240);
+        uint_meta("heartcodec.encoder.query_dim", 512);
+        uint_meta("heartcodec.encoder.query_layers", 6);
+        uint_meta("heartcodec.encoder.query_head_dim", 128);
+        uint_meta("heartcodec.encoder.query_interval", 2);
+        string_meta("heartcodec.encoder.weight_layout", "pytorch-effective-f32-v1");
+        string_meta("heartcodec.encoder.input_resample_policy", "torch-functional-f32-kernel");
+        part = "audio-encoder";
+    } else if (flow) {
         uint_meta("heartcodec.flow.format_version", 1);
         part = "flow";
     } else {
@@ -113,6 +125,7 @@ void Model::load(const char * path, const char * requested, int threads) {
 }
 
 void Model::validate() {
+    if (audio_encoder) { validate_audio_encoder(*this); return; }
     std::set<std::string> expected;
     auto shape = [&](const std::string & name, std::initializer_list<int64_t> dims, bool weight = false) {
         auto * t = tensor(name);

@@ -1,0 +1,615 @@
+{
+  "date": "2026-11-04",
+  "scope": "Exact backend-matched code IDs plus boundary diagnostics; not complete activation or waveform parity",
+  "model_sha256": "b7cd97fb1cc48764070851777ed00c5b56540730ae7372ad39e2d8c92486c297",
+  "ggml": {
+    "shared_pin": "b77ae790e628270af46a8af1eca38441c23f1252",
+    "authorized_cuda_target": "0f2ed045eaff6bf01bed074878b6988248efbc22",
+    "pins_changed": false,
+    "new_kernel_changes": false
+  },
+  "matched_profiles": [
+    {
+      "case": "raw2976",
+      "backend": "cpu",
+      "reference_device": "cpu",
+      "backend_match": true,
+      "reference_manifest_sha256": "be8982e33203d0746bd6f2964d396271fb7ed6974b1f0bcc8429ae7d9b68300e",
+      "native_run": {
+        "mode": "encode",
+        "backend": "cpu",
+        "frames": 372,
+        "source_samples": 1312416,
+        "source_rate": 44100,
+        "source_channels": 2,
+        "resampled_samples": 714240,
+        "seconds": 29.6365,
+        "weight_bytes": 2157089440,
+        "graph_bytes": 2156167168
+      },
+      "codes": {
+        "shape_match": true,
+        "expected_frames": 372,
+        "actual_frames": 372,
+        "total_compared_codes": 2976,
+        "changed_codes": 0,
+        "differences": [],
+        "passed": true,
+        "sha256": "bdbeab789d35496a3744f41410ab4ffeaecf91e7a0a9759dd1a9e7ae075ab342"
+      },
+      "scope": "code IDs only; activations not evaluated",
+      "all_stage_gates_passed": null,
+      "passed": true,
+      "full_report_sha256": "325fd36ade542a459ad7456772aa29c69b26fd19b9828b268b2181b105bef1c8"
+    },
+    {
+      "case": "raw50",
+      "backend": "cpu",
+      "reference_device": "cpu",
+      "backend_match": true,
+      "reference_manifest_sha256": "02b3405798d46f18e4bfea7fd9e9c8ca6ae21faf0eb72a788cd07639504f0759",
+      "native_run": {
+        "mode": "encode",
+        "backend": "cpu",
+        "frames": 625,
+        "source_samples": 2205000,
+        "source_rate": 44100,
+        "source_channels": 2,
+        "resampled_samples": 1200000,
+        "seconds": 53.9932,
+        "weight_bytes": 2157089440,
+        "graph_bytes": 2156167168
+      },
+      "codes": {
+        "shape_match": true,
+        "expected_frames": 625,
+        "actual_frames": 625,
+        "total_compared_codes": 5000,
+        "changed_codes": 0,
+        "differences": [],
+        "passed": true,
+        "sha256": "47441c0b3ddd1f8544502e3704b92aebb0c2e7f9446b7b5c558105156e9f19c9"
+      },
+      "scope": "code IDs only; activations not evaluated",
+      "all_stage_gates_passed": null,
+      "passed": true,
+      "full_report_sha256": "166bc01c100951aeece9780ca27dae157d6f7ac4fa939cb57b82d6fc170a8a8d"
+    },
+    {
+      "case": "mono48",
+      "backend": "cpu",
+      "reference_device": "cpu",
+      "backend_match": true,
+      "reference_manifest_sha256": "efb4a17ce16d8b159d38b54d8fd17bccdcb38d0ece0daf8e28fa146adb47e9c6",
+      "native_run": {
+        "mode": "encode",
+        "backend": "cpu",
+        "frames": 3,
+        "source_samples": 11520,
+        "source_rate": 48000,
+        "source_channels": 1,
+        "resampled_samples": 5760,
+        "seconds": 27.347,
+        "weight_bytes": 2157089440,
+        "graph_bytes": 2156167168
+      },
+      "codes": {
+        "shape_match": true,
+        "expected_frames": 3,
+        "actual_frames": 3,
+        "total_compared_codes": 24,
+        "changed_codes": 0,
+        "differences": [],
+        "passed": true,
+        "sha256": "1b882c9facd8809adf805b1c4990f3607dfa561112bc2a1b6fd9b549303d839d"
+      },
+      "scope": "code IDs only; activations not evaluated",
+      "all_stage_gates_passed": null,
+      "passed": true,
+      "full_report_sha256": "42522cda69cceb3ea3420bf9b2ee9a2db395955777683101ac5faea45a60b1ab"
+    },
+    {
+      "case": "mid16",
+      "backend": "cpu",
+      "reference_device": "cpu",
+      "backend_match": true,
+      "reference_manifest_sha256": "4ac9f43cc2de8b4905166b03ab58481bacf1e2f0f3baad8f3836a85dfe0f841a",
+      "native_run": {
+        "mode": "encode",
+        "backend": "cpu",
+        "frames": 200,
+        "source_samples": 705600,
+        "source_rate": 44100,
+        "source_channels": 2,
+        "resampled_samples": 384000,
+        "seconds": 27.034,
+        "weight_bytes": 2157089440,
+        "graph_bytes": 2156167168
+      },
+      "codes": {
+        "shape_match": true,
+        "expected_frames": 200,
+        "actual_frames": 200,
+        "total_compared_codes": 1600,
+        "changed_codes": 0,
+        "differences": [],
+        "passed": true,
+        "sha256": "3836a7f1f665bf5c0a3a82e324bd4e79e03c0df186289c2bea7927e8566264d3"
+      },
+      "scope": "code IDs only; activations not evaluated",
+      "all_stage_gates_passed": null,
+      "passed": true,
+      "full_report_sha256": "7c2052dfc4eef971b7a62022c8725749246ef6f2127218f52615cd97a309fb0f"
+    },
+    {
+      "case": "tone24",
+      "backend": "cpu",
+      "reference_device": "cpu",
+      "backend_match": true,
+      "reference_manifest_sha256": "2b76479c0a87c738b3a8dfff55f9dbeee23e601eaf44b229c602eb3c060136c7",
+      "native_run": {
+        "mode": "encode",
+        "backend": "cpu",
+        "frames": 30,
+        "source_samples": 115200,
+        "source_rate": 48000,
+        "source_channels": 2,
+        "resampled_samples": 57600,
+        "seconds": 27.8645,
+        "weight_bytes": 2157089440,
+        "graph_bytes": 2156167168
+      },
+      "codes": {
+        "shape_match": true,
+        "expected_frames": 30,
+        "actual_frames": 30,
+        "total_compared_codes": 240,
+        "changed_codes": 0,
+        "differences": [],
+        "passed": true,
+        "sha256": "6f0b00b5489daad15eb72affb224eb259e5365449fb4b80f67e4718cd8fbe851"
+      },
+      "scope": "code IDs only; activations not evaluated",
+      "all_stage_gates_passed": null,
+      "passed": true,
+      "full_report_sha256": "78f5a253f56309025e0343829c50c770aa6a7ada351a8f46861436d88b44e33e"
+    },
+    {
+      "case": "raw2976",
+      "backend": "cuda",
+      "reference_device": "cuda",
+      "backend_match": true,
+      "reference_manifest_sha256": "919ef00386a9d7f7a318462736beacaa0b7ad66ab4d1c316a36066eb26c464b1",
+      "native_run": {
+        "mode": "encode",
+        "backend": "cuda",
+        "frames": 372,
+        "source_samples": 1312416,
+        "source_rate": 44100,
+        "source_channels": 2,
+        "resampled_samples": 714240,
+        "seconds": 8.15188,
+        "weight_bytes": 2157091968,
+        "graph_bytes": 2156167168
+      },
+      "codes": {
+        "shape_match": true,
+        "expected_frames": 372,
+        "actual_frames": 372,
+        "total_compared_codes": 2976,
+        "changed_codes": 0,
+        "differences": [],
+        "passed": true,
+        "sha256": "bdbeab789d35496a3744f41410ab4ffeaecf91e7a0a9759dd1a9e7ae075ab342"
+      },
+      "scope": "code IDs only; activations not evaluated",
+      "all_stage_gates_passed": null,
+      "passed": true,
+      "full_report_sha256": "6e1812faf2ea51cc99cb2abe0f8f61d5e221a5556055b9b1aa4b00d323f5e116"
+    },
+    {
+      "case": "raw50",
+      "backend": "cuda",
+      "reference_device": "cuda",
+      "backend_match": true,
+      "reference_manifest_sha256": "ff6334088e5af8f69746263a0ce93271e2fc3a3b3322767603994aeffde6917e",
+      "native_run": {
+        "mode": "encode",
+        "backend": "cuda",
+        "frames": 625,
+        "source_samples": 2205000,
+        "source_rate": 44100,
+        "source_channels": 2,
+        "resampled_samples": 1200000,
+        "seconds": 10.4594,
+        "weight_bytes": 2157091968,
+        "graph_bytes": 2156167168
+      },
+      "codes": {
+        "shape_match": true,
+        "expected_frames": 625,
+        "actual_frames": 625,
+        "total_compared_codes": 5000,
+        "changed_codes": 0,
+        "differences": [],
+        "passed": true,
+        "sha256": "6c4526c1d59ff0362489d515130bc2dd6b85dc34417063b192803bcf12021584"
+      },
+      "scope": "code IDs only; activations not evaluated",
+      "all_stage_gates_passed": null,
+      "passed": true,
+      "full_report_sha256": "3cb6f95cce8287522b92be89db0c36ccffd069256b4b676dea838510896466aa"
+    },
+    {
+      "case": "mono48",
+      "backend": "cuda",
+      "reference_device": "cuda",
+      "backend_match": true,
+      "reference_manifest_sha256": "8ab936e80be3b6b109545fc79a41cb4ce4bd0345125f21e337d11c2d7b9225bd",
+      "native_run": {
+        "mode": "encode",
+        "backend": "cuda",
+        "frames": 3,
+        "source_samples": 11520,
+        "source_rate": 48000,
+        "source_channels": 1,
+        "resampled_samples": 5760,
+        "seconds": 6.77677,
+        "weight_bytes": 2157091968,
+        "graph_bytes": 2156167168
+      },
+      "codes": {
+        "shape_match": true,
+        "expected_frames": 3,
+        "actual_frames": 3,
+        "total_compared_codes": 24,
+        "changed_codes": 0,
+        "differences": [],
+        "passed": true,
+        "sha256": "1b882c9facd8809adf805b1c4990f3607dfa561112bc2a1b6fd9b549303d839d"
+      },
+      "scope": "code IDs only; activations not evaluated",
+      "all_stage_gates_passed": null,
+      "passed": true,
+      "full_report_sha256": "16900e0dc68fc97649385cf66c55ba2ed846fea35ef6adcac71e14cc739cebdf"
+    },
+    {
+      "case": "mid16",
+      "backend": "cuda",
+      "reference_device": "cuda",
+      "backend_match": true,
+      "reference_manifest_sha256": "f78094e058c69d3c75b0e4327c4533627c3a54d008b220c2cc451635e2f246bb",
+      "native_run": {
+        "mode": "encode",
+        "backend": "cuda",
+        "frames": 200,
+        "source_samples": 705600,
+        "source_rate": 44100,
+        "source_channels": 2,
+        "resampled_samples": 384000,
+        "seconds": 7.52332,
+        "weight_bytes": 2157091968,
+        "graph_bytes": 2156167168
+      },
+      "codes": {
+        "shape_match": true,
+        "expected_frames": 200,
+        "actual_frames": 200,
+        "total_compared_codes": 1600,
+        "changed_codes": 0,
+        "differences": [],
+        "passed": true,
+        "sha256": "3836a7f1f665bf5c0a3a82e324bd4e79e03c0df186289c2bea7927e8566264d3"
+      },
+      "scope": "code IDs only; activations not evaluated",
+      "all_stage_gates_passed": null,
+      "passed": true,
+      "full_report_sha256": "8f1a1d6ba4d2845ed95f03cf329c1d7dc4205acfbff247e714e7387f9a7b5e22"
+    },
+    {
+      "case": "tone24",
+      "backend": "cuda",
+      "reference_device": "cuda",
+      "backend_match": true,
+      "reference_manifest_sha256": "cd99f9971fa24317c3d6f1787d5682d8977a9be4751a51749ce8fa15050709c0",
+      "native_run": {
+        "mode": "encode",
+        "backend": "cuda",
+        "frames": 30,
+        "source_samples": 115200,
+        "source_rate": 48000,
+        "source_channels": 2,
+        "resampled_samples": 57600,
+        "seconds": 7.53157,
+        "weight_bytes": 2157091968,
+        "graph_bytes": 2156167168
+      },
+      "codes": {
+        "shape_match": true,
+        "expected_frames": 30,
+        "actual_frames": 30,
+        "total_compared_codes": 240,
+        "changed_codes": 0,
+        "differences": [],
+        "passed": true,
+        "sha256": "6f0b00b5489daad15eb72affb224eb259e5365449fb4b80f67e4718cd8fbe851"
+      },
+      "scope": "code IDs only; activations not evaluated",
+      "all_stage_gates_passed": null,
+      "passed": true,
+      "full_report_sha256": "4e1f02b6e8e182cf73020935b9ab3e6ac458402a80a8ed698f3b23499499ab85"
+    }
+  ],
+  "matched_cpu_codes": 9840,
+  "matched_cuda_codes": 9840,
+  "all_matched_code_profiles_passed": true,
+  "cuda_reference_scope": "Stock CUDA MuEncoder/Whisper/WavLM/query/RVQ on frozen CPU frontend tensors and CPU-materialized effective weights; not stock end-to-end CUDA tokenize",
+  "same_query_replays": [
+    {
+      "query": "torch-cpu-query",
+      "backend": "cpu",
+      "compared_codes": 2976,
+      "changed_codes_vs_query_origin": 0,
+      "codes_sha256": "ea5ef00ad9cac38e7e6646b284af9fe7abaa9c31fda73f9146dc25b1eb52960a",
+      "frame259": [
+        4303,
+        3623,
+        2692,
+        4204,
+        6144,
+        6050,
+        4683,
+        2905
+      ]
+    },
+    {
+      "query": "torch-cpu-query",
+      "backend": "cuda",
+      "compared_codes": 2976,
+      "changed_codes_vs_query_origin": 0,
+      "codes_sha256": "ea5ef00ad9cac38e7e6646b284af9fe7abaa9c31fda73f9146dc25b1eb52960a",
+      "frame259": [
+        4303,
+        3623,
+        2692,
+        4204,
+        6144,
+        6050,
+        4683,
+        2905
+      ]
+    },
+    {
+      "query": "torch-cuda-query",
+      "backend": "cpu",
+      "compared_codes": 2976,
+      "changed_codes_vs_query_origin": 0,
+      "codes_sha256": "418d41d2c25264173f2db62475ed0a69b43c63097a3c179f6dfffc3e1bb23c73",
+      "frame259": [
+        4303,
+        3623,
+        2692,
+        4204,
+        7217,
+        794,
+        4228,
+        4381
+      ]
+    },
+    {
+      "query": "torch-cuda-query",
+      "backend": "cuda",
+      "compared_codes": 2976,
+      "changed_codes_vs_query_origin": 0,
+      "codes_sha256": "418d41d2c25264173f2db62475ed0a69b43c63097a3c179f6dfffc3e1bb23c73",
+      "frame259": [
+        4303,
+        3623,
+        2692,
+        4204,
+        7217,
+        794,
+        4228,
+        4381
+      ]
+    },
+    {
+      "query": "native-cpu-query",
+      "backend": "cpu",
+      "compared_codes": 2976,
+      "changed_codes_vs_query_origin": 0,
+      "codes_sha256": "ea5ef00ad9cac38e7e6646b284af9fe7abaa9c31fda73f9146dc25b1eb52960a",
+      "frame259": [
+        4303,
+        3623,
+        2692,
+        4204,
+        6144,
+        6050,
+        4683,
+        2905
+      ]
+    },
+    {
+      "query": "native-cpu-query",
+      "backend": "cuda",
+      "compared_codes": 2976,
+      "changed_codes_vs_query_origin": 0,
+      "codes_sha256": "ea5ef00ad9cac38e7e6646b284af9fe7abaa9c31fda73f9146dc25b1eb52960a",
+      "frame259": [
+        4303,
+        3623,
+        2692,
+        4204,
+        6144,
+        6050,
+        4683,
+        2905
+      ]
+    },
+    {
+      "query": "native-cuda-query",
+      "backend": "cpu",
+      "compared_codes": 2976,
+      "changed_codes_vs_query_origin": 0,
+      "codes_sha256": "418d41d2c25264173f2db62475ed0a69b43c63097a3c179f6dfffc3e1bb23c73",
+      "frame259": [
+        4303,
+        3623,
+        2692,
+        4204,
+        7217,
+        794,
+        4228,
+        4381
+      ]
+    },
+    {
+      "query": "native-cuda-query",
+      "backend": "cuda",
+      "compared_codes": 2976,
+      "changed_codes_vs_query_origin": 0,
+      "codes_sha256": "418d41d2c25264173f2db62475ed0a69b43c63097a3c179f6dfffc3e1bb23c73",
+      "frame259": [
+        4303,
+        3623,
+        2692,
+        4204,
+        7217,
+        794,
+        4228,
+        4381
+      ]
+    }
+  ],
+  "query_precision_controls": [
+    {
+      "arithmetic": "source-f32",
+      "device": "cpu",
+      "rotary_policy": "Original source F32 rotary policy retained",
+      "manifest_sha256": "996ea8adf6e067fda3362b389150e4c06c54994a30ba62a2eed92405af9a0d3e",
+      "input_feature_sha256": {
+        "acoustic": "c2d699c71f6dbf8a2cd0e50e173be2991f4dc8f18fcea98d8035fdf208acef04",
+        "semantic": "5e25cc6a899cbd23d7d4712c518e57f931d440c083961d9fddc3eef5977e16c3",
+        "whisper": "64fbb975127094249468ce13117f531db4d8b246d24fcab614a30f7a19ee68de",
+        "wavlm": "2c746d6a4a6abd8c00ec92f3377778f1690e5c6624b533c668e9cb9b3bc5f257"
+      },
+      "frame259": [
+        4303,
+        3623,
+        2692,
+        4204,
+        6144,
+        6050,
+        4683,
+        2905
+      ]
+    },
+    {
+      "arithmetic": "source-f32",
+      "device": "cuda",
+      "rotary_policy": "Original source F32 rotary policy retained",
+      "manifest_sha256": "bd11d72a352f39a3d9c38f851f85cc9ce801795272c9f3bd4359e7aa4317b654",
+      "input_feature_sha256": {
+        "acoustic": "c2d699c71f6dbf8a2cd0e50e173be2991f4dc8f18fcea98d8035fdf208acef04",
+        "semantic": "5e25cc6a899cbd23d7d4712c518e57f931d440c083961d9fddc3eef5977e16c3",
+        "whisper": "64fbb975127094249468ce13117f531db4d8b246d24fcab614a30f7a19ee68de",
+        "wavlm": "2c746d6a4a6abd8c00ec92f3377778f1690e5c6624b533c668e9cb9b3bc5f257"
+      },
+      "frame259": [
+        4303,
+        3623,
+        2692,
+        4204,
+        7217,
+        794,
+        4228,
+        4381
+      ]
+    },
+    {
+      "arithmetic": "source-mixed-f64",
+      "device": "cpu",
+      "rotary_policy": "Original source F32 rotary policy retained",
+      "manifest_sha256": "e9f0bb1e9f9441f520da174b74d84345ba4a4fb8d6de57bb22789490566bf7d0",
+      "input_feature_sha256": {
+        "acoustic": "c2d699c71f6dbf8a2cd0e50e173be2991f4dc8f18fcea98d8035fdf208acef04",
+        "semantic": "5e25cc6a899cbd23d7d4712c518e57f931d440c083961d9fddc3eef5977e16c3",
+        "whisper": "64fbb975127094249468ce13117f531db4d8b246d24fcab614a30f7a19ee68de",
+        "wavlm": "2c746d6a4a6abd8c00ec92f3377778f1690e5c6624b533c668e9cb9b3bc5f257"
+      },
+      "frame259": [
+        4303,
+        3623,
+        2692,
+        4204,
+        7217,
+        794,
+        4228,
+        4381
+      ]
+    },
+    {
+      "arithmetic": "diagnostic-f64",
+      "device": "cpu",
+      "rotary_policy": "Diagnostic F64 angles and rotation; source F32 casts deliberately removed",
+      "manifest_sha256": "fe2cc30bf581b975803bfa0a3cad19581bda2234f70e9229360dae5ea226f6d3",
+      "input_feature_sha256": {
+        "acoustic": "c2d699c71f6dbf8a2cd0e50e173be2991f4dc8f18fcea98d8035fdf208acef04",
+        "semantic": "5e25cc6a899cbd23d7d4712c518e57f931d440c083961d9fddc3eef5977e16c3",
+        "whisper": "64fbb975127094249468ce13117f531db4d8b246d24fcab614a30f7a19ee68de",
+        "wavlm": "2c746d6a4a6abd8c00ec92f3377778f1690e5c6624b533c668e9cb9b3bc5f257"
+      },
+      "frame259": [
+        4303,
+        3623,
+        2692,
+        4204,
+        7217,
+        794,
+        4228,
+        4381
+      ]
+    }
+  ],
+  "cross_backend_cpu_reference_code_difference": {
+    "frame": 259,
+    "levels": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "changed_codes": 4,
+    "still_reported": true,
+    "passed": false
+  },
+  "refined_diagnosis": "Feature and query roundoff jointly determine this near-boundary result. Native CPU query on frozen upstream CPU features also selects 7217; whole native CPU input encoding selects 6144. Do not attribute the difference solely to a faulty CUDA query backend.",
+  "runtime_selection_changed": false,
+  "rvq_epsilon_or_code_remapping_added": false,
+  "hidden_cpu_fallback_added": false,
+  "original_flat_activation_gates_passed": false,
+  "legacy_upstream_waveform_failure_resolved": false,
+  "fixed_upstream_features_native_cpu_query": {
+    "backend_match": true,
+    "compared_codes": 2976,
+    "changed_codes": 4,
+    "all_stage_gates_passed": true,
+    "passed": false,
+    "report": "rvq-query-cpu-fixed-features.json"
+  },
+  "checks": {
+    "windows_cpu_ctest": 5,
+    "windows_cuda_parent_ctest": 9,
+    "windows_dll_ctest": 5,
+    "spark_docker_cpu_ctest": 5,
+    "offline_python_tests_passed": 12,
+    "offline_python_classes_skipped": 1,
+    "skip_reason": "Unchanged quantization-tool integration class requires optional HEARTCODEC_QUANTIZER"
+  },
+  "native_cuda_environment": {
+    "GGML_CUDA_TF32": "0",
+    "GGML_CUDA_CUBLAS_COMPUTE_TYPE": "auto",
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  }
+}

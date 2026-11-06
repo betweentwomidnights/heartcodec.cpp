@@ -1,0 +1,391 @@
+{
+  "date": "2026-11-04",
+  "status": "experimental; strict full encoder parity remains open",
+  "model": {
+    "sha256": "b7cd97fb1cc48764070851777ed00c5b56540730ae7372ad39e2d8c92486c297",
+    "bytes": 2157157152,
+    "tensors": 983,
+    "dtype": "F32"
+  },
+  "ggml": {
+    "coordinated_pin": "b77ae790e628270af46a8af1eca38441c23f1252",
+    "cuda_isolated_target": "0f2ed045eaff6bf01bed074878b6988248efbc22",
+    "pins_changed": false,
+    "new_ggml_changes": false
+  },
+  "raw_audio": [
+    {
+      "case": "raw2976",
+      "backend": "cpu",
+      "report": "encoder-raw2976-cpu.json",
+      "report_sha256": "358d6cf2222ed98da92f769149d6fd9dc974dec8ed2f1f50c4d08bbc072e1f6d",
+      "frames": 372,
+      "compared_codes": 2976,
+      "changed_codes": 0,
+      "codes_sha256": "bdbeab789d35496a3744f41410ab4ffeaecf91e7a0a9759dd1a9e7ae075ab342",
+      "failed_stage_gates": [
+        {
+          "case": "source-2976",
+          "tensor": "input.whisper",
+          "max_abs": 0.004417896270751953,
+          "relative_l2": 9.901276641156288e-06
+        },
+        {
+          "case": "source-2976",
+          "tensor": "stage.feature.whisper_encoder.layers.11",
+          "max_abs": 0.029296875,
+          "relative_l2": 1.3203337646283204e-05
+        },
+        {
+          "case": "source-2976",
+          "tensor": "stage.feature.whisper_encoder",
+          "max_abs": 0.008835792541503906,
+          "relative_l2": 1.2982205743047635e-05
+        }
+      ],
+      "passed": false
+    },
+    {
+      "case": "raw2976",
+      "backend": "cuda",
+      "report": "encoder-raw2976-cuda.json",
+      "report_sha256": "b836563f123f67e770e4ef706c92d052a4224ef5b1fe3d892b57b31faba2c782",
+      "frames": 372,
+      "compared_codes": 2976,
+      "changed_codes": 0,
+      "codes_sha256": "bdbeab789d35496a3744f41410ab4ffeaecf91e7a0a9759dd1a9e7ae075ab342",
+      "failed_stage_gates": [
+        {
+          "case": "source-2976",
+          "tensor": "input.whisper",
+          "max_abs": 0.006208181381225586,
+          "relative_l2": 9.887641365532024e-06
+        },
+        {
+          "case": "source-2976",
+          "tensor": "stage.feature.whisper_encoder.layers.11",
+          "max_abs": 0.0228271484375,
+          "relative_l2": 1.1524966143687875e-05
+        },
+        {
+          "case": "source-2976",
+          "tensor": "stage.feature.whisper_encoder",
+          "max_abs": 0.012416362762451172,
+          "relative_l2": 1.2952130714821622e-05
+        }
+      ],
+      "passed": false
+    },
+    {
+      "case": "raw50",
+      "backend": "cpu",
+      "report": "encoder-raw50-cpu.json",
+      "report_sha256": "c7b938c3da35b09b83adafa6986d3eb80b7caf9521f1d5fc154299cc12c5f170",
+      "frames": 625,
+      "compared_codes": 5000,
+      "changed_codes": 0,
+      "codes_sha256": "47441c0b3ddd1f8544502e3704b92aebb0c2e7f9446b7b5c558105156e9f19c9",
+      "failed_stage_gates": [
+        {
+          "case": "source-chunk-0",
+          "tensor": "input.whisper",
+          "max_abs": 0.0034978389739990234,
+          "relative_l2": 9.710577175698052e-06
+        },
+        {
+          "case": "source-chunk-0",
+          "tensor": "stage.feature.whisper_encoder.layers.11",
+          "max_abs": 0.0299530029296875,
+          "relative_l2": 1.3310740993739442e-05
+        },
+        {
+          "case": "source-chunk-0",
+          "tensor": "stage.feature.whisper_encoder",
+          "max_abs": 0.00699615478515625,
+          "relative_l2": 1.2736848331312398e-05
+        },
+        {
+          "case": "source-chunk-1",
+          "tensor": "input.whisper",
+          "max_abs": 0.0015163421630859375,
+          "relative_l2": 7.387267594459529e-06
+        },
+        {
+          "case": "source-chunk-1",
+          "tensor": "stage.feature.whisper_encoder.layers.11",
+          "max_abs": 0.020721435546875,
+          "relative_l2": 9.779800112931875e-06
+        },
+        {
+          "case": "source-chunk-1",
+          "tensor": "stage.feature.whisper_encoder",
+          "max_abs": 0.0030279159545898438,
+          "relative_l2": 9.840004967023169e-06
+        }
+      ],
+      "passed": false
+    },
+    {
+      "case": "raw50",
+      "backend": "cuda",
+      "report": "encoder-raw50-cuda.json",
+      "report_sha256": "83624cc1fdfa88100925ad869b006ec51637a68f42de12c7b66520148eb859f7",
+      "frames": 625,
+      "compared_codes": 5000,
+      "changed_codes": 4,
+      "codes_sha256": "6c4526c1d59ff0362489d515130bc2dd6b85dc34417063b192803bcf12021584",
+      "failed_stage_gates": [
+        {
+          "case": "source-chunk-0",
+          "tensor": "input.whisper",
+          "max_abs": 0.004364728927612305,
+          "relative_l2": 8.712179264219995e-06
+        },
+        {
+          "case": "source-chunk-0",
+          "tensor": "stage.feature.whisper_encoder.layers.11",
+          "max_abs": 0.021026611328125,
+          "relative_l2": 1.1263034373552502e-05
+        },
+        {
+          "case": "source-chunk-0",
+          "tensor": "stage.feature.whisper_encoder",
+          "max_abs": 0.00872945785522461,
+          "relative_l2": 1.1439746458568609e-05
+        },
+        {
+          "case": "source-chunk-1",
+          "tensor": "input.whisper",
+          "max_abs": 0.0013208389282226562,
+          "relative_l2": 6.383709613907061e-06
+        },
+        {
+          "case": "source-chunk-1",
+          "tensor": "stage.feature.whisper_encoder.layers.11",
+          "max_abs": 0.02398681640625,
+          "relative_l2": 9.011568388451887e-06
+        },
+        {
+          "case": "source-chunk-1",
+          "tensor": "stage.feature.whisper_encoder",
+          "max_abs": 0.0026044845581054688,
+          "relative_l2": 8.430665092517084e-06
+        }
+      ],
+      "passed": false
+    },
+    {
+      "case": "mono48",
+      "backend": "cpu",
+      "report": "encoder-mono48-cpu.json",
+      "report_sha256": "83688b4f4cc9a63ea9b5df375c755a833d91ef4725f82ca57357376c1e9a7dc4",
+      "frames": 3,
+      "compared_codes": 24,
+      "changed_codes": 0,
+      "codes_sha256": "1b882c9facd8809adf805b1c4990f3607dfa561112bc2a1b6fd9b549303d839d",
+      "failed_stage_gates": [
+        {
+          "case": "source-chunk-0",
+          "tensor": "input.whisper",
+          "max_abs": 0.0032448768615722656,
+          "relative_l2": 6.360162690324459e-06
+        },
+        {
+          "case": "source-chunk-0",
+          "tensor": "stage.feature.whisper_encoder.layers.11",
+          "max_abs": 0.014312744140625,
+          "relative_l2": 8.112364323849471e-06
+        },
+        {
+          "case": "source-chunk-0",
+          "tensor": "stage.feature.whisper_encoder",
+          "max_abs": 0.006489992141723633,
+          "relative_l2": 8.586848655953533e-06
+        }
+      ],
+      "passed": false
+    },
+    {
+      "case": "mono48",
+      "backend": "cuda",
+      "report": "encoder-mono48-cuda.json",
+      "report_sha256": "424ad4ccc9d8b96a840a2ae0a352a87ea88b7e4912bd76e4c8ab78f4fa74c070",
+      "frames": 3,
+      "compared_codes": 24,
+      "changed_codes": 0,
+      "codes_sha256": "1b882c9facd8809adf805b1c4990f3607dfa561112bc2a1b6fd9b549303d839d",
+      "failed_stage_gates": [
+        {
+          "case": "source-chunk-0",
+          "tensor": "input.whisper",
+          "max_abs": 0.002270221710205078,
+          "relative_l2": 5.760521217415474e-06
+        },
+        {
+          "case": "source-chunk-0",
+          "tensor": "stage.feature.whisper_encoder.layers.11",
+          "max_abs": 0.014190673828125,
+          "relative_l2": 8.452679653488355e-06
+        },
+        {
+          "case": "source-chunk-0",
+          "tensor": "stage.feature.whisper_encoder",
+          "max_abs": 0.004538297653198242,
+          "relative_l2": 7.72409540124277e-06
+        }
+      ],
+      "passed": false
+    }
+  ],
+  "query_from_frozen_features": [
+    {
+      "backend": "cpu",
+      "case": "synthetic-8",
+      "passed": true,
+      "codes": 32,
+      "changed_codes": 0,
+      "max_abs": 1.1682510375976562e-05,
+      "max_relative_l2": 1.0989636911427419e-06
+    },
+    {
+      "backend": "cpu",
+      "case": "synthetic-24",
+      "passed": true,
+      "codes": 96,
+      "changed_codes": 0,
+      "max_abs": 7.748603820800781e-06,
+      "max_relative_l2": 1.1786065851228963e-06
+    },
+    {
+      "backend": "cpu",
+      "case": "synthetic-744",
+      "passed": true,
+      "codes": 2976,
+      "changed_codes": 0,
+      "max_abs": 1.33514404296875e-05,
+      "max_relative_l2": 1.1048768871671843e-06
+    },
+    {
+      "backend": "cpu",
+      "case": "source-2976",
+      "passed": true,
+      "codes": 2976,
+      "changed_codes": 0,
+      "max_abs": 4.291534423828125e-05,
+      "max_relative_l2": 1.232259974988535e-06
+    },
+    {
+      "backend": "cuda",
+      "case": "synthetic-8",
+      "passed": true,
+      "codes": 32,
+      "changed_codes": 0,
+      "max_abs": 1.1444091796875e-05,
+      "max_relative_l2": 9.924439710496876e-07
+    },
+    {
+      "backend": "cuda",
+      "case": "synthetic-24",
+      "passed": true,
+      "codes": 96,
+      "changed_codes": 0,
+      "max_abs": 7.62939453125e-06,
+      "max_relative_l2": 1.150261104342842e-06
+    },
+    {
+      "backend": "cuda",
+      "case": "synthetic-744",
+      "passed": true,
+      "codes": 2976,
+      "changed_codes": 0,
+      "max_abs": 1.2099742889404297e-05,
+      "max_relative_l2": 9.285197013751983e-07
+    },
+    {
+      "backend": "cuda",
+      "case": "source-2976",
+      "passed": true,
+      "codes": 2976,
+      "changed_codes": 0,
+      "max_abs": 4.291534423828125e-05,
+      "max_relative_l2": 1.2413618766300363e-06
+    }
+  ],
+  "cuda_vs_cuda_neural_oracle": {
+    "compared_codes": 5000,
+    "changed_codes": 0,
+    "failed_stage_gates": [
+      {
+        "case": "source-chunk-0",
+        "tensor": "stage.feature.whisper_encoder.layers.11",
+        "max_abs": 0.01055908203125
+      },
+      {
+        "case": "source-chunk-0",
+        "tensor": "stage.feature.whisper_encoder",
+        "max_abs": 0.0025119781494140625
+      },
+      {
+        "case": "source-chunk-0",
+        "tensor": "input.whisper",
+        "max_abs": 0.0012555122375488281
+      },
+      {
+        "case": "source-chunk-1",
+        "tensor": "stage.feature.whisper_encoder.layers.11",
+        "max_abs": 0.02813720703125
+      },
+      {
+        "case": "source-chunk-1",
+        "tensor": "stage.feature.whisper_encoder",
+        "max_abs": 0.001972675323486328
+      }
+    ],
+    "passed": false
+  },
+  "build_checks": [
+    {
+      "target": "Windows standalone CPU static, coordinated GGML",
+      "ctest_passed": 5
+    },
+    {
+      "target": "Windows standalone HeartCodec DLL, coordinated GGML",
+      "ctest_passed": 5,
+      "model_backed_encoder_api": "passed"
+    },
+    {
+      "target": "Windows MuLaCover CPU DLL parent with static HeartCodec",
+      "ctest_passed": 9,
+      "model_backed_encoder_api": "passed"
+    },
+    {
+      "target": "Windows MuLaCover CUDA parent, authorized isolated GGML target",
+      "ctest_passed": 9,
+      "model_backed_encoder_api": "passed"
+    },
+    {
+      "target": "Spark Docker heartcodec-dev:20261101 CPU",
+      "ctest_passed": 5
+    }
+  ],
+  "continuation_regression": {
+    "report": "encoder-continuation-chain.json",
+    "current_cpu_guide_sha256": "bdbeab789d35496a3744f41410ab4ffeaecf91e7a0a9759dd1a9e7ae075ab342",
+    "accepted_native_output_codes": 8760,
+    "full_wav_and_new_wav_byte_exact": true,
+    "scope": "Accepted native Q4 baseline; existing upstream strict waveform failure remains open"
+  },
+  "heartcodec_dll_cli": {
+    "input": "0.24s mono 48k fixture",
+    "compared_codes": 24,
+    "byte_exact_with_static": true
+  },
+  "offline_python_tests": {
+    "passed": 6,
+    "skipped_classes": 1,
+    "skip_reason": "Quantization tool integration requires HEARTCODEC_QUANTIZER; unchanged SQ quantizer"
+  },
+  "native_inference_requires_python": false,
+  "encoder_quantization_implemented": false,
+  "all_strict_parity_gates_passed": false
+}
