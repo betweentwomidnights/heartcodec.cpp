@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <cctype>
 #include <cmath>
+#include <cstdio>
 #include <cstring>
 #include <fstream>
 #include <mutex>
@@ -27,19 +28,28 @@ void Model::load(const char * path, const char * requested, int threads) {
     std::transform(wanted.begin(), wanted.end(), wanted.begin(), [](unsigned char c) { return std::tolower(c); });
     if (wanted != "cpu" && wanted != "cuda" && wanted != "vulkan" && wanted != "metal")
         throw std::invalid_argument("Backend must be cpu, cuda, vulkan, or metal");
+    // Prefer a discrete GPU over an integrated one, then the larger device: an iGPU reports
+    // shared system memory and would otherwise outrank the dGPU. GGML registers Metal as "MTL".
     ggml_backend_dev_t chosen = nullptr;
+    bool best_discrete = false;
     size_t best_memory = 0;
     for (size_t i = 0; i < ggml_backend_dev_count(); ++i) {
         auto dev = ggml_backend_dev_get(i);
         std::string name = ggml_backend_reg_name(ggml_backend_dev_backend_reg(dev));
         std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+        if (name == "mtl") name = "metal";
         if (name != wanted) continue;
-        size_t free_bytes, total;
+        const bool discrete = ggml_backend_dev_type(dev) == GGML_BACKEND_DEVICE_TYPE_GPU;
+        size_t free_bytes = 0, total = 0;
         ggml_backend_dev_memory(dev, &free_bytes, &total);
-        if (!chosen || total > best_memory) { chosen = dev; best_memory = total; }
+        if (!chosen || discrete > best_discrete || (discrete == best_discrete && total > best_memory)) {
+            chosen = dev; best_discrete = discrete; best_memory = total;
+        }
     }
     if (!chosen || !(backend = ggml_backend_dev_init(chosen, nullptr)))
         throw std::runtime_error("Requested backend unavailable: " + wanted);
+    std::fprintf(stderr, "[heartcodec] backend: %s (%s, %.1f GB)\n", ggml_backend_name(backend),
+                 ggml_backend_dev_description(chosen), double(best_memory) / (1024.0 * 1024.0 * 1024.0));
     if (wanted == "cpu") {
         auto set_threads = reinterpret_cast<ggml_backend_set_n_threads_t>(
             ggml_backend_reg_get_proc_address(ggml_backend_dev_backend_reg(chosen), "ggml_backend_set_n_threads"));

@@ -13,6 +13,17 @@
 #include <vector>
 
 namespace heartcodec {
+// "MUL_MAT f32[1024,4096,1,1] (bytes 16777216) <- f32[..] f32[..]" for backend refusal messages.
+inline std::string describe_op(const ggml_tensor * t) {
+    auto shape = [](const ggml_tensor * x) {
+        return std::string(ggml_type_name(x->type)) + "[" + std::to_string(x->ne[0]) + "," + std::to_string(x->ne[1]) + "," +
+               std::to_string(x->ne[2]) + "," + std::to_string(x->ne[3]) + "]" + (ggml_is_contiguous(x) ? "" : " strided");
+    };
+    std::string text = std::string(ggml_op_name(t->op)) + " " + shape(t) + " (" + std::to_string(ggml_nbytes(t)) + " bytes) <-";
+    for (int i = 0; i < GGML_MAX_SRC && t->src[i]; ++i)
+        text += " " + shape(t->src[i]) + " (" + std::to_string(ggml_nbytes(t->src[i])) + " bytes)";
+    return text;
+}
 struct Work {
     const heartcodec_work_control_v1 * control;
     bool cancelled=false;

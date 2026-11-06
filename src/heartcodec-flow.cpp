@@ -72,7 +72,7 @@ struct Graph {
         for (int i = 0; i < ggml_graph_n_nodes(graph); ++i) {
             auto * n = ggml_graph_node(graph, i);
             if (!ggml_backend_supports_op(model.backend, n))
-                throw std::runtime_error("Unsupported flow operation: " + std::string(ggml_op_name(n->op)));
+                throw std::runtime_error("Unsupported flow operation: " + describe_op(n));
         }
         allocator = ggml_gallocr_new(ggml_backend_get_default_buffer_type(model.backend));
         if (!allocator || !ggml_gallocr_alloc_graph(allocator, graph))
