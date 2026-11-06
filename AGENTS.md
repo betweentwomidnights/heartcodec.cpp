@@ -9,20 +9,20 @@
 - Use `scripts/spark.sh` for the established container workflow. Reference code is
   mounted read-only from the sibling `_heartcodec_refs` directory.
 - Use `betweentwomidnights/ggml`; keep generic kernels and backend fixes there.
-  The coordinated pin is `b77ae790e628270af46a8af1eca38441c23f1252` on
-  `feature/shared-sa3-acestep-v0.17`. The branch name is historical; use exact
-  commit identity rather than inferring the upstream release from its name.
-  Earlier `07b77b0` parity reports are historical until revalidated on this pin.
+  The coordinated pin is `e3db5210fe3ecdaa4d65b4c93d515f2cf15524b7` (GGML 0.29,
+  ggml#22) on `feature/shared-sa3-acestep-v0.17`. The branch name is historical;
+  use exact commit identity rather than inferring the upstream release from its
+  name. Earlier `07b77b0` and `b77ae79` parity reports are historical until
+  revalidated on this pin.
 - GGML changes and pin updates require coordination across consumers. First try
   the existing in-tree target/API. If a change is essential, isolate it in a
   separate worktree/branch and open a focused draft PR for cross-agent review;
   keep consumer pins unchanged until adoption is coordinated after review.
-  Any necessary new GGML PR must start from the coordinated `b77ae79` baseline
+  Any necessary new GGML PR must start from the coordinated `e3db521` baseline
   and target `feature/shared-sa3-acestep-v0.17`; never patch the shared checkout.
-- User authorized MuLaCover-only development using isolated CUDA fix `0f2ed045`
-  before coordinated adoption. Sibling MuLaCover supplies that single GGML target;
-  this repository's shared submodule remains `b77ae79`. Defer ggml-bump-check and
-  all five sibling bumps until MuLaCover has been confirmed working.
+- The CUDA F32-source fix that MuLaCover developed against in isolation
+  (`0f2ed045`, ggml#21) is part of the coordinated pin. ggml-bump-check covers
+  this repository and MuLaCover on CUDA, Vulkan and Metal.
 - Match unquantized intermediate tensors before quantization or optimization.
   SQ latents and RVQ codes are distinct representations.
 - The laptop checkout at `C:\dev\heartcodec.cpp` is now the primary development
