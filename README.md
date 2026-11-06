@@ -14,12 +14,12 @@ RVQ lookup, the full FP32 flow transformer, guided Euler sampling, stereo splitt
 window context, overlap/crossfade and trimming run locally using the shared GGML
 fork. Flow and SQ weights load in separate stages. The laptop is the primary
 native development workspace; Spark Docker containers generate upstream fixtures.
-The coordinated GGML pin is now `b77ae79`. CPU regression passes; FP32 CUDA
-parity on that pin has a reproduced precision failure. Earlier CUDA results below
-used `07b77b0`. See [shared-pin validation](docs/GGML_B77_ALIGNMENT.md) for the
-isolated review proposal; consumer pins do not adopt the proposed fix.
-The unadopted candidate in [draft GGML PR #21](https://github.com/betweentwomidnights/ggml/pull/21)
-passes the six flow cases and MuLaCover's 600-tensor CUDA suite on Spark.
+The coordinated GGML pin is now `e3db521`, the shared fork on GGML 0.29
+([GGML PR #22](https://github.com/betweentwomidnights/ggml/pull/22)). It includes the
+CUDA F32-source fix from [GGML PR #21](https://github.com/betweentwomidnights/ggml/pull/21):
+FP32 CUDA SQ and flow parity, which failed at the previous pin `b77ae79`, pass on it.
+Earlier CUDA results below used `07b77b0`. See [shared-pin validation](docs/GGML_B77_ALIGNMENT.md)
+for the `b77ae79` precision failure.
 The [RVQ/flow and stereo report](docs/FLOW_AND_STEREO.md) records parity, memory,
 and the small number of SQ rounding-boundary changes in the long fixture.
 
