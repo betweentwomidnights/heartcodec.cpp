@@ -62,7 +62,7 @@ struct Graph {
         return ggml_view_1d(ctx, x, d, size_t(row) * size_t(d) * sizeof(float));
     }
     ggml_tensor * modulate(ggml_tensor * x, ggml_tensor * shift, ggml_tensor * scale) {
-        return ggml_add(ctx, ggml_mul(ctx, x, ggml_add1(ctx, scale, one)), shift);
+        return ggml_add(ctx, ggml_mul(ctx, x, ggml_add(ctx, scale, one)), shift);
     }
     ggml_tensor * one = nullptr;
     void allocate(ggml_tensor * result) {
