@@ -19,7 +19,7 @@ def main():
     p.add_argument("--flow-model", type=Path, required=True)
     p.add_argument("--sq-model", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True)
-    p.add_argument("--backend", default="cuda", choices=("cpu", "cuda"))
+    p.add_argument("--backend", default="cuda", choices=("cpu", "cuda", "vulkan", "metal"))
     p.add_argument("--reuse", action="store_true", help="Reuse already computed outputs for additional diagnostic comparisons")
     p.add_argument("--cases", default="")
     a = p.parse_args()

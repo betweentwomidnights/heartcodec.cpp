@@ -29,6 +29,10 @@ The separate capability preserves frozen core/flow APIs and legacy seed behavior
 Matched RNG reproduces all 6,888 upstream F32 generator codes for the real-song
 control; the full-song decoded waveform still fails its unchanged strict limits.
 
+A separate [controlled-work capability](docs/CONTROLLED_WORK.md) supplies worker
+progress and cooperative cancellation for encoding and staged stereo decoding.
+The sibling MuLaCover raw-PCM job uses it without changing existing ABI tables.
+
 An experimental [full waveform-to-RVQ encoder](docs/AUDIO_ENCODER.md) now runs
 natively on the laptop through a separate negotiated C capability. CPU matches
 all 9,840 CPU code IDs across five raw-audio fixtures. CUDA matches all 9,840

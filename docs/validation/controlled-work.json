@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-04",
+  "scope": "Separate controlled-work capability and regression checks; existing math and frozen ABI tables unchanged",
+  "base_commit": "fa9e3b68feaa55f5007446f670143254cfd2b89a",
+  "ggml_shared_pin": "b77ae790e628270af46a8af1eca38441c23f1252",
+  "authorized_cuda_target": "0f2ed045eaff6bf01bed074878b6988248efbc22",
+  "ggml_changes_or_consumer_pin_changes": false,
+  "builds": [
+    {"platform":"Windows CPU static", "tests_passed":6, "tests_failed":0},
+    {"platform":"Windows HeartCodec DLL, CPU", "tests_passed":6, "tests_failed":0},
+    {"platform":"Windows installed-package C consumer", "new_header_and_work_table":true, "passed":true},
+    {"platform":"Windows CUDA, sibling MuLaCover single-GGML build", "tests_passed":11, "tests_failed":0},
+    {"platform":"Spark CUDA, dedicated heartcodec-dev:20261101 Docker via reference/run-spark.sh build-development", "tests_passed":11, "tests_failed":0}
+  ],
+  "model_integration_cuda": {
+    "before_work_cancellation":true,
+    "encoder_graph_poll_cancellation":true,
+    "after_encoder_chunk_cancellation":true,
+    "after_flow_window_cancellation":true,
+    "failed_or_cancelled_outputs_unchanged":true,
+    "same_context_legacy_retry_after_cancel":true,
+    "same_context_controlled_vs_legacy_codes_byte_equal":true,
+    "same_context_controlled_vs_legacy_waveform_byte_equal":true,
+    "encoder_sha256":"b7cd97fb1cc48764070851777ed00c5b56540730ae7372ad39e2d8c92486c297",
+    "flow_sha256":"5c9cdbfae26ccd3e96355c541cade0feca37cfd8696746b724c294095949f523",
+    "sq_sha256":"2f72b85f924c629aae33004703cc02e16600abee15c01e928b2878e5d0f29ae6"
+  },
+  "philox_regression": {
+    "platforms":["Laptop CUDA","Spark Docker CUDA"],
+    "full_seed":"0xfedcba9812345678", "initial_offset":12, "target_grid_cap":288,
+    "normal_count":190464, "exponential_count":8197,
+    "bulk_draws":24, "chunked_draws":[8,8,8],
+    "values_and_final_offsets_bit_identical":true,
+    "cuda_build_requires_generation_success":true,
+    "cpu_build_reports_unavailable_without_fallback":true
+  },
+  "limits": [
+    "Cancellation cannot interrupt a running graph or initial context loading; progress is coarser than cancellation polling.",
+    "No new upstream activation or waveform parity claim; existing strict failures remain recorded.",
+    "Separate model DLLs still require a single shared GGML runtime for combined downstream use."
+  ]
+}

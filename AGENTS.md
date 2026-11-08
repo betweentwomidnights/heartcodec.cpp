@@ -49,6 +49,10 @@
   Full-song decoded audio still fails unchanged strict waveform limits (max_abs
   0.0827555, relative L2 0.00299061); scalar-level diagnostics for that case remain
   outstanding. Do not call waveform parity passed or assume a rounding exception.
+- `heartcodec_work.h` separately negotiates controlled encode/token-decode calls
+  with cooperative cancellation and worker progress. Keep legacy tables frozen;
+  see `docs/CONTROLLED_WORK.md`. Never interrupt a running backend graph or retain
+  a caller observer after return. MuLaCover owns orchestration and context staging.
 - Full waveform-to-RVQ encoding is now an experimental native capability in
   `heartcodec_encoder.h`, separate from frozen core/flow/RNG layouts. It includes
   native resampling, mel/STFT, MuEncoder/Whisper/WavLM, query fusion and original

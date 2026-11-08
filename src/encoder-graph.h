@@ -154,14 +154,16 @@ struct Graph {
         for(int i=0;i<ggml_graph_n_nodes(graph);++i) {
             auto * node=ggml_graph_node(graph,i);
             if(!ggml_backend_supports_op(model.backend,node))
-                throw std::runtime_error("Encoder backend lacks operation: "+std::string(ggml_op_name(node->op)));
+                throw std::runtime_error("Encoder backend lacks operation: "+describe_op(node));
         }
         allocator=ggml_gallocr_new(ggml_backend_get_default_buffer_type(model.backend));
         if(!allocator||!ggml_gallocr_alloc_graph(allocator,graph))throw std::runtime_error("Cannot allocate encoder graph");
         model.graph_bytes=std::max(model.graph_bytes,ggml_gallocr_get_buffer_size(allocator,0));
         // gallocr can reuse storage. Restore every graph input, including IDs.
         for(const auto & i:inputs)ggml_backend_tensor_set(i.tensor,i.bytes.data(),0,i.bytes.size());
+        model.checkpoint();
         if(ggml_backend_graph_compute(model.backend,graph)!=GGML_STATUS_SUCCESS)throw std::runtime_error("Encoder graph execution failed");
+        model.checkpoint();
         if(dumping&&directory&&*directory) {
             std::filesystem::create_directories(directory);
             for(const auto & pair:outputs) {auto data=values(pair.second);dump(std::filesystem::path(directory)/(pair.first+".f32"),data.data(),data.size());}

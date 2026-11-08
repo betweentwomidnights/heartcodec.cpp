@@ -1,5 +1,6 @@
 #pragma once
 #include "heartcodec.h"
+#include "heartcodec_work.h"
 #include "ggml.h"
 #include "ggml-backend.h"
 #include "ggml-alloc.h"
@@ -12,6 +13,31 @@
 #include <vector>
 
 namespace heartcodec {
+// "MUL_MAT f32[1024,4096,1,1] (bytes 16777216) <- f32[..] f32[..]" for backend refusal messages.
+inline std::string describe_op(const ggml_tensor * t) {
+    auto shape = [](const ggml_tensor * x) {
+        return std::string(ggml_type_name(x->type)) + "[" + std::to_string(x->ne[0]) + "," + std::to_string(x->ne[1]) + "," +
+               std::to_string(x->ne[2]) + "," + std::to_string(x->ne[3]) + "]" + (ggml_is_contiguous(x) ? "" : " strided");
+    };
+    std::string text = std::string(ggml_op_name(t->op)) + " " + shape(t) + " (" + std::to_string(ggml_nbytes(t)) + " bytes) <-";
+    for (int i = 0; i < GGML_MAX_SRC && t->src[i]; ++i)
+        text += " " + shape(t->src[i]) + " (" + std::to_string(ggml_nbytes(t->src[i])) + " bytes)";
+    return text;
+}
+struct Work {
+    const heartcodec_work_control_v1 * control;
+    bool cancelled=false;
+    void check() {
+        if(control&&control->should_cancel&&control->should_cancel(control->user)) {
+            cancelled=true;throw std::runtime_error("HeartCodec work cancelled");
+        }
+    }
+    void progress(int32_t stage,int64_t completed,int64_t total) {
+        check();
+        if(control&&control->on_progress){heartcodec_work_progress_v1 p{sizeof(p),stage,completed,total};control->on_progress(control->user,&p);}
+        check();
+    }
+};
 struct ConvSpec { int kernel, in_channels, out_channels; };
 struct Model {
     ggml_context * weights = nullptr;
@@ -25,6 +51,8 @@ struct Model {
     bool audio_encoder = false;
     bool matrix_layout = false;
     size_t graph_bytes = 0;
+    Work * work = nullptr;
+    void checkpoint(){if(work)work->check();}
     Model() = default;
     Model(const Model &) = delete;
     Model & operator=(const Model &) = delete;
@@ -48,6 +76,7 @@ std::vector<int32_t> encoder_rvq(Model &, const float *, int64_t frames, const c
 heartcodec_status_v1 error(heartcodec_error_v1 * out, heartcodec_status_v1 status, const char * message);
 }
 struct heartcodec_context {
+    heartcodec::Work * work = nullptr;
     std::unique_ptr<heartcodec::Model> models[2];
     std::string paths[2];
     std::string backend;
@@ -56,6 +85,7 @@ struct heartcodec_context {
         if (!models[component]) {
             if (paths[component].empty()) throw std::invalid_argument("Component model path is not registered");
             auto model = std::make_unique<heartcodec::Model>();
+            model->work=work;
             model->load(paths[component].c_str(), backend.c_str(), threads);
             if (model->audio_encoder || model->flow != (component == 1)) throw std::invalid_argument("Wrong component architecture");
             models[component] = std::move(model);
