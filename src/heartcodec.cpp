@@ -55,6 +55,7 @@ heartcodec_status_v1 heartcodec_context_create_v1(const heartcodec_config_v1 * c
         context->backend = c->backend; context->threads = c->cpu_threads;
         auto model = std::make_unique<heartcodec::Model>();
         model->load(c->model_path, c->backend, c->cpu_threads);
+        if (model->audio_encoder) throw std::invalid_argument("Use the waveform encoder capability for encoder GGUFs");
         const int component = model->flow ? 1 : 0;
         context->paths[component] = c->model_path;
         context->models[component] = std::move(model);

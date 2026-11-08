@@ -1,5 +1,15 @@
 # Spark Docker workflow
 
+The experimental [waveform encoder](AUDIO_ENCODER.md) uses the same isolated
+reference image and read-only source mounts. `scripts/spark.sh reference-encoder`,
+`reference-encoder50`, `reference-encoder-cuda-stages` and `convert-encoder` run entirely in Docker with networking
+disabled. The encoder checkpoint cache is mounted read-only from the sibling
+MuLaCover cache. Native laptop inference uses the generated strict F32 GGUF and
+does not require Python. Current CPU/CUDA code and intermediate-gate results are
+recorded separately; no shared-GGML pin adoption is part of this work. The CUDA
+neural-stage oracle uses frozen CPU frontend tensors; it does not claim stock
+end-to-end CUDA tokenization. See the encoder report for that distinction.
+
 Workspace: `/home/kev/dev/heartcodec.cpp` on `spark-c7ca`.
 Reference checkouts: `/home/kev/dev/_heartcodec_refs/{heartlib,spansynth-edit,MuLaCover}`.
 Run commands below from the project root on Spark. Python, model execution,
@@ -58,7 +68,7 @@ overrides it. Inference, conversions, and tests run with networking disabled.
 The reference repositories must be at the revisions in
 [the environment assessment](DEVELOPMENT_ENVIRONMENT.md). Model downloads are pinned
 in `tools/prepare-sq.py`. GGML is a submodule of the shared fork, pinned at
-`07b77b0112cc30861b49116b057bac33e819ee06`.
+`b77ae790e628270af46a8af1eca38441c23f1252`.
 
 ```bash
 bash scripts/spark.sh image

@@ -22,6 +22,7 @@ struct Model {
     std::map<std::string, ConvSpec> convolutions;
     std::string part;
     bool flow = false;
+    bool audio_encoder = false;
     bool matrix_layout = false;
     size_t graph_bytes = 0;
     Model() = default;
@@ -40,6 +41,10 @@ std::vector<float> rvq_decode(Model &, const int32_t *, int64_t frames, bool con
 std::vector<float> flow_step(Model &, const float *, int64_t frames, float time, const char * dump);
 std::vector<float> flow_decode(Model &, const int32_t *, int64_t frames, const heartcodec_flow_config_v1 &, const char * dump);
 void validate_flow_config(const heartcodec_flow_config_v1 * config, int64_t frames);
+void validate_audio_encoder(Model &);
+Encoded encoder_query(Model &, const float * acoustic, const float * semantic,
+                      const float * whisper, const float * wavlm, int64_t frames, const char * dump);
+std::vector<int32_t> encoder_rvq(Model &, const float *, int64_t frames, const char * dump);
 heartcodec_status_v1 error(heartcodec_error_v1 * out, heartcodec_status_v1 status, const char * message);
 }
 struct heartcodec_context {
@@ -52,7 +57,7 @@ struct heartcodec_context {
             if (paths[component].empty()) throw std::invalid_argument("Component model path is not registered");
             auto model = std::make_unique<heartcodec::Model>();
             model->load(paths[component].c_str(), backend.c_str(), threads);
-            if (model->flow != (component == 1)) throw std::invalid_argument("Wrong component architecture");
+            if (model->audio_encoder || model->flow != (component == 1)) throw std::invalid_argument("Wrong component architecture");
             models[component] = std::move(model);
         }
         return *models[component];

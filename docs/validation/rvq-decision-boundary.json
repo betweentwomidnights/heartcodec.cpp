@@ -1,0 +1,336 @@
+{
+  "model_sha256": "b7cd97fb1cc48764070851777ed00c5b56540730ae7372ad39e2d8c92486c297",
+  "frame": 259,
+  "level": 4,
+  "scope": "Diagnostic only; no tie epsilon, reranking, code remapping or runtime change",
+  "samples": [
+    {
+      "label": "torch-cpu-f32",
+      "projected_sha256": "ff7a80ae472cf11242d3463d8c2aa027eeb17a0fef670d9bd27be7993604053d",
+      "codes_sha256": "ea5ef00ad9cac38e7e6646b284af9fe7abaa9c31fda73f9146dc25b1eb52960a",
+      "projected_dtype": "<f4",
+      "residual_policy": "Subtract earlier embeddings in the projected dtype, then measure distances in F64",
+      "prefix": [
+        4303,
+        3623,
+        2692,
+        4204
+      ],
+      "recorded_code": 6144,
+      "f64_nearest": 6144,
+      "squared_distance_margin": 2.0100916126031265e-08,
+      "distance_to_nearest_bisector": 2.4782883917527397e-08,
+      "prefix_equal_to_first": true,
+      "residual_l2_displacement_from_first": 0.0,
+      "top": [
+        {
+          "code": 6144,
+          "squared_distance": 0.22516321081428903
+        },
+        {
+          "code": 7217,
+          "squared_distance": 0.22516323091520515
+        },
+        {
+          "code": 7635,
+          "squared_distance": 0.22753644458693145
+        },
+        {
+          "code": 5212,
+          "squared_distance": 0.23514338040380436
+        },
+        {
+          "code": 6320,
+          "squared_distance": 0.23691210282638575
+        }
+      ]
+    },
+    {
+      "label": "torch-cuda-neural",
+      "projected_sha256": "1ef012027e0ee526dbceb50979d11a0b0305ac2c7b579886b833f2a4828b9e60",
+      "codes_sha256": "418d41d2c25264173f2db62475ed0a69b43c63097a3c179f6dfffc3e1bb23c73",
+      "projected_dtype": "<f4",
+      "residual_policy": "Subtract earlier embeddings in the projected dtype, then measure distances in F64",
+      "prefix": [
+        4303,
+        3623,
+        2692,
+        4204
+      ],
+      "recorded_code": 7217,
+      "f64_nearest": 7217,
+      "squared_distance_margin": 3.139696114207169e-08,
+      "distance_to_nearest_bisector": 3.871003880959484e-08,
+      "prefix_equal_to_first": true,
+      "residual_l2_displacement_from_first": 2.842208518146818e-06,
+      "top": [
+        {
+          "code": 7217,
+          "squared_distance": 0.22516348439308925
+        },
+        {
+          "code": 6144,
+          "squared_distance": 0.2251635157900504
+        },
+        {
+          "code": 7635,
+          "squared_distance": 0.2275363728841888
+        },
+        {
+          "code": 5212,
+          "squared_distance": 0.2351432707074964
+        },
+        {
+          "code": 6320,
+          "squared_distance": 0.23691270510797374
+        }
+      ]
+    },
+    {
+      "label": "native-cpu-full",
+      "projected_sha256": "818edf5a6ff27b8485e24e972f6354bb8711d8c26002eeab8939226d2ef961a5",
+      "codes_sha256": "47441c0b3ddd1f8544502e3704b92aebb0c2e7f9446b7b5c558105156e9f19c9",
+      "projected_dtype": "<f4",
+      "residual_policy": "Subtract earlier embeddings in the projected dtype, then measure distances in F64",
+      "prefix": [
+        4303,
+        3623,
+        2692,
+        4204
+      ],
+      "recorded_code": 6144,
+      "f64_nearest": 6144,
+      "squared_distance_margin": 1.0382077991755168e-07,
+      "distance_to_nearest_bisector": 1.2800303830887397e-07,
+      "prefix_equal_to_first": true,
+      "residual_l2_displacement_from_first": 4.093658437217191e-06,
+      "top": [
+        {
+          "code": 6144,
+          "squared_distance": 0.22516256934275802
+        },
+        {
+          "code": 7217,
+          "squared_distance": 0.22516267316353794
+        },
+        {
+          "code": 7635,
+          "squared_distance": 0.22753605903960084
+        },
+        {
+          "code": 5212,
+          "squared_distance": 0.23514308003362397
+        },
+        {
+          "code": 6320,
+          "squared_distance": 0.23691247885785482
+        }
+      ]
+    },
+    {
+      "label": "native-cuda-full",
+      "projected_sha256": "f1192e513e1b34bce43585a14c80da5eb7216e7395cec40b48f3f4176c8b935f",
+      "codes_sha256": "6c4526c1d59ff0362489d515130bc2dd6b85dc34417063b192803bcf12021584",
+      "projected_dtype": "<f4",
+      "residual_policy": "Subtract earlier embeddings in the projected dtype, then measure distances in F64",
+      "prefix": [
+        4303,
+        3623,
+        2692,
+        4204
+      ],
+      "recorded_code": 7217,
+      "f64_nearest": 7217,
+      "squared_distance_margin": 7.65888986120622e-08,
+      "distance_to_nearest_bisector": 9.442822266274353e-08,
+      "prefix_equal_to_first": true,
+      "residual_l2_displacement_from_first": 4.379756487068632e-06,
+      "top": [
+        {
+          "code": 7217,
+          "squared_distance": 0.22516262679144583
+        },
+        {
+          "code": 6144,
+          "squared_distance": 0.22516270338034444
+        },
+        {
+          "code": 7635,
+          "squared_distance": 0.2275358601252281
+        },
+        {
+          "code": 5212,
+          "squared_distance": 0.23514326968840538
+        },
+        {
+          "code": 6320,
+          "squared_distance": 0.2369128005267484
+        }
+      ]
+    },
+    {
+      "label": "native-cpu-frozen-features",
+      "projected_sha256": "de409d6db1b59c5634b087b5b54d22e759d5d5224c9d04439ae9fb171575738c",
+      "codes_sha256": "418d41d2c25264173f2db62475ed0a69b43c63097a3c179f6dfffc3e1bb23c73",
+      "projected_dtype": "<f4",
+      "residual_policy": "Subtract earlier embeddings in the projected dtype, then measure distances in F64",
+      "prefix": [
+        4303,
+        3623,
+        2692,
+        4204
+      ],
+      "recorded_code": 7217,
+      "f64_nearest": 7217,
+      "squared_distance_margin": 1.4747171978024554e-07,
+      "distance_to_nearest_bisector": 1.8182129060769105e-07,
+      "prefix_equal_to_first": true,
+      "residual_l2_displacement_from_first": 2.4994338255722084e-06,
+      "top": [
+        {
+          "code": 7217,
+          "squared_distance": 0.22516326383162555
+        },
+        {
+          "code": 6144,
+          "squared_distance": 0.22516341130334533
+        },
+        {
+          "code": 7635,
+          "squared_distance": 0.2275363784295583
+        },
+        {
+          "code": 5212,
+          "squared_distance": 0.23514351520318874
+        },
+        {
+          "code": 6320,
+          "squared_distance": 0.23691271512690046
+        }
+      ]
+    },
+    {
+      "label": "native-cuda-frozen-features",
+      "projected_sha256": "57fe52aab7c8bb632c6455db589c2c7245aaac59fbf98b1a018f5654d5ac44a7",
+      "codes_sha256": "418d41d2c25264173f2db62475ed0a69b43c63097a3c179f6dfffc3e1bb23c73",
+      "projected_dtype": "<f4",
+      "residual_policy": "Subtract earlier embeddings in the projected dtype, then measure distances in F64",
+      "prefix": [
+        4303,
+        3623,
+        2692,
+        4204
+      ],
+      "recorded_code": 7217,
+      "f64_nearest": 7217,
+      "squared_distance_margin": 1.8971522630639726e-07,
+      "distance_to_nearest_bisector": 2.339042858275528e-07,
+      "prefix_equal_to_first": true,
+      "residual_l2_displacement_from_first": 2.132493615468959e-06,
+      "top": [
+        {
+          "code": 7217,
+          "squared_distance": 0.22516342150651025
+        },
+        {
+          "code": 6144,
+          "squared_distance": 0.22516361122173656
+        },
+        {
+          "code": 7635,
+          "squared_distance": 0.22753637942125815
+        },
+        {
+          "code": 5212,
+          "squared_distance": 0.23514369672412752
+        },
+        {
+          "code": 6320,
+          "squared_distance": 0.23691282819519233
+        }
+      ]
+    },
+    {
+      "label": "source-mixed-f64-query",
+      "projected_sha256": "07ce3452e88a7736b693875b962abcb9a6ca30eae8e195d21832528c65775316",
+      "codes_sha256": "418d41d2c25264173f2db62475ed0a69b43c63097a3c179f6dfffc3e1bb23c73",
+      "projected_dtype": "<f8",
+      "residual_policy": "Subtract earlier embeddings in the projected dtype, then measure distances in F64",
+      "prefix": [
+        4303,
+        3623,
+        2692,
+        4204
+      ],
+      "recorded_code": 7217,
+      "f64_nearest": 7217,
+      "squared_distance_margin": 1.7792305850861112e-08,
+      "distance_to_nearest_bisector": 2.1936544969510044e-08,
+      "prefix_equal_to_first": true,
+      "residual_l2_displacement_from_first": 2.4963572316021065e-06,
+      "top": [
+        {
+          "code": 7217,
+          "squared_distance": 0.22516336775637386
+        },
+        {
+          "code": 6144,
+          "squared_distance": 0.2251633855486797
+        },
+        {
+          "code": 7635,
+          "squared_distance": 0.2275364341214374
+        },
+        {
+          "code": 5212,
+          "squared_distance": 0.23514348247762323
+        },
+        {
+          "code": 6320,
+          "squared_distance": 0.2369126962248964
+        }
+      ]
+    },
+    {
+      "label": "diagnostic-f64-query",
+      "projected_sha256": "1af728f14f70ba9eaf3fbfafe7269775292293e60cd43a08e780bea3b06646e8",
+      "codes_sha256": "418d41d2c25264173f2db62475ed0a69b43c63097a3c179f6dfffc3e1bb23c73",
+      "projected_dtype": "<f8",
+      "residual_policy": "Subtract earlier embeddings in the projected dtype, then measure distances in F64",
+      "prefix": [
+        4303,
+        3623,
+        2692,
+        4204
+      ],
+      "recorded_code": 7217,
+      "f64_nearest": 7217,
+      "squared_distance_margin": 9.53987436991266e-07,
+      "distance_to_nearest_bisector": 1.176193152665128e-06,
+      "prefix_equal_to_first": true,
+      "residual_l2_displacement_from_first": 7.306872857085492e-06,
+      "top": [
+        {
+          "code": 7217,
+          "squared_distance": 0.22516251255121533
+        },
+        {
+          "code": 6144,
+          "squared_distance": 0.22516346653865232
+        },
+        {
+          "code": 7635,
+          "squared_distance": 0.22753641843706218
+        },
+        {
+          "code": 5212,
+          "squared_distance": 0.23514214378294732
+        },
+        {
+          "code": 6320,
+          "squared_distance": 0.23691186997007796
+        }
+      ]
+    }
+  ]
+}

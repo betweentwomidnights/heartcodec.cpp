@@ -1,0 +1,1000 @@
+{
+  "date": "2026-11-04",
+  "status": "Candidate Whisper accuracy contract validated on pilot plus two held-out inputs; original flat gates remain failed",
+  "policy": {
+    "name": "whisper-upstream-envelope-v1-candidate",
+    "source_sha256": "9460e906ad2dad40b6aed14e75b1bdbc53aca184e5e91855f85a0ab96b856081",
+    "absolute_floor": 0.001,
+    "upstream_f32_error_multiplier": 2,
+    "relative_l2_limit": 0.0001,
+    "absolute_reference": "Independent CPU F64 output stored as F32",
+    "automatic_legacy_gate_waiver": false,
+    "rvq_mismatch_waiver": false
+  },
+  "reference_environment": {
+    "spark": "spark-c7ca; dedicated Docker only",
+    "image": "heartcodec-reference:20261101",
+    "image_sha256": "70947194330272d2aed83dfa51923165ef013a32b0a03f9be8afb2d65957524b",
+    "torch": "2.7.1+cu128",
+    "cpu_blas": "nvpl",
+    "cuda_device": "NVIDIA GB10",
+    "native_cuda_device": "RTX 5070 Laptop"
+  },
+  "model_sha256": "b7cd97fb1cc48764070851777ed00c5b56540730ae7372ad39e2d8c92486c297",
+  "cases": [
+    {
+      "case": "source50-chunk0",
+      "backend": "cpu",
+      "held_out": false,
+      "input_mel_sha256": "90b855ff164e5fa152713c35db6a3824a4578943553e0bee23d801861c327ee3",
+      "controls": [
+        {
+          "device": "cpu",
+          "compute_dtype": "f32",
+          "manifest_sha256": "cb928aa5faf195f64fb9e8cbdae499674a6bc019803e70d668c8cacf36553a0a"
+        },
+        {
+          "device": "cuda",
+          "compute_dtype": "f32",
+          "manifest_sha256": "6c5985450cdcd7f999c7a462c0b78d151a41b9fc4b860a8b422608488845e580"
+        },
+        {
+          "device": "cpu",
+          "compute_dtype": "f64",
+          "manifest_sha256": "e0cffe3228ac03fc06f04a562e02dae9b55698219aa8205a1331a220f89a9970"
+        }
+      ],
+      "candidate_passed": true,
+      "legacy_cpu_flat_gates_passed": false,
+      "legacy_cuda_flat_gates_passed": false,
+      "compared_tensors": 61,
+      "max_relative_l2": 2.1061514538980817e-06,
+      "maximum_budget_fraction": 0.06453252032520325,
+      "full_report_sha256": "89c2d160f38018328a52b8602c7952b6293d2e628912917a0b8277c01a0584dc",
+      "layer_results": [
+        {
+          "tensor": "trace.whisper.layers.0",
+          "native_max_abs": 1.0728836059570312e-06,
+          "native_relative_l2": 1.681540131875434e-07,
+          "upstream_cpu_max_abs": 2.0503997802734375e-05,
+          "upstream_cuda_max_abs": 9.655952453613281e-06,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.1",
+          "native_max_abs": 2.1457672119140625e-06,
+          "native_relative_l2": 2.063025427914973e-07,
+          "upstream_cpu_max_abs": 2.1457672119140625e-05,
+          "upstream_cuda_max_abs": 1.1205673217773438e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.2",
+          "native_max_abs": 4.0531158447265625e-06,
+          "native_relative_l2": 2.4457438191469477e-07,
+          "upstream_cpu_max_abs": 3.2067298889160156e-05,
+          "upstream_cuda_max_abs": 1.8358230590820312e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.3",
+          "native_max_abs": 6.9141387939453125e-06,
+          "native_relative_l2": 2.875230934417404e-07,
+          "upstream_cpu_max_abs": 6.198883056640625e-05,
+          "upstream_cuda_max_abs": 3.0279159545898438e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.4",
+          "native_max_abs": 8.106231689453125e-06,
+          "native_relative_l2": 3.3647174924548247e-07,
+          "upstream_cpu_max_abs": 8.726119995117188e-05,
+          "upstream_cuda_max_abs": 4.315376281738281e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.5",
+          "native_max_abs": 2.384185791015625e-05,
+          "native_relative_l2": 5.495753528521098e-07,
+          "upstream_cpu_max_abs": 0.0002536773681640625,
+          "upstream_cuda_max_abs": 0.00010395050048828125,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.6",
+          "native_max_abs": 0.001953125,
+          "native_relative_l2": 1.0771725721827358e-06,
+          "upstream_cpu_max_abs": 0.0152587890625,
+          "upstream_cuda_max_abs": 0.010772705078125,
+          "max_abs_budget": 0.030517578125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.7",
+          "native_max_abs": 0.001953125,
+          "native_relative_l2": 1.0778886192813263e-06,
+          "upstream_cpu_max_abs": 0.0152587890625,
+          "upstream_cuda_max_abs": 0.01080322265625,
+          "max_abs_budget": 0.030517578125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.8",
+          "native_max_abs": 0.001953125,
+          "native_relative_l2": 1.1005363405401785e-06,
+          "upstream_cpu_max_abs": 0.0152587890625,
+          "upstream_cuda_max_abs": 0.01080322265625,
+          "max_abs_budget": 0.030517578125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.9",
+          "native_max_abs": 0.001953125,
+          "native_relative_l2": 1.1243618669432016e-06,
+          "upstream_cpu_max_abs": 0.01519775390625,
+          "upstream_cuda_max_abs": 0.01080322265625,
+          "max_abs_budget": 0.0303955078125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.10",
+          "native_max_abs": 0.0019378662109375,
+          "native_relative_l2": 1.1409628154578756e-06,
+          "upstream_cpu_max_abs": 0.01519775390625,
+          "upstream_cuda_max_abs": 0.01080322265625,
+          "max_abs_budget": 0.0303955078125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.11",
+          "native_max_abs": 0.001922607421875,
+          "native_relative_l2": 1.1601145338559217e-06,
+          "upstream_cpu_max_abs": 0.0152587890625,
+          "upstream_cuda_max_abs": 0.01080322265625,
+          "max_abs_budget": 0.030517578125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layer_norm",
+          "native_max_abs": 0.000665862113237381,
+          "native_relative_l2": 1.1682257415563187e-06,
+          "upstream_cpu_max_abs": 0.010281562805175781,
+          "upstream_cuda_max_abs": 0.0031914710998535156,
+          "max_abs_budget": 0.020563125610351562,
+          "candidate_passed": true
+        }
+      ]
+    },
+    {
+      "case": "source50-chunk0",
+      "backend": "cuda",
+      "held_out": false,
+      "input_mel_sha256": "90b855ff164e5fa152713c35db6a3824a4578943553e0bee23d801861c327ee3",
+      "controls": [
+        {
+          "device": "cpu",
+          "compute_dtype": "f32",
+          "manifest_sha256": "cb928aa5faf195f64fb9e8cbdae499674a6bc019803e70d668c8cacf36553a0a"
+        },
+        {
+          "device": "cuda",
+          "compute_dtype": "f32",
+          "manifest_sha256": "6c5985450cdcd7f999c7a462c0b78d151a41b9fc4b860a8b422608488845e580"
+        },
+        {
+          "device": "cpu",
+          "compute_dtype": "f64",
+          "manifest_sha256": "e0cffe3228ac03fc06f04a562e02dae9b55698219aa8205a1331a220f89a9970"
+        }
+      ],
+      "candidate_passed": true,
+      "legacy_cpu_flat_gates_passed": false,
+      "legacy_cuda_flat_gates_passed": false,
+      "compared_tensors": 61,
+      "max_relative_l2": 6.1037486447833805e-06,
+      "maximum_budget_fraction": 0.2571138211382114,
+      "full_report_sha256": "543c744a416a2dacc55e640ed19c6649aa5c633dfaa1316cd7a4f010baa8329d",
+      "layer_results": [
+        {
+          "tensor": "trace.whisper.layers.0",
+          "native_max_abs": 3.5762786865234375e-06,
+          "native_relative_l2": 5.334029051652219e-07,
+          "upstream_cpu_max_abs": 2.0503997802734375e-05,
+          "upstream_cuda_max_abs": 9.655952453613281e-06,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.1",
+          "native_max_abs": 7.62939453125e-06,
+          "native_relative_l2": 6.036909132486119e-07,
+          "upstream_cpu_max_abs": 2.1457672119140625e-05,
+          "upstream_cuda_max_abs": 1.1205673217773438e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.2",
+          "native_max_abs": 1.1444091796875e-05,
+          "native_relative_l2": 6.883599895004895e-07,
+          "upstream_cpu_max_abs": 3.2067298889160156e-05,
+          "upstream_cuda_max_abs": 1.8358230590820312e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.3",
+          "native_max_abs": 2.2172927856445312e-05,
+          "native_relative_l2": 8.009347653044543e-07,
+          "upstream_cpu_max_abs": 6.198883056640625e-05,
+          "upstream_cuda_max_abs": 3.0279159545898438e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.4",
+          "native_max_abs": 2.8133392333984375e-05,
+          "native_relative_l2": 9.198135959084856e-07,
+          "upstream_cpu_max_abs": 8.726119995117188e-05,
+          "upstream_cuda_max_abs": 4.315376281738281e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.5",
+          "native_max_abs": 7.05718994140625e-05,
+          "native_relative_l2": 1.5657835842998878e-06,
+          "upstream_cpu_max_abs": 0.0002536773681640625,
+          "upstream_cuda_max_abs": 0.00010395050048828125,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.6",
+          "native_max_abs": 0.007781982421875,
+          "native_relative_l2": 3.3382754511857156e-06,
+          "upstream_cpu_max_abs": 0.0152587890625,
+          "upstream_cuda_max_abs": 0.010772705078125,
+          "max_abs_budget": 0.030517578125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.7",
+          "native_max_abs": 0.0078125,
+          "native_relative_l2": 3.3409839953624394e-06,
+          "upstream_cpu_max_abs": 0.0152587890625,
+          "upstream_cuda_max_abs": 0.01080322265625,
+          "max_abs_budget": 0.030517578125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.8",
+          "native_max_abs": 0.0078125,
+          "native_relative_l2": 3.3962833732759995e-06,
+          "upstream_cpu_max_abs": 0.0152587890625,
+          "upstream_cuda_max_abs": 0.01080322265625,
+          "max_abs_budget": 0.030517578125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.9",
+          "native_max_abs": 0.0078125,
+          "native_relative_l2": 3.484353694569861e-06,
+          "upstream_cpu_max_abs": 0.01519775390625,
+          "upstream_cuda_max_abs": 0.01080322265625,
+          "max_abs_budget": 0.0303955078125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.10",
+          "native_max_abs": 0.0078125,
+          "native_relative_l2": 3.5409220590402454e-06,
+          "upstream_cpu_max_abs": 0.01519775390625,
+          "upstream_cuda_max_abs": 0.01080322265625,
+          "max_abs_budget": 0.0303955078125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.11",
+          "native_max_abs": 0.0078125,
+          "native_relative_l2": 3.5944711486637744e-06,
+          "upstream_cpu_max_abs": 0.0152587890625,
+          "upstream_cuda_max_abs": 0.01080322265625,
+          "max_abs_budget": 0.030517578125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layer_norm",
+          "native_max_abs": 0.0018940158188343048,
+          "native_relative_l2": 3.295011822394085e-06,
+          "upstream_cpu_max_abs": 0.010281562805175781,
+          "upstream_cuda_max_abs": 0.0031914710998535156,
+          "max_abs_budget": 0.020563125610351562,
+          "candidate_passed": true
+        }
+      ]
+    },
+    {
+      "case": "mid16",
+      "backend": "cpu",
+      "held_out": true,
+      "input_mel_sha256": "547eeaf0569c0abf844e8dc1dac07140208ead7b0b00970ced99c24564bca36d",
+      "controls": [
+        {
+          "device": "cpu",
+          "compute_dtype": "f32",
+          "manifest_sha256": "036f8b77afc34697ffdfce8726b757328e93d0d0927b3432b1ba8ec0fae8dc07"
+        },
+        {
+          "device": "cuda",
+          "compute_dtype": "f32",
+          "manifest_sha256": "0ef30972269d7c1c9022753830cbb44c7bc00bbca0cc068b33f21bed94c0f2f7"
+        },
+        {
+          "device": "cpu",
+          "compute_dtype": "f64",
+          "manifest_sha256": "68d73f041ff18c8ba8a29a3c8970da5563ca0899674b746f49503e3a863e888c"
+        }
+      ],
+      "candidate_passed": true,
+      "legacy_cpu_flat_gates_passed": false,
+      "legacy_cuda_flat_gates_passed": false,
+      "compared_tensors": 61,
+      "max_relative_l2": 1.5404278479860374e-06,
+      "maximum_budget_fraction": 0.09362224039247752,
+      "full_report_sha256": "1066ba6e5e5127710c9b27bb24bfb9f2ee2b4aae8b5c1f9e6e512559996cf9fd",
+      "layer_results": [
+        {
+          "tensor": "trace.whisper.layers.0",
+          "native_max_abs": 1.341104507446289e-06,
+          "native_relative_l2": 1.702794699033287e-07,
+          "upstream_cpu_max_abs": 2.5033950805664062e-05,
+          "upstream_cuda_max_abs": 8.58306884765625e-06,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.1",
+          "native_max_abs": 2.1457672119140625e-06,
+          "native_relative_l2": 1.9907738121345252e-07,
+          "upstream_cpu_max_abs": 2.5272369384765625e-05,
+          "upstream_cuda_max_abs": 1.0013580322265625e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.2",
+          "native_max_abs": 3.0994415283203125e-06,
+          "native_relative_l2": 2.244783087094752e-07,
+          "upstream_cpu_max_abs": 5.054473876953125e-05,
+          "upstream_cuda_max_abs": 1.5020370483398438e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.3",
+          "native_max_abs": 5.0067901611328125e-06,
+          "native_relative_l2": 2.531755692068046e-07,
+          "upstream_cpu_max_abs": 8.726119995117188e-05,
+          "upstream_cuda_max_abs": 1.8835067749023438e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.4",
+          "native_max_abs": 6.198883056640625e-06,
+          "native_relative_l2": 2.8531464315302054e-07,
+          "upstream_cpu_max_abs": 9.393692016601562e-05,
+          "upstream_cuda_max_abs": 2.3365020751953125e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.5",
+          "native_max_abs": 1.5735626220703125e-05,
+          "native_relative_l2": 4.486005507684023e-07,
+          "upstream_cpu_max_abs": 0.00015163421630859375,
+          "upstream_cuda_max_abs": 8.344650268554688e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.6",
+          "native_max_abs": 0.002197265625,
+          "native_relative_l2": 1.0568071572432425e-06,
+          "upstream_cpu_max_abs": 0.0162353515625,
+          "upstream_cuda_max_abs": 0.0108642578125,
+          "max_abs_budget": 0.032470703125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.7",
+          "native_max_abs": 0.002166748046875,
+          "native_relative_l2": 1.0584624609891482e-06,
+          "upstream_cpu_max_abs": 0.016265869140625,
+          "upstream_cuda_max_abs": 0.010833740234375,
+          "max_abs_budget": 0.03253173828125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.8",
+          "native_max_abs": 0.00213623046875,
+          "native_relative_l2": 1.0715081844515417e-06,
+          "upstream_cpu_max_abs": 0.0162353515625,
+          "upstream_cuda_max_abs": 0.01080322265625,
+          "max_abs_budget": 0.032470703125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.9",
+          "native_max_abs": 0.002166748046875,
+          "native_relative_l2": 1.0922801326783277e-06,
+          "upstream_cpu_max_abs": 0.0162353515625,
+          "upstream_cuda_max_abs": 0.010833740234375,
+          "max_abs_budget": 0.032470703125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.10",
+          "native_max_abs": 0.002166748046875,
+          "native_relative_l2": 1.0959103302092093e-06,
+          "upstream_cpu_max_abs": 0.0162353515625,
+          "upstream_cuda_max_abs": 0.010833740234375,
+          "max_abs_budget": 0.032470703125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.11",
+          "native_max_abs": 0.002166748046875,
+          "native_relative_l2": 1.1024553864865827e-06,
+          "upstream_cpu_max_abs": 0.0162353515625,
+          "upstream_cuda_max_abs": 0.010833740234375,
+          "max_abs_budget": 0.032470703125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layer_norm",
+          "native_max_abs": 0.00031757354736328125,
+          "native_relative_l2": 8.830314079894695e-07,
+          "upstream_cpu_max_abs": 0.0023270845413208008,
+          "upstream_cuda_max_abs": 0.0013442039489746094,
+          "max_abs_budget": 0.0046541690826416016,
+          "candidate_passed": true
+        }
+      ]
+    },
+    {
+      "case": "mid16",
+      "backend": "cuda",
+      "held_out": true,
+      "input_mel_sha256": "547eeaf0569c0abf844e8dc1dac07140208ead7b0b00970ced99c24564bca36d",
+      "controls": [
+        {
+          "device": "cpu",
+          "compute_dtype": "f32",
+          "manifest_sha256": "036f8b77afc34697ffdfce8726b757328e93d0d0927b3432b1ba8ec0fae8dc07"
+        },
+        {
+          "device": "cuda",
+          "compute_dtype": "f32",
+          "manifest_sha256": "0ef30972269d7c1c9022753830cbb44c7bc00bbca0cc068b33f21bed94c0f2f7"
+        },
+        {
+          "device": "cpu",
+          "compute_dtype": "f64",
+          "manifest_sha256": "68d73f041ff18c8ba8a29a3c8970da5563ca0899674b746f49503e3a863e888c"
+        }
+      ],
+      "candidate_passed": true,
+      "legacy_cpu_flat_gates_passed": false,
+      "legacy_cuda_flat_gates_passed": false,
+      "compared_tensors": 61,
+      "max_relative_l2": 4.903206949337916e-06,
+      "maximum_budget_fraction": 0.20236612702366127,
+      "full_report_sha256": "5619621858e17e4a1b5395e49e3b49ad85d38b57b6e11e23609595fe94483c4f",
+      "layer_results": [
+        {
+          "tensor": "trace.whisper.layers.0",
+          "native_max_abs": 4.291534423828125e-06,
+          "native_relative_l2": 6.05432489046941e-07,
+          "upstream_cpu_max_abs": 2.5033950805664062e-05,
+          "upstream_cuda_max_abs": 8.58306884765625e-06,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.1",
+          "native_max_abs": 5.7220458984375e-06,
+          "native_relative_l2": 6.53935241043538e-07,
+          "upstream_cpu_max_abs": 2.5272369384765625e-05,
+          "upstream_cuda_max_abs": 1.0013580322265625e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.2",
+          "native_max_abs": 1.1205673217773438e-05,
+          "native_relative_l2": 7.071912715580695e-07,
+          "upstream_cpu_max_abs": 5.054473876953125e-05,
+          "upstream_cuda_max_abs": 1.5020370483398438e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.3",
+          "native_max_abs": 1.9311904907226562e-05,
+          "native_relative_l2": 7.75494775408699e-07,
+          "upstream_cpu_max_abs": 8.726119995117188e-05,
+          "upstream_cuda_max_abs": 1.8835067749023438e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.4",
+          "native_max_abs": 1.9788742065429688e-05,
+          "native_relative_l2": 8.779362284244565e-07,
+          "upstream_cpu_max_abs": 9.393692016601562e-05,
+          "upstream_cuda_max_abs": 2.3365020751953125e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.5",
+          "native_max_abs": 5.245208740234375e-05,
+          "native_relative_l2": 1.3302553902083084e-06,
+          "upstream_cpu_max_abs": 0.00015163421630859375,
+          "upstream_cuda_max_abs": 8.344650268554688e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.6",
+          "native_max_abs": 0.006500244140625,
+          "native_relative_l2": 3.2241910723474053e-06,
+          "upstream_cpu_max_abs": 0.0162353515625,
+          "upstream_cuda_max_abs": 0.0108642578125,
+          "max_abs_budget": 0.032470703125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.7",
+          "native_max_abs": 0.006500244140625,
+          "native_relative_l2": 3.227101118007112e-06,
+          "upstream_cpu_max_abs": 0.016265869140625,
+          "upstream_cuda_max_abs": 0.010833740234375,
+          "max_abs_budget": 0.03253173828125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.8",
+          "native_max_abs": 0.0064849853515625,
+          "native_relative_l2": 3.240386864297227e-06,
+          "upstream_cpu_max_abs": 0.0162353515625,
+          "upstream_cuda_max_abs": 0.01080322265625,
+          "max_abs_budget": 0.032470703125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.9",
+          "native_max_abs": 0.006500244140625,
+          "native_relative_l2": 3.2766792445245933e-06,
+          "upstream_cpu_max_abs": 0.0162353515625,
+          "upstream_cuda_max_abs": 0.010833740234375,
+          "max_abs_budget": 0.032470703125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.10",
+          "native_max_abs": 0.00653076171875,
+          "native_relative_l2": 3.280621096154908e-06,
+          "upstream_cpu_max_abs": 0.0162353515625,
+          "upstream_cuda_max_abs": 0.010833740234375,
+          "max_abs_budget": 0.032470703125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.11",
+          "native_max_abs": 0.006561279296875,
+          "native_relative_l2": 3.3067110383666747e-06,
+          "upstream_cpu_max_abs": 0.0162353515625,
+          "upstream_cuda_max_abs": 0.010833740234375,
+          "max_abs_budget": 0.032470703125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layer_norm",
+          "native_max_abs": 0.00075531005859375,
+          "native_relative_l2": 2.877419758019725e-06,
+          "upstream_cpu_max_abs": 0.0023270845413208008,
+          "upstream_cuda_max_abs": 0.0013442039489746094,
+          "max_abs_budget": 0.0046541690826416016,
+          "candidate_passed": true
+        }
+      ]
+    },
+    {
+      "case": "tone24",
+      "backend": "cpu",
+      "held_out": true,
+      "input_mel_sha256": "7844d90aaedf48df72a5b09185d1da68a73a72e7eb19e1b84091f92744f0c3c7",
+      "controls": [
+        {
+          "device": "cpu",
+          "compute_dtype": "f32",
+          "manifest_sha256": "aea9097df681e1c3a11b636c92854ec7da77fe8276b925d7229de22d2d20e952"
+        },
+        {
+          "device": "cuda",
+          "compute_dtype": "f32",
+          "manifest_sha256": "53637de27a5aa91e2f9f2bb19ad7c48d8c7a334d8f441f9ac51116cec2294045"
+        },
+        {
+          "device": "cpu",
+          "compute_dtype": "f64",
+          "manifest_sha256": "33dd2de27dab9803b8d07d5d52cd00999158dee51d913a128e9e3d92f2554d49"
+        }
+      ],
+      "candidate_passed": true,
+      "legacy_cpu_flat_gates_passed": false,
+      "legacy_cuda_flat_gates_passed": false,
+      "compared_tensors": 61,
+      "max_relative_l2": 1.952118688329915e-06,
+      "maximum_budget_fraction": 0.10872688299546211,
+      "full_report_sha256": "da2c9d3973b471e9625abdd39efa6930408439ca98ce703cb9ea75e30120eb56",
+      "layer_results": [
+        {
+          "tensor": "trace.whisper.layers.0",
+          "native_max_abs": 1.3113021850585938e-06,
+          "native_relative_l2": 1.8740872414297113e-07,
+          "upstream_cpu_max_abs": 2.4616718292236328e-05,
+          "upstream_cuda_max_abs": 1.5556812286376953e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.1",
+          "native_max_abs": 1.6987323760986328e-06,
+          "native_relative_l2": 2.1054752931040893e-07,
+          "upstream_cpu_max_abs": 2.7894973754882812e-05,
+          "upstream_cuda_max_abs": 1.1324882507324219e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.2",
+          "native_max_abs": 3.337860107421875e-06,
+          "native_relative_l2": 2.3740031146511308e-07,
+          "upstream_cpu_max_abs": 2.849102020263672e-05,
+          "upstream_cuda_max_abs": 1.537799835205078e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.3",
+          "native_max_abs": 5.0067901611328125e-06,
+          "native_relative_l2": 2.822077543922155e-07,
+          "upstream_cpu_max_abs": 3.457069396972656e-05,
+          "upstream_cuda_max_abs": 2.6941299438476562e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.4",
+          "native_max_abs": 6.9141387939453125e-06,
+          "native_relative_l2": 3.167913526856397e-07,
+          "upstream_cpu_max_abs": 5.6743621826171875e-05,
+          "upstream_cuda_max_abs": 2.9802322387695312e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.5",
+          "native_max_abs": 2.4318695068359375e-05,
+          "native_relative_l2": 5.284198956638163e-07,
+          "upstream_cpu_max_abs": 0.000202178955078125,
+          "upstream_cuda_max_abs": 0.00011444091796875,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.6",
+          "native_max_abs": 0.002593994140625,
+          "native_relative_l2": 1.3946399479685484e-06,
+          "upstream_cpu_max_abs": 0.019866943359375,
+          "upstream_cuda_max_abs": 0.008296966552734375,
+          "max_abs_budget": 0.03973388671875,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.7",
+          "native_max_abs": 0.0026092529296875,
+          "native_relative_l2": 1.3965281854104685e-06,
+          "upstream_cpu_max_abs": 0.019866943359375,
+          "upstream_cuda_max_abs": 0.0081787109375,
+          "max_abs_budget": 0.03973388671875,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.8",
+          "native_max_abs": 0.0026092529296875,
+          "native_relative_l2": 1.3966154561080613e-06,
+          "upstream_cpu_max_abs": 0.01983642578125,
+          "upstream_cuda_max_abs": 0.00785064697265625,
+          "max_abs_budget": 0.0396728515625,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.9",
+          "native_max_abs": 0.0026092529296875,
+          "native_relative_l2": 1.3880952320821022e-06,
+          "upstream_cpu_max_abs": 0.019866943359375,
+          "upstream_cuda_max_abs": 0.00775146484375,
+          "max_abs_budget": 0.03973388671875,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.10",
+          "native_max_abs": 0.00262451171875,
+          "native_relative_l2": 1.382641074907191e-06,
+          "upstream_cpu_max_abs": 0.019866943359375,
+          "upstream_cuda_max_abs": 0.00775146484375,
+          "max_abs_budget": 0.03973388671875,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.11",
+          "native_max_abs": 0.00262451171875,
+          "native_relative_l2": 1.3773670530591281e-06,
+          "upstream_cpu_max_abs": 0.019927978515625,
+          "upstream_cuda_max_abs": 0.0079803466796875,
+          "max_abs_budget": 0.03985595703125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layer_norm",
+          "native_max_abs": 0.000362396240234375,
+          "native_relative_l2": 9.904104124991397e-07,
+          "upstream_cpu_max_abs": 0.004856586456298828,
+          "upstream_cuda_max_abs": 0.0026159286499023438,
+          "max_abs_budget": 0.009713172912597656,
+          "candidate_passed": true
+        }
+      ]
+    },
+    {
+      "case": "tone24",
+      "backend": "cuda",
+      "held_out": true,
+      "input_mel_sha256": "7844d90aaedf48df72a5b09185d1da68a73a72e7eb19e1b84091f92744f0c3c7",
+      "controls": [
+        {
+          "device": "cpu",
+          "compute_dtype": "f32",
+          "manifest_sha256": "aea9097df681e1c3a11b636c92854ec7da77fe8276b925d7229de22d2d20e952"
+        },
+        {
+          "device": "cuda",
+          "compute_dtype": "f32",
+          "manifest_sha256": "53637de27a5aa91e2f9f2bb19ad7c48d8c7a334d8f441f9ac51116cec2294045"
+        },
+        {
+          "device": "cpu",
+          "compute_dtype": "f64",
+          "manifest_sha256": "33dd2de27dab9803b8d07d5d52cd00999158dee51d913a128e9e3d92f2554d49"
+        }
+      ],
+      "candidate_passed": true,
+      "legacy_cpu_flat_gates_passed": false,
+      "legacy_cuda_flat_gates_passed": false,
+      "compared_tensors": 61,
+      "max_relative_l2": 8.745532528308178e-06,
+      "maximum_budget_fraction": 0.34416543574593794,
+      "full_report_sha256": "b6524f35e0e780903a58fcd4a97dcc3e4f32a5305865a54a294d81b54f840939",
+      "layer_results": [
+        {
+          "tensor": "trace.whisper.layers.0",
+          "native_max_abs": 1.601502299308777e-05,
+          "native_relative_l2": 1.0772047498957066e-06,
+          "upstream_cpu_max_abs": 2.4616718292236328e-05,
+          "upstream_cuda_max_abs": 1.5556812286376953e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.1",
+          "native_max_abs": 1.0728836059570312e-05,
+          "native_relative_l2": 1.0668849505971298e-06,
+          "upstream_cpu_max_abs": 2.7894973754882812e-05,
+          "upstream_cuda_max_abs": 1.1324882507324219e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.2",
+          "native_max_abs": 1.5735626220703125e-05,
+          "native_relative_l2": 1.084819487410524e-06,
+          "upstream_cpu_max_abs": 2.849102020263672e-05,
+          "upstream_cuda_max_abs": 1.537799835205078e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.3",
+          "native_max_abs": 2.288818359375e-05,
+          "native_relative_l2": 1.191330157725579e-06,
+          "upstream_cpu_max_abs": 3.457069396972656e-05,
+          "upstream_cuda_max_abs": 2.6941299438476562e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.4",
+          "native_max_abs": 2.6702880859375e-05,
+          "native_relative_l2": 1.2720612742026785e-06,
+          "upstream_cpu_max_abs": 5.6743621826171875e-05,
+          "upstream_cuda_max_abs": 2.9802322387695312e-05,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.5",
+          "native_max_abs": 9.250640869140625e-05,
+          "native_relative_l2": 1.9024813558042258e-06,
+          "upstream_cpu_max_abs": 0.000202178955078125,
+          "upstream_cuda_max_abs": 0.00011444091796875,
+          "max_abs_budget": 0.001,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.6",
+          "native_max_abs": 0.007659912109375,
+          "native_relative_l2": 4.471833784249273e-06,
+          "upstream_cpu_max_abs": 0.019866943359375,
+          "upstream_cuda_max_abs": 0.008296966552734375,
+          "max_abs_budget": 0.03973388671875,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.7",
+          "native_max_abs": 0.007659912109375,
+          "native_relative_l2": 4.473905127343874e-06,
+          "upstream_cpu_max_abs": 0.019866943359375,
+          "upstream_cuda_max_abs": 0.0081787109375,
+          "max_abs_budget": 0.03973388671875,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.8",
+          "native_max_abs": 0.00762939453125,
+          "native_relative_l2": 4.479482487438581e-06,
+          "upstream_cpu_max_abs": 0.01983642578125,
+          "upstream_cuda_max_abs": 0.00785064697265625,
+          "max_abs_budget": 0.0396728515625,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.9",
+          "native_max_abs": 0.0075531005859375,
+          "native_relative_l2": 4.503365709599647e-06,
+          "upstream_cpu_max_abs": 0.019866943359375,
+          "upstream_cuda_max_abs": 0.00775146484375,
+          "max_abs_budget": 0.03973388671875,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.10",
+          "native_max_abs": 0.0075836181640625,
+          "native_relative_l2": 4.532398726384206e-06,
+          "upstream_cpu_max_abs": 0.019866943359375,
+          "upstream_cuda_max_abs": 0.00775146484375,
+          "max_abs_budget": 0.03973388671875,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layers.11",
+          "native_max_abs": 0.007598876953125,
+          "native_relative_l2": 4.5664785398013715e-06,
+          "upstream_cpu_max_abs": 0.019927978515625,
+          "upstream_cuda_max_abs": 0.0079803466796875,
+          "max_abs_budget": 0.03985595703125,
+          "candidate_passed": true
+        },
+        {
+          "tensor": "trace.whisper.layer_norm",
+          "native_max_abs": 0.002201080322265625,
+          "native_relative_l2": 4.223660250735072e-06,
+          "upstream_cpu_max_abs": 0.004856586456298828,
+          "upstream_cuda_max_abs": 0.0026159286499023438,
+          "max_abs_budget": 0.009713172912597656,
+          "candidate_passed": true
+        }
+      ]
+    }
+  ],
+  "heldout_raw_audio_codes": [
+    {
+      "case": "mid16",
+      "backend": "cpu",
+      "candidate_passed": true,
+      "frames": 200,
+      "compared_codes": 1600,
+      "changed_codes": 0,
+      "differences": [],
+      "source_sha256": "fb7eac2c9a5b1c24051883b96da249c34436c14b39ffa675c09b8a8e2ac3c942",
+      "codes_sha256": "3836a7f1f665bf5c0a3a82e324bd4e79e03c0df186289c2bea7927e8566264d3",
+      "reference_manifest_sha256": "4ac9f43cc2de8b4905166b03ab58481bacf1e2f0f3baad8f3836a85dfe0f841a"
+    },
+    {
+      "case": "tone24",
+      "backend": "cpu",
+      "candidate_passed": true,
+      "frames": 30,
+      "compared_codes": 240,
+      "changed_codes": 0,
+      "differences": [],
+      "source_sha256": "e386d49d469187b885a9cda4c3e3b123224f8819aecd457121b660d1d1ed690e",
+      "codes_sha256": "6f0b00b5489daad15eb72affb224eb259e5365449fb4b80f67e4718cd8fbe851",
+      "reference_manifest_sha256": "2b76479c0a87c738b3a8dfff55f9dbeee23e601eaf44b229c602eb3c060136c7"
+    },
+    {
+      "case": "mid16",
+      "backend": "cuda",
+      "candidate_passed": true,
+      "frames": 200,
+      "compared_codes": 1600,
+      "changed_codes": 0,
+      "differences": [],
+      "source_sha256": "fb7eac2c9a5b1c24051883b96da249c34436c14b39ffa675c09b8a8e2ac3c942",
+      "codes_sha256": "3836a7f1f665bf5c0a3a82e324bd4e79e03c0df186289c2bea7927e8566264d3",
+      "reference_manifest_sha256": "4ac9f43cc2de8b4905166b03ab58481bacf1e2f0f3baad8f3836a85dfe0f841a"
+    },
+    {
+      "case": "tone24",
+      "backend": "cuda",
+      "candidate_passed": true,
+      "frames": 30,
+      "compared_codes": 240,
+      "changed_codes": 0,
+      "differences": [],
+      "source_sha256": "e386d49d469187b885a9cda4c3e3b123224f8819aecd457121b660d1d1ed690e",
+      "codes_sha256": "6f0b00b5489daad15eb72affb224eb259e5365449fb4b80f67e4718cd8fbe851",
+      "reference_manifest_sha256": "2b76479c0a87c738b3a8dfff55f9dbeee23e601eaf44b229c602eb3c060136c7"
+    }
+  ],
+  "regression": {
+    "cpu_original_8000_code_ids_unchanged": true,
+    "cuda_original_5000_case_unchanged": true,
+    "cpu_total_compared_codes": 9840,
+    "cpu_changed_codes": 0,
+    "cuda_total_compared_codes": 9840,
+    "cuda_changed_codes": 4,
+    "existing_50s_cuda_difference": "frame259 levels4--7; remains open",
+    "native_runtime_numerics_changed": false
+  },
+  "checks": {
+    "windows_cpu_static_ctest": 5,
+    "windows_heartcodec_dll_ctest": 5,
+    "windows_dll_model_backed_encoder_api": "passed",
+    "windows_mulacover_cuda_parent_ctest": 9,
+    "spark_docker_cpu_ctest": 5,
+    "comparator_identity": "passed",
+    "mismatched_control_provenance": "rejected before comparison",
+    "exporter_linear_control": "repeated Torch projection exact; independent Torch/NumPy F64 outputs byte-identical"
+  },
+  "ggml": {
+    "coordinated_pin": "b77ae790e628270af46a8af1eca38441c23f1252",
+    "authorized_cuda_fix": "0f2ed045eaff6bf01bed074878b6988248efbc22",
+    "consumer_pins_changed": false,
+    "new_patch_adopted": false,
+    "experimental_fast_math_patch_sha256": "d26341bd97b96f97118d3a4dc7feafddd30adeb1afa1c9cd4348d641972a3f46",
+    "experimental_patch_retained": false
+  },
+  "legacy_full_encoder_parity_passed": false,
+  "all_candidate_whisper_accuracy_cases_passed": true
+}

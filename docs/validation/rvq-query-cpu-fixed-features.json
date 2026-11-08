@@ -1,0 +1,184 @@
+{
+  "reference_manifest_sha256": "02b3405798d46f18e4bfea7fd9e9c8ca6ae21faf0eb72a788cd07639504f0759",
+  "model_sha256": "b7cd97fb1cc48764070851777ed00c5b56540730ae7372ad39e2d8c92486c297",
+  "reference_heartlib_revision": "5858ca8f1ffe58d62be7c007ea55f1033c5ca456",
+  "reference_encoder_revision": "e6020510612d6653b73d6cd54393ef80929e3c81",
+  "reference_decoder_revision": "f889dab0532cfa4bf459f2a3367eb6d346b8eeda",
+  "reference_device": "cpu",
+  "native_run": {
+    "mode": "query",
+    "backend": "cpu",
+    "frames": 372,
+    "seconds": 3.76804,
+    "weight_bytes": 2157089440,
+    "graph_bytes": 64757760
+  },
+  "mode": "query",
+  "scope": "activation stages and code IDs",
+  "backend_match": true,
+  "matching_backend_required": true,
+  "gates": {
+    "max_abs": 0.001,
+    "relative_l2": 0.0001,
+    "code_ids": "all exact",
+    "margin_values": "diagnostic only; not a gate waiver"
+  },
+  "stages": [
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.query.cond_fusion_layer_acoustic",
+      "max_abs": 1.33514404296875e-05,
+      "relative_l2": 7.074827598167786e-07,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.query.cond_fusion_layer_semantic",
+      "max_abs": 1.7642974853515625e-05,
+      "relative_l2": 7.388180778394139e-07,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.query.cond_fusion_layer_phone",
+      "max_abs": 3.2186508178710938e-06,
+      "relative_l2": 6.295234615808208e-07,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.query.feature_proj",
+      "max_abs": 4.00543212890625e-05,
+      "relative_l2": 1.1752421287333805e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.query.encoder_transformers.0",
+      "max_abs": 4.1961669921875e-05,
+      "relative_l2": 1.1659762267310257e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.query.encoder_transformers.1",
+      "max_abs": 4.291534423828125e-05,
+      "relative_l2": 1.191004697138523e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "stage.query.encoder_transformers.5",
+      "max_abs": 4.38690185546875e-05,
+      "relative_l2": 1.232711626707001e-06,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "query",
+      "max_abs": 2.0712614059448242e-06,
+      "relative_l2": 2.723245734026453e-07,
+      "passed": true
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "rvq.projected",
+      "max_abs": 2.0265579223632812e-06,
+      "relative_l2": 1.0024307137479623e-06,
+      "passed": true
+    }
+  ],
+  "rvq_margin_diagnostics": [
+    {
+      "case": "source-chunk-0",
+      "tensor": "rvq.margin.0",
+      "max_abs": 1.9073486328125e-06,
+      "relative_l2": 6.104970789132959e-06
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "rvq.margin.1",
+      "max_abs": 1.1920928955078125e-06,
+      "relative_l2": 9.194150558970944e-06
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "rvq.margin.2",
+      "max_abs": 9.5367431640625e-07,
+      "relative_l2": 1.002366286422998e-05
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "rvq.margin.3",
+      "max_abs": 1.2516975402832031e-06,
+      "relative_l2": 1.3980368131090963e-05
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "rvq.margin.4",
+      "max_abs": 1.0728836059570312e-06,
+      "relative_l2": 1.766173713170157e-05
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "rvq.margin.5",
+      "max_abs": 0.016824036836624146,
+      "relative_l2": 0.05477532510608946
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "rvq.margin.6",
+      "max_abs": 0.007055491209030151,
+      "relative_l2": 0.02718341297602475
+    },
+    {
+      "case": "source-chunk-0",
+      "tensor": "rvq.margin.7",
+      "max_abs": 0.018050283193588257,
+      "relative_l2": 0.091108297438742
+    }
+  ],
+  "codes": {
+    "shape_match": true,
+    "expected_frames": 372,
+    "actual_frames": 372,
+    "total_compared_codes": 2976,
+    "changed_codes": 4,
+    "differences": [
+      {
+        "frame": 259,
+        "level": 4,
+        "expected": 6144,
+        "actual": 7217
+      },
+      {
+        "frame": 259,
+        "level": 5,
+        "expected": 6050,
+        "actual": 794
+      },
+      {
+        "frame": 259,
+        "level": 6,
+        "expected": 4683,
+        "actual": 4228
+      },
+      {
+        "frame": 259,
+        "level": 7,
+        "expected": 2905,
+        "actual": 4381
+      }
+    ],
+    "passed": false,
+    "sha256": "418d41d2c25264173f2db62475ed0a69b43c63097a3c179f6dfffc3e1bb23c73"
+  },
+  "skipped_reference_values": [
+    "waveform: borrowed PCM input",
+    "query mode: borrowed feature inputs and upstream audio/feature stages outside the tested query boundary",
+    "rvq.quantized: decoder projection, outside encoding API"
+  ],
+  "all_stage_gates_passed": true,
+  "code_parity_passed": false,
+  "passed": false
+}
